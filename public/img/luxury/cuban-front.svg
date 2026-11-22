@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="800" height="1000">
+  <defs>
+    <linearGradient id="gold_f1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF8D6"/>
+      <stop offset="25%" stop-color="#E5C158"/>
+      <stop offset="50%" stop-color="#D4AF37"/>
+      <stop offset="75%" stop-color="#8C6E1C"/>
+      <stop offset="100%" stop-color="#4E3B0A"/>
+    </linearGradient>
+    <radialGradient id="sparkle" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="30%" stop-color="#FFF2B2"/>
+      <stop offset="100%" stop-color="transparent"/>
+    </radialGradient>
+    <filter id="shadow_f1" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="25" stdDeviation="20" flood-color="rgba(0,0,0,0.35)"/>
+    </filter>
+  </defs>
+  <g filter="url(#shadow_f1)">
+    <!-- Main Draped Cuban Curve -->
+    <path d="M 400,120 C 650,120 700,550 550,750 C 450,880 350,880 250,750 C 100,550 150,120 400,120 Z" 
+          fill="none" stroke="url(#gold_f1)" stroke-width="72" stroke-linejoin="round" stroke-linecap="round"/>
+    <!-- Interlocking Diamond Pave Facets -->
+    <path d="M 400,120 C 650,120 700,550 550,750 C 450,880 350,880 250,750 C 100,550 150,120 400,120 Z" 
+          fill="none" stroke="#FFFFFF" stroke-width="8" stroke-dasharray="14,18" opacity="0.9"/>
+    <path d="M 400,120 C 650,120 700,550 550,750 C 450,880 350,880 250,750 C 100,550 150,120 400,120 Z" 
+          fill="none" stroke="#D4AF37" stroke-width="2" stroke-dasharray="6,26"/>
+    <!-- Clasp Box -->
+    <rect x="340" y="80" width="120" height="70" rx="8" fill="url(#gold_f1)" stroke="#FFFFFF" stroke-width="3"/>
+    <text x="400" y="122" font-family="'JetBrains Mono', monospace" font-size="18" font-weight="bold" fill="#2A1B02" text-anchor="middle">WE 14K</text>
+    <!-- Glint Sparkles -->
+    <circle cx="580" cy="400" r="16" fill="url(#sparkle)"/>
+    <circle cx="240" cy="520" r="14" fill="url(#sparkle)"/>
+    <circle cx="480" cy="810" r="18" fill="url(#sparkle)"/>
+  </g>
+</svg>
