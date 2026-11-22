@@ -7,6 +7,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const products = [
     {
+      title: "Bespoke Baguette Skeleton Watch",
+      subtitle: "Custom Diamond Bezel • Automatic Movement • Fluted Case",
+      desc: "Bespoke horological craftsmanship. Features an invisible-set baguette cut diamond bezel, diamond pavé dial with blued steel hands, exposed tourbillon window, and iced Presidential bracelet.",
+      material: "SOLID 18K GOLD & 316L STEEL",
+      stones: "STEP-CUT BAGUETTE DIAMONDS",
+      ctaText: "TIMEPIECE CONSULTATION ↗"
+    },
+    {
       title: "18mm Miami Cuban Chain",
       subtitle: "Solid 14K Yellow Gold • Hand-Set VVS Diamond Pavé",
       desc: "The quintessential Houston signature. Cast in heavy solid 14-karat yellow gold with hand-filed flat-top links, handset with microscopic VVS diamond pavé across all link faces and finished with our bespoke dual-safety iced box clasp.",
@@ -29,14 +37,6 @@ document.addEventListener('DOMContentLoaded', () => {
       material: "SOLID 10K / 14K GOLD OR 925 SILVER",
       stones: "VVS MOISSANITE / NATURAL DIAMOND",
       ctaText: "BOOK DENTAL IMPRESSION ↗"
-    },
-    {
-      title: "Bespoke Baguette Skeleton Watch",
-      subtitle: "Custom Diamond Bezel • Automatic Movement • Fluted Case",
-      desc: "Bespoke horological craftsmanship. Features an invisible-set baguette cut diamond bezel, diamond pavé dial with blued steel hands, exposed tourbillon window, and iced Presidential bracelet.",
-      material: "SOLID 18K GOLD & 316L STEEL",
-      stones: "STEP-CUT BAGUETTE DIAMONDS",
-      ctaText: "TIMEPIECE CONSULTATION ↗"
     },
     {
       title: "Channel-Set Baguette Eternity Band",
@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Wheel interaction (vertical or horizontal wheel traverses 3D slider)
   window.addEventListener('wheel', (e) => {
     const delta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
-    targetProgress += delta * 0.0016;
+    targetProgress += delta * 0.0015;
   }, { passive: true });
 
   // Drag interaction
@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('mousemove', (e) => {
       if (!isDragging) return;
       const deltaX = e.clientX - startX;
-      targetProgress -= deltaX * 0.0035;
+      targetProgress -= deltaX * 0.0032;
       startX = e.clientX;
     });
 
@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('touchmove', (e) => {
       if (!isDragging || e.touches.length !== 1) return;
       const deltaX = e.touches[0].clientX - startX;
-      targetProgress -= deltaX * 0.0035;
+      targetProgress -= deltaX * 0.0032;
       startX = e.touches[0].clientX;
     }, { passive: true });
   }
@@ -198,7 +198,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Rotate circular background vector stamp in sync
     if (stampWrapper) {
-      stampWrapper.style.transform = `translate(-50%, -50%) rotate(${currentProgress * 75}deg)`;
+      stampWrapper.style.transform = `translate(-50%, -50%) rotate(${currentProgress * 70}deg)`;
     }
 
     const vw = window.innerWidth;
@@ -221,49 +221,45 @@ document.addEventListener('DOMContentLoaded', () => {
         closestIndex = i;
       }
 
-      // Exact Hyperbolic Tangent Spacing Distortion
-      // Math.tanh creates the fish-eye focal expansion at center, compressing at edges
-      const distortedOffset = Math.tanh(offset * 3.0);
-      const x = distortedOffset * (baseWidth * 0.54);
+      // Hyperbolic tangent fish-eye expansion
+      const distortedOffset = Math.tanh(offset * 2.8);
+      const x = distortedOffset * (baseWidth * 0.48);
 
-      // Arc curvature in Y
-      const y = Math.pow(Math.abs(distortedOffset), 2) * 85;
+      // Arc curvature in Y (slight downward bow at the ends)
+      const y = Math.pow(Math.abs(distortedOffset), 2) * 60;
 
-      // 3D Tilts matching video:
-      // Active center: upright, slight forward tilt showing top perspective
-      // Lateral items: roll towards center, yaw, and pitch forward
-      const rotY = -distortedOffset * 26;
-      const rotX = 6 + Math.abs(distortedOffset) * 12; // tilts forward in perspective
-      const rotZ = -distortedOffset * 15 + (velocity * 0.04); // dynamic inertial lean
+      // 3D Tilts:
+      const rotY = -distortedOffset * 22;
+      const rotX = 4 + Math.abs(distortedOffset) * 8;
+      const rotZ = -distortedOffset * 10 + (velocity * 0.03); // inertial lean
 
-      // Dynamic Scale & Depth of Field (DoF)
-      const scale = Math.max(1.08 - Math.pow(absOffset * 2.2, 1.25) * 0.52, 0.65);
-      const blurPx = Math.max(0, (absOffset - 0.06) * 16);
-      const brightness = Math.max(1.0 - absOffset * 0.28, 0.75);
+      // Scale: hero big, edges recede
+      const scale = Math.max(1.08 - Math.pow(absOffset * 2.0, 1.3) * 0.45, 0.68);
+      // DoF blur: sharp center, blur edges gently
+      const blurPx = Math.max(0, (absOffset - 0.09) * 12);
+      const brightness = Math.max(1.0 - absOffset * 0.22, 0.80);
       const zIndex = Math.round((1 - absOffset) * 100);
 
       item.style.transform = `translate3d(${x}px, ${y}px, 0px) rotateY(${rotY}deg) rotateX(${rotX}deg) rotateZ(${rotZ}deg) scale(${scale})`;
-      item.style.filter = blurPx > 0.4 ? `blur(${blurPx.toFixed(1)}px) brightness(${brightness.toFixed(2)})` : 'none';
+      item.style.filter = blurPx > 0.3 ? `blur(${blurPx.toFixed(1)}px) brightness(${brightness.toFixed(2)})` : `brightness(${brightness.toFixed(2)})`;
       item.style.zIndex = zIndex;
-      item.style.opacity = absOffset < 0.45 ? 1.0 : Math.max(0, 1 - (absOffset - 0.45) * 6);
+      item.style.opacity = absOffset < 0.46 ? 1.0 : Math.max(0, 1 - (absOffset - 0.46) * 5.5);
 
       if (i === closestIndex) {
-        // Track center position for floating discover pill
-        // Compensating for 10-degree track rotation
         const angleRad = -10 * (Math.PI / 180);
         centerJarX = (window.innerWidth / 2) + (x * Math.cos(angleRad) - y * Math.sin(angleRad));
         centerJarY = (window.innerHeight / 2) + (x * Math.sin(angleRad) + y * Math.cos(angleRad));
       }
     });
 
-    // Update active index and floating capsule badge
+    // Update active index
     if (closestIndex !== activeIndex) {
       activeIndex = closestIndex;
     }
 
     if (floatingCapsule) {
-      // Position capsule slightly to the left of the active jewelry hero
-      const badgeX = centerJarX - 250;
+      // Float badge to the right of the active hero piece (clean clearance)
+      const badgeX = centerJarX + 165;
       const badgeY = centerJarY - 30;
       floatingCapsule.style.transform = `translate(${badgeX}px, ${badgeY}px)`;
     }
