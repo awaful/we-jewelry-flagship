@@ -3,164 +3,163 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WE Jewelry &amp; Co. — Bespoke Fine Diamond &amp; Gold Atelier | Houston, TX</title>
+  <title>WE Jewelry &amp; Co. — Houston Bespoke Flagship</title>
   <meta name="description" content="Houston's premier bespoke diamond jewelry atelier. Handcrafted Miami Cuban links, VVS custom pendants, and precision timepieces.">
   
-  <!-- Premium Typography -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-
-  <!-- Three.js, GSAP, ScrollTrigger, Lenis -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script src="https://unpkg.com/lenis@1.1.9/dist/lenis.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="src/css/style.css">
 </head>
-<body class="bg-[#F3F2EE] text-[#111116] overflow-x-hidden antialiased select-none">
+<body>
 
   <!-- =========================================================================
-       PRELOADER: MINIMALIST LUXURY (Fast & Smooth)
+       HEADER: EXACT SOTD FRAMING (Agrumea Farm Reference)
        ========================================================================= -->
-  <aside id="preloader" class="fixed inset-0 z-50 bg-[#F3F2EE] flex flex-col justify-between p-8 md:p-12 transition-opacity duration-500">
-    <div class="flex justify-between items-center text-[10px] font-mono tracking-widest text-[#71717A] uppercase">
-      <span>WE JEWELRY &amp; CO. // THE LUMINOUS INC.</span>
-      <span>HOUSTON · 29°43'N 95°31'W</span>
+  <header id="site-header">
+    <div class="header-left-pills">
+      <div class="lang-pill">IT</div>
+      <div class="lang-pill active">EN</div>
     </div>
 
-    <div class="text-center my-auto">
-      <h2 class="font-serif italic text-4xl md:text-5xl text-[#111116] mb-3">WE Jewelry</h2>
-      <p class="font-mono text-[10px] tracking-[0.3em] uppercase text-[#8B6B23]">Digital Flagship Atelier</p>
-    </div>
-
-    <div class="w-full max-w-sm mx-auto text-center">
-      <div id="preloader-counter" class="font-mono text-xl text-[#111116] tabular-nums mb-2">0%</div>
-      <div class="w-full h-[1px] bg-[#D4D2C9] relative overflow-hidden">
-        <div id="preloader-bar" class="absolute left-0 top-0 bottom-0 w-0 bg-[#8B6B23] transition-all duration-75"></div>
-      </div>
-    </div>
-  </aside>
-
-  <!-- =========================================================================
-       HEADER: EXACT SOTD FRAMING (Agrumea Architecture)
-       ========================================================================= -->
-  <header id="site-header" class="fixed top-0 left-0 w-full z-40 px-6 md:px-12 py-6 flex items-center justify-between pointer-events-none">
-    <!-- Left Language / Region Pills -->
-    <div class="flex items-center gap-2 pointer-events-auto">
-      <span class="pill-btn font-mono text-[10px] active">HTX</span>
-      <span class="pill-btn font-mono text-[10px]">USA</span>
-    </div>
-
-    <!-- Center Wordmark / Logo -->
-    <a href="#" class="brand-center flex flex-col items-center pointer-events-auto text-center">
-      <span class="font-serif italic text-2xl md:text-3xl tracking-tight text-[#111116] leading-none">
-        WE Jewelry
-      </span>
-      <span class="font-mono text-[8px] tracking-[0.35em] text-[#8B6B23] uppercase mt-1">
-        Houston Flagship
-      </span>
+    <a href="#" class="header-center-brand">
+      <svg class="brand-icon" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+      </svg>
+      <span class="brand-name">WE Jewelry &amp; Co.</span>
+      <span class="brand-sub">Houston Atelier</span>
     </a>
 
-    <!-- Right Menu / Concierge Action -->
-    <div class="flex items-center gap-3 pointer-events-auto">
-      <a href="https://wa.me/18326886688?text=Hello%20WE%20Jewelry,%20I%20would%20like%20to%20consult%20about%20a%20piece" target="_blank" rel="noopener" class="menu-pill-btn flex items-center gap-2 font-mono text-[11px] uppercase tracking-wider text-[#111116]">
-        <span>CONCIERGE</span>
-        <span class="w-2 h-2 rounded-full bg-[#D4AF37] animate-pulse"></span>
+    <div class="header-right-menu">
+      <a href="https://wa.me/18326886688" target="_blank" rel="noopener" class="menu-pill">
+        <span>MENU</span>
+        <span class="menu-dot"></span>
       </a>
     </div>
   </header>
 
   <!-- =========================================================================
-       HERO: 3D CIRCULAR CAROUSEL & CURVED PATH TYPOGRAPHY (Exact Reference)
+       HERO: 3D CURVED ORBITAL CAROUSEL + ORGANIC ARCH SHIELD
        ========================================================================= -->
-  <main id="hero-stage" class="relative w-full h-screen overflow-hidden flex items-center justify-center bg-[#F3F2EE]">
+  <main id="hero-stage">
     
-    <!-- Central Organic Curved Badge / Backdrop -->
-    <div class="curved-organic-badge">
-      <!-- Curved SVG Path with Rotating Ring Typography -->
-      <svg class="curved-text-svg" viewBox="0 0 1000 1000">
-        <path id="curvePath" d="M 120,500 A 380,380 0 1,1 880,500 A 380,380 0 1,1 120,500" fill="none" />
-        <text class="curved-svg-text">
-          <textPath id="curvedTextPath" href="#curvePath" startOffset="0%">
-            ✦ BESPOKE FINE JEWELRY · WE JEWELRY &amp; CO. · SCULPTED IN GOLD · MASTER PAVE SETTINGS · HOUSTON TEXAS · THE LUMINOUS INC · 
+    <!-- Central Carmine Red Organic Arch Shield + Rotating Path Typography -->
+    <div class="organic-arch-container">
+      <svg class="arch-svg-shape" viewBox="0 0 1000 1000">
+        <!-- Deep Carmine Arch Shield -->
+        <path d="M 230,780 C 130,520 230,180 500,150 C 770,180 870,520 770,780 C 640,880 360,880 230,780 Z" fill="#8B1F1E" />
+      </svg>
+
+      <!-- Rotating Text Along Outer Curve -->
+      <svg class="arch-rotating-text" viewBox="0 0 1200 1200">
+        <path id="textTrack" d="M 240,840 C 110,520 240,140 600,110 C 960,140 1090,520 960,840 C 820,960 380,960 240,840 Z" fill="none" />
+        <text class="curved-typography">
+          <textPath id="curvedTextPath" href="#textTrack" startOffset="0%">
+            ✦ BESPOKE JEWELRY · WE CRAFT · SCULPTED IN GOLD · MASTER PAVE · HOUSTON TEXAS · THE LUMINOUS INC · 
           </textPath>
         </text>
       </svg>
     </div>
 
-    <!-- WebGL 3D Interactive Carousel Canvas -->
-    <canvas id="carousel-canvas" class="absolute inset-0 z-10 w-full h-full cursor-grab active:cursor-grabbing"></canvas>
+    <!-- 3D Carousel Viewport (Perspective Space) -->
+    <div class="carousel-viewport" id="carousel-viewport">
+      <div class="carousel-ring" id="carousel-ring">
+        
+        <!-- Piece 0: Miami Cuban Link -->
+        <div class="jewelry-card-3d" data-index="0">
+          <img src="public/img/luxury/cuban-front.svg" alt="Miami Cuban Chain">
+        </div>
 
-    <!-- Floating Interactive Pill Tooltip (Above Active Center Piece) -->
-    <div id="active-product-tooltip" class="absolute z-20 pointer-events-auto transition-transform duration-300">
-      <a id="tooltip-link" href="https://wa.me/18326886688" target="_blank" rel="noopener" class="tooltip-pill flex items-center gap-2 px-4 py-2 rounded-full bg-white/95 text-[#111116] shadow-xl border border-black/5 font-mono text-[11px] uppercase tracking-wider hover:bg-[#111116] hover:text-white transition-all">
-        <span class="w-1.5 h-1.5 rounded-full bg-[#D4AF37]"></span>
-        <span id="tooltip-title">DISCOVER THE PIECE</span>
-        <span class="text-[#8B6B23]">↗</span>
-      </a>
-    </div>
+        <!-- Piece 1: Custom Bust Pendant -->
+        <div class="jewelry-card-3d" data-index="1">
+          <img src="public/img/luxury/pendant-front.svg" alt="Custom Bust Pendant">
+        </div>
 
-    <!-- Bottom Center Scroll Indicator -->
-    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center pointer-events-none text-center">
-      <span class="font-mono text-[9px] uppercase tracking-[0.25em] text-[#71717A] mb-2">SCROLL TO DISCOVER</span>
-      <div class="scroll-track-pill">
-        <div class="scroll-thumb"></div>
+        <!-- Piece 2: Deep Cut Dental Grillz -->
+        <div class="jewelry-card-3d" data-index="2">
+          <img src="public/img/luxury/grillz-front.svg" alt="Deep Cut Dental Grillz">
+        </div>
+
+        <!-- Piece 3: Luminous Luxury Watch -->
+        <div class="jewelry-card-3d" data-index="3">
+          <img src="public/img/luxury/watch-front.svg" alt="Luminous Timepiece">
+        </div>
+
+        <!-- Piece 4: Baguette Master Ring -->
+        <div class="jewelry-card-3d" data-index="4">
+          <img src="public/img/luxury/ring-front.svg" alt="Baguette Master Ring">
+        </div>
+
       </div>
     </div>
 
-    <!-- Bottom Left / Right Meta Tags -->
-    <div class="absolute bottom-8 left-6 md:left-12 z-20 font-mono text-[10px] text-[#71717A] uppercase tracking-wider hidden md:block">
-      <span>100 SHARPSTOWN CENTER #1168</span>
+    <!-- Floating Interactive Pill Tooltip (Above Active Front Center Piece) -->
+    <div id="active-product-tooltip">
+      <a id="discover-btn" href="#" class="discover-pill">
+        <span class="discover-dot"></span>
+        <span id="tooltip-text">DISCOVER THE PRODUCT</span>
+        <span>↗</span>
+      </a>
     </div>
 
-    <div class="absolute bottom-8 right-6 md:right-12 z-20 font-mono text-[10px] text-[#71717A] uppercase tracking-wider hidden md:block">
-      <a href="https://www.instagram.com/the.luminous.official/" target="_blank" rel="noopener" class="hover:text-[#111116] transition-colors">
-        @THE.LUMINOUS.OFFICIAL ↗
+    <!-- Bottom Interface (Agrumea Exact) -->
+    <div class="bottom-meta-left">
+      <span>Privacy &amp; Cookies</span>
+    </div>
+
+    <div class="bottom-scroll-center">
+      <span class="scroll-text">SCROLL TO DISCOVER</span>
+      <div class="scroll-mouse-icon">
+        <div class="scroll-wheel"></div>
+      </div>
+    </div>
+
+    <div class="bottom-meta-right">
+      <a href="https://www.instagram.com/the.luminous.official/" target="_blank" rel="noopener" style="color: inherit;">
+        @the.luminous.official
       </a>
     </div>
 
   </main>
 
   <!-- =========================================================================
-       CURATED VAULT DRAWER / PRODUCT DETAILS MODAL
+       ATELIER SPECIFICATION DRAWER / MODAL
        ========================================================================= -->
-  <div id="detail-drawer" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 flex justify-end">
-    <div class="drawer-panel w-full max-w-md bg-white h-full p-8 md:p-12 flex flex-col justify-between transform translate-x-full transition-transform duration-400">
+  <div id="detail-drawer">
+    <div class="drawer-panel">
       <div>
-        <div class="flex justify-between items-center pb-4 border-b border-neutral-200">
-          <span class="font-mono text-[10px] uppercase text-[#8B6B23] tracking-widest">ATELIER SPECIFICATION</span>
-          <button id="close-drawer" class="font-mono text-sm uppercase text-neutral-500 hover:text-black">✕</button>
+        <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 16px; border-bottom: 1px solid #E5E5E8;">
+          <span class="font-mono" style="font-size: 10px; color: #8C6E1C; letter-spacing: 0.25em;">ATELIER SPECIFICATION</span>
+          <button id="close-drawer" style="background: none; border: none; font-size: 18px; cursor: pointer; color: #777;">✕</button>
         </div>
 
-        <div class="mt-8">
-          <span id="drawer-cat" class="font-mono text-xs text-neutral-400 uppercase tracking-widest block mb-2">[01 / CHAINS]</span>
-          <h3 id="drawer-title" class="font-serif italic text-3xl md:text-4xl text-neutral-900 leading-tight">
-            Miami Cuban Chain
-          </h3>
-          <p id="drawer-desc" class="font-sans text-xs text-neutral-500 mt-4 leading-relaxed">
-            Handcrafted with solid 14K gold links and precision triple-lock clasp. Each pavé setting is finished under microscope magnification.
+        <div style="margin-top: 32px;">
+          <span id="drawer-category" class="font-mono" style="font-size: 11px; color: #999; letter-spacing: 0.2em; display: block; margin-bottom: 8px;">[01 / CHAINS]</span>
+          <h3 id="drawer-title" class="font-serif" style="font-style: italic; font-size: 38px; color: #111116; line-height: 1.1;">Miami Cuban Chain</h3>
+          <p id="drawer-description" class="font-sans" style="font-size: 13px; color: #666; margin-top: 16px; line-height: 1.6;">
+            Handcrafted with solid 14K gold links and precision triple-lock box clasp. Each pavé setting is finished under microscope magnification in our Houston atelier.
           </p>
         </div>
 
-        <div class="mt-8 p-4 bg-neutral-50 border border-neutral-200 font-mono text-xs space-y-2">
-          <div class="flex justify-between">
-            <span class="text-neutral-400">PRECIOUS ALLOY</span>
-            <span id="drawer-metal" class="font-bold text-neutral-900">14K / 18K SOLID GOLD</span>
+        <div style="margin-top: 32px; background: #F8F8FA; border: 1px solid #EAEAEF; padding: 18px; font-family: 'JetBrains Mono', monospace; font-size: 11px; line-height: 2;">
+          <div style="display: flex; justify-content: space-between;">
+            <span style="color: #888;">ALLOY:</span>
+            <span id="drawer-alloy" style="font-weight: 700; color: #111;">14K SOLID GOLD</span>
           </div>
-          <div class="flex justify-between">
-            <span class="text-neutral-400">DIAMOND CLARITY</span>
-            <span id="drawer-stones" class="font-bold text-neutral-900">VVS1 MOISSANITE / NATURAL</span>
+          <div style="display: flex; justify-content: space-between;">
+            <span style="color: #888;">STONES:</span>
+            <span id="drawer-stones" style="font-weight: 700; color: #111;">VVS1 MOISSANITE</span>
           </div>
-          <div class="flex justify-between">
-            <span class="text-neutral-400">ATELIER APPRAISAL</span>
-            <span class="font-bold text-[#8B6B23]">CONSULTAR</span>
+          <div style="display: flex; justify-content: space-between;">
+            <span style="color: #888;">ATELIER APPRAISAL:</span>
+            <span style="font-weight: 700; color: #8C6E1C;">CONSULTAR</span>
           </div>
         </div>
       </div>
 
-      <a id="drawer-consult-btn" href="https://wa.me/18326886688" target="_blank" rel="noopener" class="w-full py-4 bg-[#111116] text-white font-mono text-xs uppercase tracking-widest text-center hover:bg-[#D4AF37] hover:text-black transition-colors block">
+      <a id="drawer-whatsapp" href="https://wa.me/18326886688" target="_blank" rel="noopener" style="display: block; width: 100%; padding: 16px; background: #111116; color: #FFFFFF; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-align: center; text-decoration: none; text-transform: uppercase;">
         INQUIRE WITH MASTER JEWELER ↗
       </a>
     </div>
