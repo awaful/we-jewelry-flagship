@@ -1,7 +1,7 @@
 /**
  * PRELOADER CONTROLLER (Spec 5: B-1, B-2, B-3)
  * Fullscreen #070709, tabular-nums counter with superindex %, progress line scaleX
- * Real progress calculation with minimum 0.8s display duration
+ * Robust asset & font tracking with guaranteed completion
  */
 
 export function initPreloader(onCompleteCallback) {
@@ -27,13 +27,14 @@ export function initPreloader(onCompleteCallback) {
   }
 
   const startTime = performance.now();
-  const minDuration = 800; // Minimum 0.8s display
+  const minDisplayTime = 800; // Minimum 0.8s display per spec
 
-  let realProgress = 0;
+  let imagesProgress = 0;
+  let fontsProgress = 0;
+  let realProgress = 10; // Start at 10%
   let displayedProgress = 0;
   let isDone = false;
 
-  // Track fonts and critical central frame 07
   const criticalAssets = [
     'public/img/hero-chain/hero-chain-07.svg',
     'public/img/hero-pendant/hero-pendant-07.svg',
@@ -46,31 +47,46 @@ export function initPreloader(onCompleteCallback) {
     img.src = url;
     img.onload = img.onerror = () => {
       loadedCount++;
-      realProgress = Math.min((loadedCount / criticalAssets.length) * 80, 80);
+      imagesProgress = (loadedCount / criticalAssets.length) * 70;
+      realProgress = Math.max(realProgress, imagesProgress + fontsProgress);
     };
   });
 
   if (document.fonts) {
     document.fonts.ready.then(() => {
-      realProgress += 20;
+      fontsProgress = 30;
+      realProgress = Math.max(realProgress, imagesProgress + fontsProgress);
+    }).catch(() => {
+      fontsProgress = 30;
+      realProgress = Math.max(realProgress, imagesProgress + fontsProgress);
     });
   } else {
-    realProgress += 20;
+    fontsProgress = 30;
+    realProgress = Math.max(realProgress, imagesProgress + fontsProgress);
   }
 
+  // Safety fallback: ensure 100% after 1.2s regardless of network delays
+  setTimeout(() => {
+    realProgress = 100;
+  }, 1200);
+
+  window.addEventListener('load', () => {
+    realProgress = 100;
+  });
+
   function updateLoop() {
-    displayedProgress += (realProgress - displayedProgress) * 0.12;
+    displayedProgress += (realProgress - displayedProgress) * 0.14;
 
     const elapsed = performance.now() - startTime;
-    if (elapsed > minDuration && realProgress >= 99) {
+    if (elapsed >= minDisplayTime && realProgress >= 95) {
       displayedProgress = 100;
     }
 
-    const currentVal = Math.floor(displayedProgress);
+    const currentVal = Math.min(Math.floor(displayedProgress), 100);
     numberEl.innerHTML = `${currentVal}<sup>%</sup>`;
-    barEl.style.transform = `scaleX(${displayedProgress / 100})`;
+    barEl.style.transform = `scaleX(${currentVal / 100})`;
 
-    if (displayedProgress >= 99.5 && elapsed >= minDuration && !isDone) {
+    if (displayedProgress >= 99.2 && elapsed >= minDisplayTime && !isDone) {
       isDone = true;
       numberEl.innerHTML = `100<sup>%</sup>`;
       barEl.style.transform = 'scaleX(1)';
@@ -90,7 +106,7 @@ export function initPreloader(onCompleteCallback) {
           preloader.style.display = 'none';
           if (onCompleteCallback) onCompleteCallback();
         }
-      }, 100);
+      }, 80);
       return;
     }
 
