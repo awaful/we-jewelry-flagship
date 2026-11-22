@@ -1,122 +1,113 @@
 /**
- * WE JEWELRY & CO. — EXACT AWWWARDS SOTD 3D ORBITAL CAROUSEL
- * Replicating the physical behavior of the video (Agrumea Farm by Studio K95)
+ * AGRUMEA FARM / STUDIO K95 AWWWARDS SOTD — 3D MARQUEE ENGINE
+ * Replicated using hyperbolic tangent spacing distortion, 10° tilted track,
+ * simulated depth-of-field, critically damped spring physics, and inertial tilt.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  const productsData = [
+  const products = [
     {
-      index: 0,
-      title: "Miami Cuban Chain",
-      subtitle: "8MM PAVE SETTING",
-      category: "[01 / CHAINS]",
-      alloy: "14K SOLID YELLOW GOLD",
-      stones: "VVS1 MOISSANITE / AAA",
-      desc: "Handcrafted 14K solid yellow gold interlocking Miami Cuban links, pavé-set with brilliant-cut VVS stones and secured with a signature Houston triple-lock box clasp.",
-      link: "https://wa.me/18326886688?text=Hello%20WE%20Jewelry,%20I%20am%20interested%20in%20the%20Miami%20Cuban%20Chain"
+      title: "Confettura Extra di Fragole e Bacche Goji",
+      subtitle: "Confettura Extra Artigianale",
+      desc: "Coltivate nei terreni vulcanici della Sicilia, le nostre fragole vengono raccolte a mano al perfetto grado di maturazione e cotte lentamente a bassa temperatura per preservare intatti sapore, profumo e principi nutritivi.",
+      format: "VASO VETRO 240g",
+      origin: "100% SICILIA (ITALIA)"
     },
     {
-      index: 1,
-      title: "Custom Bust Pendant",
-      subtitle: "3D CAD CUSTOM SCULPTURE",
-      category: "[02 / PENDANTS]",
-      alloy: "14K WHITE GOLD / PLATINUM",
-      stones: "4.80 TCW VVS DIAMONDS",
-      desc: "Custom anatomical bust pendant engineered in 3D CAD, cast in solid white gold, and encrusted with 4.80 TCW handset round brilliant VVS diamonds.",
-      link: "https://wa.me/18326886688?text=Hello%20WE%20Jewelry,%20I%20am%20interested%20in%20a%20Custom%20Bust%20Pendant"
+      title: "Marmellata di Arance a fette Bio",
+      subtitle: "Agrumi di Sicilia Biologici",
+      desc: "Fette sottili di arance siciliane biologiche selezionate, cotte con la scorza per una consistenza rustica e un aroma inconfondibile di zagara e sole siciliano.",
+      format: "VASO VETRO 240g",
+      origin: "100% SICILIA BIO"
     },
     {
-      index: 2,
-      title: "Deep Cut Dental Grillz",
-      subtitle: "6-TOOTH MIRROR POLISH",
-      category: "[03 / GRILLZ]",
-      alloy: "18K SOLID GOLD",
-      stones: "OPEN FACE / SOLID",
-      desc: "Tailored dental grillz fabricated from exact silicone impression molds in 18K yellow gold with deep-cut gum separations and high-specular mirror finish.",
-      link: "https://wa.me/18326886688?text=Hello%20WE%20Jewelry,%20I%20am%20interested%20in%20Custom%20Dental%20Grillz"
+      title: "Caponata Siciliana Sinfonia Barocca",
+      subtitle: "Ricetta Tradizionale Iblea",
+      desc: "Melanzane fresche, sedano croccante, capperi di Pantelleria e olive nocellara in un perfetto equilibrio agrodolce secondo l'antica ricetta barocca.",
+      format: "VASO VETRO 280g",
+      origin: "100% SICILIA (ITALIA)"
     },
     {
-      index: 3,
-      title: "Luminous Timepiece",
-      subtitle: "AUTOMATIC ICED BEZEL",
-      category: "[04 / TIMEPIECES]",
-      alloy: "316L STEEL & GOLD ACCENTS",
-      stones: "MOISSANITE ICED BEZEL",
-      desc: "Signature Houston automatic timepiece featuring a dual-tier iced moissanite bezel, exhibition sapphire back, and hand-finished steel link bracelet.",
-      link: "https://wa.me/18326886688?text=Hello%20WE%20Jewelry,%20I%20am%20interested%20in%20the%20Luminous%20Timepiece"
+      title: "Pesto Rosso Ibleo",
+      subtitle: "Pomodori Secchi e Mandorle",
+      desc: "Pomodori essiccati al sole dell'Etna, mandorle di Avola tostate e basilico fresco macinati a pietra con olio extravergine d'oliva monti iblei.",
+      format: "VASO VETRO 190g",
+      origin: "100% SICILIA (ITALIA)"
     },
     {
-      index: 4,
-      title: "Baguette Master Ring",
-      subtitle: "TWO-TONE PRONG SUITE",
-      category: "[05 / RINGS]",
-      alloy: "14K TWO-TONE GOLD",
-      stones: "STEP-CUT BAGUETTE VVS",
-      desc: "Two-tone 14K yellow and white gold architectural signet ring channel-set with step-cut baguette stones and surrounded by a micropavé diamond halo.",
-      link: "https://wa.me/18326886688?text=Hello%20WE%20Jewelry,%20I%20am%20interested%20in%20the%20Baguette%20Master%20Ring"
+      title: "Smeraldo Pesto di Pistacchio",
+      subtitle: "Pistacchio di Sicilia Puro",
+      desc: "Pregiati pistacchi siciliani tostati al punto giusto con una punta di sale marino e olio extravergine d'oliva, dalla grana rustica e sapore persistente.",
+      format: "VASO VETRO 190g",
+      origin: "100% SICILIA (ITALIA)"
+    },
+    {
+      title: "Confettura Extra di Gelsi Neri",
+      subtitle: "Gelsi Neri dell'Etna",
+      desc: "Frutto antico e prezioso delle pendici etnee, dal colore rubino profondo e note balsamiche uniche.",
+      format: "VASO VETRO 240g",
+      origin: "100% SICILIA (ITALIA)"
+    },
+    {
+      title: "Cipolla in Agrodolce Gourmet",
+      subtitle: "Cipolle Giarratana Tradizionali",
+      desc: "La dolcezza naturale della celebre cipolla di Giarratana esaltata da un caramellamento lento con aceto di vino e spezie aromatiche.",
+      format: "VASO VETRO 280g",
+      origin: "100% SICILIA (ITALIA)"
     }
   ];
 
-  const cards = document.querySelectorAll('.jewelry-card-3d');
-  const viewport = document.getElementById('carousel-viewport');
-  const rotatingText = document.querySelector('.arch-rotating-text');
-  const tooltip = document.getElementById('active-product-tooltip');
-  const tooltipText = document.getElementById('tooltip-text');
-  const discoverBtn = document.getElementById('discover-btn');
+  const items = document.querySelectorAll('.jar-item');
+  const marquee = document.getElementById('jar-slider-marquee');
+  const stampWrapper = document.getElementById('backdrop-stamp');
+  const floatingCapsule = document.getElementById('floating-discover-capsule');
+  const capsuleText = document.getElementById('capsule-text');
+  const capsuleBtn = document.getElementById('capsule-btn');
 
-  // Drawer elements
-  const drawer = document.getElementById('detail-drawer');
-  const closeDrawer = document.getElementById('close-drawer');
-  const drawerCategory = document.getElementById('drawer-category');
-  const drawerTitle = document.getElementById('drawer-title');
-  const drawerDesc = document.getElementById('drawer-description');
-  const drawerAlloy = document.getElementById('drawer-alloy');
-  const drawerStones = document.getElementById('drawer-stones');
-  const drawerWhatsApp = document.getElementById('drawer-whatsapp');
+  // Modal elements
+  const drawer = document.getElementById('product-drawer');
+  const drawerCloseBtn = document.getElementById('drawer-close-btn');
+  const modalTitle = document.getElementById('modal-title');
+  const modalSubtitle = document.getElementById('modal-subtitle');
+  const modalDesc = document.getElementById('modal-desc');
 
-  const N = cards.length;
-  let currentAngle = 0;
-  let targetAngle = 0;
+  const N = items.length;
+  let targetProgress = 0;
+  let currentProgress = 0;
+  let previousProgress = 0;
+  let velocity = 0;
   let activeIndex = 0;
 
   let isDragging = false;
-  let dragStartX = 0;
+  let startX = 0;
 
-  // Responsive radii
-  function getRadii() {
-    const w = window.innerWidth;
-    if (w <= 768) {
-      return { rx: w * 0.38, rz: 180 };
-    }
-    return { rx: Math.min(w * 0.32, 460), rz: 280 };
-  }
-
-  // Mouse wheel / trackpad scroll with inertia
+  // Wheel interaction (horizontal and vertical wheel drive slider)
   window.addEventListener('wheel', (e) => {
-    targetAngle += e.deltaY * 0.0022;
+    const delta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+    targetProgress += delta * 0.0016;
   }, { passive: true });
 
-  // Mouse and Touch Drag
-  if (viewport) {
-    viewport.addEventListener('mousedown', (e) => {
+  // Drag interaction
+  if (marquee) {
+    marquee.addEventListener('mousedown', (e) => {
       isDragging = true;
-      dragStartX = e.clientX;
+      startX = e.clientX;
     });
 
     window.addEventListener('mouseup', () => { isDragging = false; });
 
     window.addEventListener('mousemove', (e) => {
       if (!isDragging) return;
-      const delta = e.clientX - dragStartX;
-      targetAngle -= delta * 0.005;
-      dragStartX = e.clientX;
+      const deltaX = e.clientX - startX;
+      targetProgress -= deltaX * 0.0035;
+      startX = e.clientX;
     });
 
-    viewport.addEventListener('touchstart', (e) => {
+    marquee.addEventListener('touchstart', (e) => {
       if (e.touches.length === 1) {
         isDragging = true;
-        dragStartX = e.touches[0].clientX;
+        startX = e.touches[0].clientX;
       }
     }, { passive: true });
 
@@ -124,109 +115,141 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('touchmove', (e) => {
       if (!isDragging || e.touches.length !== 1) return;
-      const delta = e.touches[0].clientX - dragStartX;
-      targetAngle -= delta * 0.005;
-      dragStartX = e.touches[0].clientX;
+      const deltaX = e.touches[0].clientX - startX;
+      targetProgress -= deltaX * 0.0035;
+      startX = e.touches[0].clientX;
     }, { passive: true });
   }
 
-  // Drawer Interactions
-  function openDrawer(idx) {
-    const data = productsData[idx];
-    drawerCategory.textContent = data.category;
-    drawerTitle.textContent = data.title;
-    drawerDesc.textContent = data.desc;
-    drawerAlloy.textContent = data.alloy;
-    drawerStones.textContent = data.stones;
-    drawerWhatsApp.href = data.link;
+  // Open drawer modal
+  function openModal(idx) {
+    const p = products[idx];
+    modalTitle.textContent = p.title;
+    modalSubtitle.textContent = p.subtitle;
+    modalDesc.textContent = p.desc;
     drawer.classList.add('active');
   }
 
-  if (closeDrawer) {
-    closeDrawer.addEventListener('click', () => {
+  if (capsuleBtn) {
+    capsuleBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      openModal(activeIndex);
+    });
+  }
+
+  if (drawerCloseBtn) {
+    drawerCloseBtn.addEventListener('click', () => {
       drawer.classList.remove('active');
     });
   }
 
-  if (discoverBtn) {
-    discoverBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      openDrawer(activeIndex);
-    });
-  }
+  drawer.addEventListener('click', (e) => {
+    if (e.target === drawer) drawer.classList.remove('active');
+  });
 
-  cards.forEach((card) => {
-    card.addEventListener('click', () => {
-      const idx = parseInt(card.getAttribute('data-index'), 10);
+  items.forEach((item) => {
+    item.addEventListener('click', (e) => {
+      e.preventDefault();
+      const idx = parseInt(item.getAttribute('data-index'), 10);
       if (idx === activeIndex) {
-        openDrawer(idx);
+        openModal(idx);
       } else {
-        // Snap this card to center
-        const targetCardAngle = -((idx / N) * Math.PI * 2);
-        targetAngle = targetCardAngle;
+        // Snap this item to center
+        targetProgress += (idx - activeIndex) * (1 / N);
       }
     });
   });
 
-  // 3D Animation Loop
-  function updateCarousel() {
-    // Smooth inertial lerp
-    currentAngle += (targetAngle - currentAngle) * 0.085;
+  // Animation Loop with Spring Physics
+  let lastTime = performance.now();
 
-    // Rotate background curved path typography
-    if (rotatingText) {
-      rotatingText.style.transform = `rotate(${-currentAngle * 26}deg)`;
+  function render(now) {
+    const dt = Math.min((now - lastTime) / 1000, 0.1);
+    lastTime = now;
+
+    // Critically damped exponential spring physics
+    const friction = 12.0;
+    currentProgress += (targetProgress - currentProgress) * (1 - Math.exp(-friction * dt));
+
+    velocity = (currentProgress - previousProgress) / (dt || 0.016);
+    previousProgress = currentProgress;
+
+    // Rotate circular background vector stamp in sync
+    if (stampWrapper) {
+      stampWrapper.style.transform = `translate(-50%, -50%) rotate(${currentProgress * 80}deg)`;
     }
 
-    const { rx, rz } = getRadii();
-    let minDiff = Infinity;
+    const vw = window.innerWidth;
+    const baseSpacing = Math.min(vw * 0.38, 480);
+
+    let minOffset = Infinity;
     let closestIndex = 0;
+    let centerJarX = 0;
+    let centerJarY = 0;
 
-    cards.forEach((card, i) => {
-      const baseTheta = (i / N) * Math.PI * 2;
-      let diff = (baseTheta + currentAngle) % (Math.PI * 2);
-      if (diff > Math.PI) diff -= Math.PI * 2;
-      if (diff < -Math.PI) diff += Math.PI * 2;
+    items.forEach((item, i) => {
+      // Offset from center (-0.5 to +0.5 of circular domain)
+      let offset = ((i / N) - currentProgress) % 1;
+      if (offset > 0.5) offset -= 1;
+      if (offset < -0.5) offset += 1;
 
-      const absDiff = Math.abs(diff);
-      if (absDiff < minDiff) {
-        minDiff = absDiff;
+      const absOffset = Math.abs(offset);
+      if (absOffset < minOffset) {
+        minOffset = absOffset;
         closestIndex = i;
       }
 
-      // Orbital Position
-      const x = Math.sin(diff) * rx;
-      const z = (Math.cos(diff) - 1.0) * rz;
-      const y = (Math.cos(diff) - 1.0) * 36;
+      // Exact Hyperbolic Tangent Spacing Distortion from Agrumea
+      // Math.tanh creates the fish-eye focal expansion at center, compressing at edges
+      const distortedOffset = Math.tanh(offset / 0.65) * 0.65;
+      const x = distortedOffset * baseSpacing * 2.8;
+
+      // Arc curvature in Y
+      const y = Math.pow(distortedOffset, 2) * 80;
 
       // 3D Tilts matching video:
-      // When at center (diff = 0): perfectly upright (yaw 0, pitch 0, roll 0)
-      // When to the left (diff < 0): rolls right, tilts forward showing top lid/bail!
-      // When to the right (diff > 0): tilts symmetrically
-      const rotY = -Math.sin(diff) * 34; // degrees
-      const rotX = 14 - Math.cos(diff) * 14; // tilts forward when angled
-      const rotZ = -Math.sin(diff) * 16;
-      const scale = 0.72 + (Math.cos(diff) * 0.5 + 0.5) * 0.42;
-      const opacity = Math.cos(diff) > -0.25 ? 1.0 : Math.max(0, 1.0 + (Math.cos(diff) + 0.25) * 4);
-      const zIndex = Math.round((Math.cos(diff) + 1.0) * 50);
+      // When at center: upright
+      // When to the left: rolls right and tilts forward showing top lid in perspective!
+      // When to the right: tilts symmetrically
+      const rotY = -distortedOffset * 36;
+      const rotX = Math.abs(distortedOffset) * 18; // tilts forward showing lid
+      const rotZ = -distortedOffset * 14 + (velocity * 0.04); // dynamic inertial lean
 
-      card.style.transform = `translate3d(${x}px, ${y}px, ${z}px) rotateY(${rotY}deg) rotateX(${rotX}deg) rotateZ(${rotZ}deg) scale(${scale})`;
-      card.style.opacity = opacity;
-      card.style.zIndex = zIndex;
-      card.style.pointerEvents = absDiff < 0.35 ? 'auto' : 'none';
+      // Dynamic Scale & Depth of Field (DoF)
+      const scale = Math.max(1.08 - Math.pow(absOffset, 1.2) * 0.65, 0.65);
+      const blurPx = Math.min(Math.pow(absOffset * 2.5, 1.5) * 3.5, 4.5);
+      const brightness = Math.max(1.0 - absOffset * 0.35, 0.72);
+      const zIndex = Math.round((1 - absOffset) * 100);
+
+      item.style.transform = `translate3d(${x}px, ${y}px, 0px) rotateY(${rotY}deg) rotateX(${rotX}deg) rotateZ(${rotZ}deg) scale(${scale})`;
+      item.style.filter = blurPx > 0.3 ? `blur(${blurPx.toFixed(1)}px) brightness(${brightness.toFixed(2)})` : 'none';
+      item.style.zIndex = zIndex;
+      item.style.opacity = absOffset < 0.45 ? 1.0 : Math.max(0, 1 - (absOffset - 0.45) * 6);
+
+      if (i === closestIndex) {
+        // Track center position for floating discover pill
+        // Compensating for 10-degree track rotation
+        const angleRad = -10 * (Math.PI / 180);
+        centerJarX = (window.innerWidth / 2) + (x * Math.cos(angleRad) - y * Math.sin(angleRad));
+        centerJarY = (window.innerHeight / 2) + (x * Math.sin(angleRad) + y * Math.cos(angleRad));
+      }
     });
 
+    // Update active index and floating capsule badge
     if (closestIndex !== activeIndex) {
       activeIndex = closestIndex;
-      const activeData = productsData[activeIndex];
-      if (tooltipText) {
-        tooltipText.textContent = `DISCOVER: ${activeData.title.toUpperCase()}`;
-      }
     }
 
-    requestAnimationFrame(updateCarousel);
+    if (floatingCapsule) {
+      // Position capsule slightly above and to the left of the center jar
+      const badgeX = centerJarX - 95;
+      const badgeY = centerJarY - 145;
+      floatingCapsule.style.transform = `translate(${badgeX}px, ${badgeY}px)`;
+    }
+
+    requestAnimationFrame(render);
   }
 
-  requestAnimationFrame(updateCarousel);
+  requestAnimationFrame(render);
 
 });
