@@ -3,164 +3,180 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WE Jewelry &amp; Co. — Houston Bespoke Flagship</title>
-  <meta name="description" content="Houston's premier bespoke diamond jewelry atelier. Handcrafted Miami Cuban links, VVS custom pendants, and precision timepieces.">
+  <title>Agrumea Farm — Websites in 2026</title>
+  <meta name="description" content="Artisanal Sicilian agricultural farm and pantry products. Award-winning 3D circular slider web experience.">
   
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="src/css/style.css">
 </head>
 <body>
 
   <!-- =========================================================================
-       HEADER: EXACT SOTD FRAMING (Agrumea Farm Reference)
+       HEADER (Exact Screenshot: Language Pills + Logo + Menu)
        ========================================================================= -->
   <header id="site-header">
-    <div class="header-left-pills">
-      <div class="lang-pill">IT</div>
-      <div class="lang-pill active">EN</div>
+    <div class="header-lang-capsule">
+      <a href="#it" class="lang-item">IT</a>
+      <a href="#en" class="lang-item active">EN</a>
     </div>
 
-    <a href="#" class="header-center-brand">
-      <svg class="brand-icon" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+    <a href="#" class="header-brand">
+      <!-- Illustrated Sicilian Harvester Icon -->
+      <svg class="brand-harvester-icon" viewBox="0 0 48 38" fill="none">
+        <path d="M24 2C21 2 18.5 4 18 6.5C14 6.5 11 8 9.5 10C8.5 11.5 9 13.5 10.5 14.5C11.5 15.2 13 15.5 14.5 15.5C15.5 17 17 18 19 18.5C17.5 20.5 16 23 15 26C14 29 13.5 32 13.5 35H34.5C34.5 32 34 29 33 26C32 23 30.5 20.5 29 18.5C31 18 32.5 17 33.5 15.5C35 15.5 36.5 15.2 37.5 14.5C39 13.5 39.5 11.5 38.5 10C37 8 34 6.5 30 6.5C29.5 4 27 2 24 2Z" fill="#762530"/>
+        <!-- Citrus Basket in Arms -->
+        <ellipse cx="24" cy="13" rx="8" ry="4.5" fill="#E94E1B"/>
+        <circle cx="21" cy="11.5" r="2" fill="#FAF6F0"/>
+        <circle cx="25" cy="11" r="2" fill="#FAF6F0"/>
+        <circle cx="27" cy="12" r="1.8" fill="#FAF6F0"/>
       </svg>
-      <span class="brand-name">WE Jewelry &amp; Co.</span>
-      <span class="brand-sub">Houston Atelier</span>
+      <span class="brand-title">AGRUMEA</span>
+      <span class="brand-sub-italic">Farm</span>
     </a>
 
-    <div class="header-right-menu">
-      <a href="https://wa.me/18326886688" target="_blank" rel="noopener" class="menu-pill">
-        <span>MENU</span>
-        <span class="menu-dot"></span>
-      </a>
+    <div class="header-menu-wrap">
+      <a href="#menu" class="menu-capsule">MENU</a>
+      <div class="menu-circle-btn">
+        <div class="diamond-star"></div>
+      </div>
     </div>
   </header>
 
   <!-- =========================================================================
-       HERO: 3D CURVED ORBITAL CAROUSEL + ORGANIC ARCH SHIELD
+       HERO STAGE (Backdrop Shapes + 3D Tilting Jar Marquee)
        ========================================================================= -->
-  <main id="hero-stage">
+  <main class="hero-stage" id="hero-stage">
     
-    <!-- Central Carmine Red Organic Arch Shield + Rotating Path Typography -->
-    <div class="organic-arch-container">
-      <svg class="arch-svg-shape" viewBox="0 0 1000 1000">
-        <!-- Deep Carmine Arch Shield -->
-        <path d="M 230,780 C 130,520 230,180 500,150 C 770,180 870,520 770,780 C 640,880 360,880 230,780 Z" fill="#8B1F1E" />
-      </svg>
-
-      <!-- Rotating Text Along Outer Curve -->
-      <svg class="arch-rotating-text" viewBox="0 0 1200 1200">
-        <path id="textTrack" d="M 240,840 C 110,520 240,140 600,110 C 960,140 1090,520 960,840 C 820,960 380,960 240,840 Z" fill="none" />
-        <text class="curved-typography">
-          <textPath id="curvedTextPath" href="#textTrack" startOffset="0%">
-            ✦ BESPOKE JEWELRY · WE CRAFT · SCULPTED IN GOLD · MASTER PAVE · HOUSTON TEXAS · THE LUMINOUS INC · 
-          </textPath>
-        </text>
-      </svg>
+    <!-- Organic Maroon Graphic Shape (Exact back-slider-home.svg) -->
+    <div class="backdrop-shape-wrapper">
+      <img class="backdrop-shape-svg" src="public/img/back-slider-home.svg" alt="Agrumea Organic Shape">
     </div>
 
-    <!-- 3D Carousel Viewport (Perspective Space) -->
-    <div class="carousel-viewport" id="carousel-viewport">
-      <div class="carousel-ring" id="carousel-ring">
+    <!-- Rotating Circular Vector Stamp (Exact circle-text.svg in #e94e1b) -->
+    <div class="backdrop-stamp-wrapper" id="backdrop-stamp">
+      <img class="backdrop-stamp-svg" src="public/img/circle-text.svg" alt="• WE PRESERVE • WE GROW • WE HARVEST •">
+    </div>
+
+    <!-- 10-Degree Tilted 3D Marquee Slider -->
+    <div class="jar-slider-marquee" id="jar-slider-marquee">
+      <div class="jar-slider-track" id="jar-slider-track">
         
-        <!-- Piece 0: Miami Cuban Link -->
-        <div class="jewelry-card-3d" data-index="0">
-          <img src="public/img/luxury/cuban-front.svg" alt="Miami Cuban Chain">
-        </div>
+        <!-- Jar 0: Fragole e Bacche Goji (Centerpiece from Screenshot) -->
+        <article class="jar-item" data-index="0">
+          <img class="jar-base-img" src="public/img/jars/jar-fragole.webp" alt="Confettura Extra di Fragole e Bacche Goji">
+          <div class="jar-label-wrap">
+            <img class="jar-label-texture" src="public/img/jars/label-fragole.webp" alt="Fragole Label">
+            <div class="jar-glass-glare"></div>
+          </div>
+        </article>
 
-        <!-- Piece 1: Custom Bust Pendant -->
-        <div class="jewelry-card-3d" data-index="1">
-          <img src="public/img/luxury/pendant-front.svg" alt="Custom Bust Pendant">
-        </div>
+        <!-- Jar 1: Marmellata di Arance a fette Bio -->
+        <article class="jar-item" data-index="1">
+          <img class="jar-base-img" src="public/img/jars/jar-arancia.webp" alt="Marmellata di Arance">
+          <div class="jar-label-wrap">
+            <img class="jar-label-texture" src="public/img/jars/label-arancia.webp" alt="Arance Label">
+            <div class="jar-glass-glare"></div>
+          </div>
+        </article>
 
-        <!-- Piece 2: Deep Cut Dental Grillz -->
-        <div class="jewelry-card-3d" data-index="2">
-          <img src="public/img/luxury/grillz-front.svg" alt="Deep Cut Dental Grillz">
-        </div>
+        <!-- Jar 2: Caponata Siciliana Sinfonia Barocca -->
+        <article class="jar-item" data-index="2">
+          <img class="jar-base-img" src="public/img/jars/jar-caponata.webp" alt="Caponata Sinfonia Barocca">
+          <div class="jar-label-wrap">
+            <img class="jar-label-texture" src="public/img/jars/label-caponata.webp" alt="Caponata Label">
+            <div class="jar-glass-glare"></div>
+          </div>
+        </article>
 
-        <!-- Piece 3: Luminous Luxury Watch -->
-        <div class="jewelry-card-3d" data-index="3">
-          <img src="public/img/luxury/watch-front.svg" alt="Luminous Timepiece">
-        </div>
+        <!-- Jar 3: Pesto Rosso Ibleo -->
+        <article class="jar-item" data-index="3">
+          <img class="jar-base-img" src="public/img/jars/jar-pestorosso.webp" alt="Pesto Rosso Ibleo">
+          <div class="jar-label-wrap">
+            <img class="jar-label-texture" src="public/img/jars/label-pestorosso.webp" alt="Pesto Rosso Label">
+            <div class="jar-glass-glare"></div>
+          </div>
+        </article>
 
-        <!-- Piece 4: Baguette Master Ring -->
-        <div class="jewelry-card-3d" data-index="4">
-          <img src="public/img/luxury/ring-front.svg" alt="Baguette Master Ring">
-        </div>
+        <!-- Jar 4: Smeraldo Pesto di Pistacchio -->
+        <article class="jar-item" data-index="4">
+          <img class="jar-base-img" src="public/img/jars/jar-smeraldo.webp" alt="Smeraldo Pesto di Pistacchio">
+          <div class="jar-label-wrap">
+            <img class="jar-label-texture" src="public/img/jars/label-smeraldo.webp" alt="Smeraldo Label">
+            <div class="jar-glass-glare"></div>
+          </div>
+        </article>
+
+        <!-- Jar 5: Gelsi Neri -->
+        <article class="jar-item" data-index="5">
+          <img class="jar-base-img" src="public/img/jars/jar-gelsi.webp" alt="Confettura Extra di Gelsi Neri">
+          <div class="jar-label-wrap">
+            <img class="jar-label-texture" src="public/img/jars/label-gelsi.webp" alt="Gelsi Neri Label">
+            <div class="jar-glass-glare"></div>
+          </div>
+        </article>
+
+        <!-- Jar 6: Cipolla in Agrodolce -->
+        <article class="jar-item" data-index="6">
+          <img class="jar-base-img" src="public/img/jars/jar-cipolla.webp" alt="Cipolla in Agrodolce Gourmet">
+          <div class="jar-label-wrap">
+            <img class="jar-label-texture" src="public/img/jars/label-cipolla.webp" alt="Cipolla Label">
+            <div class="jar-glass-glare"></div>
+          </div>
+        </article>
 
       </div>
     </div>
 
-    <!-- Floating Interactive Pill Tooltip (Above Active Front Center Piece) -->
-    <div id="active-product-tooltip">
-      <a id="discover-btn" href="#" class="discover-pill">
-        <span class="discover-dot"></span>
-        <span id="tooltip-text">DISCOVER THE PRODUCT</span>
-        <span>↗</span>
+    <!-- Floating Capsule Badge (Exact Screenshot: ✦ DISCOVER THE PRODUCT) -->
+    <div id="floating-discover-capsule">
+      <a href="#discover" id="capsule-btn" class="discover-capsule-btn">
+        <span class="capsule-diamond"></span>
+        <span id="capsule-text">DISCOVER THE PRODUCT</span>
       </a>
     </div>
 
-    <!-- Bottom Interface (Agrumea Exact) -->
-    <div class="bottom-meta-left">
-      <span>Privacy &amp; Cookies</span>
-    </div>
-
-    <div class="bottom-scroll-center">
-      <span class="scroll-text">SCROLL TO DISCOVER</span>
-      <div class="scroll-mouse-icon">
-        <div class="scroll-wheel"></div>
-      </div>
-    </div>
-
-    <div class="bottom-meta-right">
-      <a href="https://www.instagram.com/the.luminous.official/" target="_blank" rel="noopener" style="color: inherit;">
-        @the.luminous.official
-      </a>
-    </div>
+    <!-- Bottom Prompts -->
+    <a href="#privacy" class="bottom-privacy-link">Privacy &amp; Cookies</a>
+    <div class="bottom-scroll-prompt">SCROLL TO DISCOVER</div>
 
   </main>
 
   <!-- =========================================================================
-       ATELIER SPECIFICATION DRAWER / MODAL
+       PRODUCT DETAIL MODAL / DRAWER
        ========================================================================= -->
-  <div id="detail-drawer">
-    <div class="drawer-panel">
+  <div id="product-drawer">
+    <div class="drawer-content">
       <div>
-        <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 16px; border-bottom: 1px solid #E5E5E8;">
-          <span class="font-mono" style="font-size: 10px; color: #8C6E1C; letter-spacing: 0.25em;">ATELIER SPECIFICATION</span>
-          <button id="close-drawer" style="background: none; border: none; font-size: 18px; cursor: pointer; color: #777;">✕</button>
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <span style="font-size:11px; font-weight:700; letter-spacing:0.15em; color:#762530; text-transform:uppercase;">AGRUMEA DISPENSA</span>
+          <button id="drawer-close-btn" class="drawer-close">✕</button>
         </div>
 
-        <div style="margin-top: 32px;">
-          <span id="drawer-category" class="font-mono" style="font-size: 11px; color: #999; letter-spacing: 0.2em; display: block; margin-bottom: 8px;">[01 / CHAINS]</span>
-          <h3 id="drawer-title" class="font-serif" style="font-style: italic; font-size: 38px; color: #111116; line-height: 1.1;">Miami Cuban Chain</h3>
-          <p id="drawer-description" class="font-sans" style="font-size: 13px; color: #666; margin-top: 16px; line-height: 1.6;">
-            Handcrafted with solid 14K gold links and precision triple-lock box clasp. Each pavé setting is finished under microscope magnification in our Houston atelier.
+        <div style="margin-top:36px;">
+          <h3 id="modal-title" style="font-family:'Times New Roman', serif; font-size:36px; color:#682029; line-height:1.1;">Fragole e Bacche Goji</h3>
+          <p id="modal-subtitle" style="font-size:14px; font-weight:600; color:#E3521D; margin-top:8px;">Confettura Extra Artigianale</p>
+          <p id="modal-desc" style="font-size:13px; color:#555; line-height:1.7; margin-top:16px;">
+            Coltivate nei terreni vulcanici della Sicilia, le nostre fragole vengono raccolte a mano al perfetto grado di maturazione e cotte lentamente a bassa temperatura per preservare intatti sapore, profumo e principi nutritivi.
           </p>
         </div>
 
-        <div style="margin-top: 32px; background: #F8F8FA; border: 1px solid #EAEAEF; padding: 18px; font-family: 'JetBrains Mono', monospace; font-size: 11px; line-height: 2;">
-          <div style="display: flex; justify-content: space-between;">
-            <span style="color: #888;">ALLOY:</span>
-            <span id="drawer-alloy" style="font-weight: 700; color: #111;">14K SOLID GOLD</span>
+        <div style="margin-top:32px; background:#F2EBE1; border-radius:12px; padding:20px; font-size:12px; line-height:2.2;">
+          <div style="display:flex; justify-content:space-between;">
+            <span style="color:#777;">ORIGINE:</span>
+            <span style="font-weight:700;">100% SICILIA (ITALIA)</span>
           </div>
-          <div style="display: flex; justify-content: space-between;">
-            <span style="color: #888;">STONES:</span>
-            <span id="drawer-stones" style="font-weight: 700; color: #111;">VVS1 MOISSANITE</span>
+          <div style="display:flex; justify-content:space-between;">
+            <span style="color:#777;">FORMATO:</span>
+            <span style="font-weight:700;">VASO VETRO 240g</span>
           </div>
-          <div style="display: flex; justify-content: space-between;">
-            <span style="color: #888;">ATELIER APPRAISAL:</span>
-            <span style="font-weight: 700; color: #8C6E1C;">CONSULTAR</span>
+          <div style="display:flex; justify-content:space-between;">
+            <span style="color:#777;">METODO:</span>
+            <span style="font-weight:700;">ARTIGIANALE BIO</span>
           </div>
         </div>
       </div>
 
-      <a id="drawer-whatsapp" href="https://wa.me/18326886688" target="_blank" rel="noopener" style="display: block; width: 100%; padding: 16px; background: #111116; color: #FFFFFF; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-align: center; text-decoration: none; text-transform: uppercase;">
-        INQUIRE WITH MASTER JEWELER ↗
+      <a id="modal-buy-btn" href="https://agrumeafarm.it" target="_blank" rel="noopener" class="drawer-btn">
+        ACQUISTA SULLO STORE ↗
       </a>
     </div>
   </div>
