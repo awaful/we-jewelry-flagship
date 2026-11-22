@@ -180,7 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const vw = window.innerWidth;
-    const baseSpacing = Math.min(vw * 0.35, 480);
+    const baseWidth = Math.min(vw, 1920);
 
     let minOffset = Infinity;
     let closestIndex = 0;
@@ -201,22 +201,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Exact Hyperbolic Tangent Spacing Distortion from Agrumea
       // Math.tanh expands the center focal active jar and compresses at lateral edges
-      const distortedOffset = Math.tanh(offset * 2.6);
-      const x = distortedOffset * baseSpacing * 2.35;
+      const distortedOffset = Math.tanh(offset * 3.2);
+      const x = distortedOffset * (baseWidth * 0.58);
 
       // Arc curvature in Y
-      const y = Math.pow(Math.abs(distortedOffset), 1.8) * 110;
+      const y = Math.pow(Math.abs(distortedOffset), 2) * 85;
 
       // 3D Tilts matching video:
       // Active center: upright, slight forward tilt showing top lid
       // Lateral items: roll towards center, yaw, and pitch forward
-      const rotY = -distortedOffset * 30;
-      const rotX = 7 + Math.abs(distortedOffset) * 14; // tilts forward showing metallic lid in perspective
-      const rotZ = -distortedOffset * 18 + (velocity * 0.05); // dynamic inertial lean
+      const rotY = -distortedOffset * 28;
+      const rotX = 7 + Math.abs(distortedOffset) * 12; // tilts forward showing metallic lid in perspective
+      const rotZ = -distortedOffset * 16 + (velocity * 0.04); // dynamic inertial lean
 
       // Dynamic Scale & Depth of Field (DoF)
       const scale = Math.max(1.08 - Math.pow(absOffset * 2.2, 1.25) * 0.52, 0.65);
-      const blurPx = Math.max(0, (absOffset - 0.05) * 16);
+      const blurPx = Math.max(0, (absOffset - 0.06) * 16);
       const brightness = Math.max(1.0 - absOffset * 0.28, 0.75);
       const zIndex = Math.round((1 - absOffset) * 100);
 
@@ -241,8 +241,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (floatingCapsule) {
       // Position capsule slightly to the left of the active jar, matching screenshot
-      const badgeX = centerJarX - 220;
-      const badgeY = centerJarY - 45;
+      const badgeX = centerJarX - 250;
+      const badgeY = centerJarY - 30;
       floatingCapsule.style.transform = `translate(${badgeX}px, ${badgeY}px)`;
     }
 
