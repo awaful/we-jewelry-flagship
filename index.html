@@ -1,785 +1,325 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WE Jewelry & Co. — Fine Custom Jewelry & Diamond Atelier | Houston, TX</title>
-  <meta name="description" content="Houston's premier bespoke diamond jewelry atelier. Handcrafted Miami Cuban links, VVS custom pendants, deep-cut dental grillz, and high-jewelry timepieces.">
+  <title>WE Jewelry &amp; Co. — Bespoke Fine Diamond &amp; Gold Atelier | Houston, TX</title>
+  <meta name="description" content="Houston's premier bespoke diamond jewelry atelier. Handcrafted Miami Cuban links, VVS custom pendants, and precision timepieces.">
   
-  <!-- Premium Fonts -->
+  <!-- Exact Typography Families (Inter Tight 800/400, Instrument Serif, JetBrains Mono, Outfit 300) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@500;700;800&display=swap" rel="stylesheet">
-  
-  <!-- Core Libraries: Tailwind, Three.js, GSAP, ScrollTrigger, Lenis, Lucide -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          colors: {
-            amber: {
-              350: '#F5CE58',
-              450: '#DDA82A',
-            }
-          }
-        }
-      }
-    }
-  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@300;400;800&family=JetBrains+Mono:wght@400;700&family=Outfit:wght@300&display=swap" rel="stylesheet">
+
+  <!-- Critical Asset Preloads -->
+  <link rel="preload" href="public/img/hero-chain/hero-chain-07.svg" as="image">
+  <link rel="preload" href="public/img/hero-pendant/hero-pendant-07.svg" as="image">
+
+  <!-- Core Libraries: Three.js, GSAP, ScrollTrigger, Lenis -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://unpkg.com/lenis@1.1.9/dist/lenis.min.js"></script>
-  <script src="https://unpkg.com/lucide@latest"></script>
 
-  <link rel="stylesheet" href="style.css">
+  <!-- Clean Token-based Stylesheet -->
+  <link rel="stylesheet" href="src/css/style.css">
 </head>
-<body class="bg-black text-silver-100 antialiased selection:bg-amber-400/20 selection:text-amber-200">
+<body>
 
   <!-- =========================================================================
-       PRELOADER / HELION SYSTEM INITIALIZATION (B-1 to B-3)
+       5. PRELOADER (Spec B-1, B-2, B-3)
+       Fullscreen #070709, tabular counter with superindex %, progress line scaleX
        ========================================================================= -->
-  <div id="preloader" class="fixed inset-0 z-50 flex flex-col justify-between p-8 md:p-14 bg-[#070709] text-white">
-    <!-- Top Bar -->
-    <div class="flex justify-between items-center text-[10px] tracking-[0.25em] font-mono text-neutral-500 uppercase">
-      <span>WE JEWELRY & CO. // THE LUMINOUS INC.</span>
-      <span>HOUSTON ATELIER · 29°43'N 95°31'W</span>
+  <aside id="preloader" aria-label="Loading Atelier Vault">
+    <div class="preloader-sweep-band"></div>
+
+    <div class="font-mono text-muted flex justify-between">
+      <span>WE JEWELRY &amp; CO. // THE LUMINOUS INC.</span>
+      <span>HOUSTON · 29°43'N 95°31'W</span>
     </div>
 
-    <!-- Center Stage Sweep Light -->
-    <div class="preloader-bloom"></div>
-
-    <!-- Center Monogram -->
-    <div class="flex flex-col items-center justify-center text-center">
-      <div class="relative w-20 h-20 mb-6 flex items-center justify-center">
-        <div class="absolute inset-0 rounded-full border border-amber-500/20 animate-spin-slow"></div>
-        <div class="absolute inset-2 rounded-full border border-white/10"></div>
-        <span class="font-serif italic text-3xl text-amber-200/90 font-light">WE</span>
-      </div>
-      <h2 class="text-xs uppercase tracking-[0.4em] text-neutral-400 font-mono">Bespoke Diamond Precision</h2>
+    <div class="preloader-center-meta font-mono">
+      <span style="font-size: 11px; letter-spacing: 0.3em; color: var(--gold-soft);">FINE JEWELRY ATELIER</span>
     </div>
 
-    <!-- Bottom Counter & Progress (Spec B-1) -->
-    <div class="w-full max-w-xl mx-auto flex flex-col items-center">
-      <div class="flex justify-between w-full text-xs font-mono mb-2 text-neutral-400">
-        <span class="tracking-widest">LOADING VAULT ASSETS</span>
-        <span id="preloader-counter" class="text-amber-300 font-bold tabular-nums">000%</span>
+    <div class="preloader-counter-wrap">
+      <div id="preloader-num" class="preloader-number">0<sup>%</sup></div>
+      <div class="preloader-track">
+        <div id="preloader-bar" class="preloader-bar"></div>
       </div>
-      <div class="w-full h-[1px] bg-white/10 relative overflow-hidden">
-        <div id="preloader-bar" class="absolute left-0 top-0 bottom-0 w-0 bg-gradient-to-r from-amber-400 via-neutral-200 to-white transition-all duration-75"></div>
-      </div>
-      <div class="mt-4 text-[9px] font-mono tracking-[0.2em] text-neutral-600 uppercase">
-        VVS1 MOISSANITE · 14K SOLID GOLD · BESPOKE CAD
+      <div class="font-mono" style="margin-top: 10px; font-size: 10px; color: #555560; letter-spacing: 0.15em;">
+        INITIALIZING VAULT ASSETS
       </div>
     </div>
-  </div>
-
-  <!-- Noise Grain Overlay -->
-  <div class="grain-overlay pointer-events-none"></div>
-
-  <!-- Audio Tone Synthesizer Trigger (Subtle Tactile Feedback) -->
-  <div class="fixed bottom-6 right-6 z-40">
-    <button id="sound-toggle" class="flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-black/60 backdrop-blur-md text-[10px] font-mono uppercase tracking-widest text-neutral-400 hover:text-white hover:border-amber-400/40 transition-all cursor-pointer">
-      <i data-lucide="volume-2" class="w-3.5 h-3.5 text-amber-400"></i>
-      <span id="sound-label">ATMOSPHERE: ON</span>
-    </button>
-  </div>
+  </aside>
 
   <!-- =========================================================================
-       PRIMARY ADAPTIVE NAVIGATION (Brewns Cover Switch)
+       ADAPTIVE NAVIGATION (Cover switch, 6vh)
        ========================================================================= -->
-  <header id="site-header" class="fixed top-0 left-0 w-full z-40 transition-colors duration-500 px-6 md:px-14 py-6 flex items-center justify-between text-xs tracking-[0.2em] font-mono">
-    <!-- Left Navigation Links -->
-    <nav class="hidden lg:flex items-center gap-8 text-neutral-300 uppercase">
-      <a href="#hero" class="nav-link hover:text-amber-300 transition-colors">ATELIER</a>
-      <a href="#vault" class="nav-link hover:text-amber-300 transition-colors">THE VAULT</a>
-      <a href="#bespoke" class="nav-link hover:text-amber-300 transition-colors">CUSTOM PROCESS</a>
-      <a href="#craft" class="nav-link hover:text-amber-300 transition-colors">MATERIALS</a>
+  <header id="site-header">
+    <nav class="nav-links font-mono" aria-label="Main Navigation">
+      <a href="#hero">ATELIER</a>
+      <a href="#vault">THE VAULT</a>
+      <a href="#particles-section">CUSTOM PROCESS</a>
+      <a href="#clock-section">TIMEPIECES</a>
     </nav>
 
-    <!-- Center Wordmark / Brand Identity -->
-    <a href="#" class="brand-wordmark flex flex-col items-center group">
-      <span class="font-serif tracking-[0.25em] text-lg md:text-xl font-bold uppercase text-white group-hover:text-amber-300 transition-colors">
-        WE JEWELRY &amp; CO.
-      </span>
-      <span class="text-[8px] tracking-[0.4em] text-neutral-500 uppercase font-mono">HOUSTON · THE LUMINOUS INC.</span>
-    </a>
+    <a href="#" class="nav-wordmark">WE JEWELRY &amp; CO.</a>
 
-    <!-- Right Concierge Action -->
-    <div class="flex items-center gap-4">
-      <a href="https://wa.me/18326886688?text=Hello%20WE%20Jewelry,%20I%20would%20like%20to%20inquire%20about%20a%20custom%20piece" target="_blank" rel="noopener" class="concierge-btn group relative overflow-hidden px-4 py-2 rounded-full border border-white/20 bg-white/5 backdrop-blur-md hover:border-amber-400/80 transition-all text-[11px] font-mono uppercase tracking-wider text-white">
-        <span class="relative z-10 flex items-center gap-2">
-          <span>VIP CONCIERGE</span>
-          <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-amber-400"></i>
-        </span>
-        <div class="absolute inset-0 bg-gradient-to-r from-amber-500/20 to-neutral-200/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+    <div>
+      <a href="https://wa.me/18326886688?text=Hello%20WE%20Jewelry,%20I%20would%20like%20to%20consult%20about%20a%20piece" target="_blank" rel="noopener" class="nav-cta font-mono">
+        VIP CONCIERGE ↗
       </a>
     </div>
   </header>
 
   <!-- =========================================================================
-       SECTION 1: HERO VIEWPORT (Brewns 3D Object + Helion Particle Orbit)
+       6. HERO SECTION (A-1, A-2, A-3)
        ========================================================================= -->
-  <section id="hero" class="relative w-full min-h-screen flex items-center overflow-hidden bg-[#070709]">
-    <!-- Ambient Radial Glow Behind Headline -->
-    <div class="hero-radial-glow pointer-events-none"></div>
-
-    <!-- WebGL Canvas Container: 3D Cuban Link / Diamond Medallion & Particle Orbit -->
-    <div id="webgl-container" class="absolute inset-0 z-10 pointer-events-auto"></div>
-
-    <!-- Hero Content Overlay (Parallax Layer) -->
-    <div class="relative z-20 w-full max-w-7xl mx-auto px-6 md:px-14 pt-28 pb-16 min-h-screen flex flex-col justify-between">
-      
-      <!-- Top Micro Kicker -->
-      <div class="hero-kicker flex items-center gap-3 text-[11px] font-mono tracking-[0.3em] text-amber-300/80 uppercase">
-        <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
-        <span>HOUSTON FLAGSHIP ATELIER · SHARPSTOWN #1168</span>
+  <section id="hero">
+    
+    <!-- Left Editorial Typography Block (Single <h1>) -->
+    <div class="hero-text-block">
+      <div class="hero-kicker font-mono">
+        <span>✦ SPECIALTY DIAMOND ATELIER</span>
       </div>
 
-      <!-- Main Brutalist Luxury Headline (Brewns Spec 0,0 - 3,3s) -->
-      <div class="hero-headline-wrapper my-auto max-w-3xl">
-        <div class="overflow-hidden">
-          <h1 class="hero-line text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black uppercase tracking-tight text-white leading-[0.88] font-sans">
-            SCULPTED IN
-          </h1>
-        </div>
-        <div class="overflow-hidden flex flex-wrap items-baseline gap-x-4">
-          <h1 class="hero-line text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black uppercase tracking-tight text-white leading-[0.88] font-sans">
-            ICE &amp; GOLD
-          </h1>
-          <span class="hero-script font-serif italic text-3xl sm:text-5xl md:text-6xl text-amber-300 font-normal">
-            bespoke
-          </span>
-        </div>
-        
-        <p class="hero-subtext mt-6 text-sm sm:text-base text-neutral-400 max-w-md font-sans leading-relaxed font-light">
-          Fine diamond craftsmanship meeting Houston street culture. Hand-cast solid gold, master pave settings, and one-of-a-kind sculptural jewelry.
-        </p>
+      <h1 class="hero-h1 font-title">
+        <span class="h1-line">CHISELED IN</span>
+        <span class="h1-line">ICE &amp; GOLD</span>
+      </h1>
 
-        <div class="hero-cta mt-8 flex flex-wrap items-center gap-5">
-          <a href="#vault" class="px-6 py-3.5 bg-white text-black font-mono text-xs uppercase tracking-[0.2em] font-semibold hover:bg-amber-300 transition-colors flex items-center gap-2">
-            <span>EXPLORE THE VAULT</span>
-            <i data-lucide="arrow-down" class="w-3.5 h-3.5"></i>
-          </a>
-          <a href="#bespoke" class="text-xs font-mono uppercase tracking-[0.2em] text-neutral-300 hover:text-amber-300 transition-colors flex items-center gap-1.5 underline underline-offset-8">
-            <span>CUSTOM COMMISSION ↗</span>
-          </a>
-        </div>
-      </div>
+      <span class="hero-script">bespoke</span>
 
-      <!-- Floating Interactive Product Badge (Brewns A-3 Spec) -->
-      <div id="floating-badge" class="absolute bottom-28 md:bottom-32 right-6 md:right-14 z-30 bg-[#121217]/80 backdrop-blur-xl border border-white/10 p-5 rounded-none max-w-xs transition-all duration-300 hover:border-amber-400/50 shadow-2xl">
-        <div class="flex items-center justify-between text-[9px] font-mono tracking-[0.2em] text-neutral-400 uppercase pb-2 border-b border-white/10">
-          <span class="flex items-center gap-1.5">
-            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
-            <span>FEATURED SPECIMEN</span>
-          </span>
-          <span id="badge-karat" class="text-amber-300 font-bold">14K SOLID</span>
-        </div>
-        
-        <div class="mt-3">
-          <h3 id="badge-title" class="font-sans font-bold text-base text-white uppercase tracking-tight">
-            8MM PAVE MIAMI CUBAN
-          </h3>
-          <p id="badge-specs" class="text-[11px] font-mono text-neutral-400 mt-1">
-            Hand-Set AAA VVS Stones · Triple-Lock Box Clasp
-          </p>
-        </div>
+      <p class="hero-desc">
+        Fine diamond craftsmanship meeting Houston street culture. Hand-cast solid gold and master pavé settings.
+      </p>
 
-        <div class="mt-4 pt-3 border-t border-white/10 flex items-center justify-between">
-          <div>
-            <span class="text-[9px] font-mono text-neutral-500 uppercase block">ATELIER APPRAISAL</span>
-            <span id="badge-price" class="text-sm font-mono font-bold text-amber-200">$1,850 USD</span>
-          </div>
-          <button id="badge-toggle-btn" class="px-2.5 py-1 text-[10px] font-mono uppercase tracking-wider bg-white/10 text-white hover:bg-amber-400 hover:text-black transition-colors cursor-pointer">
-            CYCLE PIECE ⇄
-          </button>
-        </div>
-      </div>
+      <a href="#vault" class="hero-cta font-mono">EXPLORE THE VAULT ↗</a>
+    </div>
 
-      <!-- Bottom Telemetry Bar (Brewns Spec 3,5s) -->
-      <div class="hero-bottom-bar pt-8 border-t border-white/10 grid grid-cols-2 md:grid-cols-4 gap-4 text-[10px] font-mono uppercase tracking-widest text-neutral-500">
-        <div>
-          <span class="text-neutral-300 block">FLAGSHIP STORE</span>
-          <span>100 SHARPSTOWN CTR #1168</span>
-        </div>
-        <div>
-          <span class="text-neutral-300 block">DIRECT HOTLINE</span>
-          <a href="tel:8326886688" class="text-neutral-400 hover:text-amber-300">(832) 688-6688</a>
-        </div>
-        <div>
-          <span class="text-neutral-300 block">OFFICIAL DISPATCH</span>
-          <a href="mailto:service@wejewelryandco.com" class="text-neutral-400 hover:text-amber-300">SERVICE@WEJEWELRY.CO</a>
-        </div>
-        <div class="text-right">
-          <span class="text-amber-400 block">INSTAGRAM OFFICIAL</span>
-          <a href="https://www.instagram.com/the.luminous.official/" target="_blank" rel="noopener" class="text-neutral-400 hover:text-white">@THE.LUMINOUS.OFFICIAL ↗</a>
-        </div>
+    <!-- Piece 1: hero-chain (31vw × 78vh, left: 62vw, top: 20vh) -->
+    <div class="hero-chain-box" aria-label="Miami Cuban Chain 3D Sequence">
+      <div class="frame-stack">
+        <img src="public/img/hero-chain/hero-chain-00.svg" alt="" loading="lazy">
+        <img src="public/img/hero-chain/hero-chain-01.svg" alt="" loading="lazy">
+        <img src="public/img/hero-chain/hero-chain-02.svg" alt="" loading="lazy">
+        <img src="public/img/hero-chain/hero-chain-03.svg" alt="" loading="lazy">
+        <img src="public/img/hero-chain/hero-chain-04.svg" alt="" loading="lazy">
+        <img src="public/img/hero-chain/hero-chain-05.svg" alt="" loading="lazy">
+        <img src="public/img/hero-chain/hero-chain-06.svg" alt="" loading="lazy">
+        <img src="public/img/hero-chain/hero-chain-07.svg" alt="WE Jewelry Miami Cuban Link" class="active-frame" fetchpriority="high" loading="eager">
+        <img src="public/img/hero-chain/hero-chain-08.svg" alt="" loading="lazy">
+        <img src="public/img/hero-chain/hero-chain-09.svg" alt="" loading="lazy">
+        <img src="public/img/hero-chain/hero-chain-10.svg" alt="" loading="lazy">
+        <img src="public/img/hero-chain/hero-chain-11.svg" alt="" loading="lazy">
+        <img src="public/img/hero-chain/hero-chain-12.svg" alt="" loading="lazy">
+        <img src="public/img/hero-chain/hero-chain-13.svg" alt="" loading="lazy">
+        <img src="public/img/hero-chain/hero-chain-14.svg" alt="" loading="lazy">
       </div>
     </div>
-  </section>
 
-  <!-- =========================================================================
-       SECTION 2: THE CURATED VAULT — ASCENDING COVER CURTAIN (Brewns A-6, A-7)
-       ========================================================================= -->
-  <section id="vault" class="vault-curtain-panel relative z-30 w-full min-h-screen bg-[#F5F5F7] text-neutral-900 px-6 md:px-14 py-24 md:py-32 border-t border-neutral-300">
-    <div class="max-w-7xl mx-auto">
-      
-      <!-- Vault Header -->
-      <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-8 border-b border-neutral-300 gap-6">
-        <div>
-          <span class="text-xs font-mono tracking-[0.3em] uppercase text-neutral-500 block mb-2">
-            CATALOG ARCHIVE // THE PERMANENT COLLECTION
-          </span>
-          <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tight font-sans text-neutral-950 leading-none">
-            FAVORITES <span class="font-serif italic font-normal text-amber-800">crafted</span> IN HOUSTON
-          </h2>
-        </div>
-        <div class="text-right">
-          <p class="text-xs font-mono text-neutral-600 max-w-xs mb-3">
-            Pure gold, 925 sterling silver, VVS moissanite and bespoke custom diamond settings.
-          </p>
-          <a href="https://wa.me/18326886688?text=I%20want%20to%20view%20the%20full%20catalog" target="_blank" rel="noopener" class="text-xs font-mono font-bold tracking-[0.2em] uppercase text-neutral-900 hover:text-amber-700 underline underline-offset-4">
-            VIEW COMPLETE CATALOG ↗
-          </a>
-        </div>
-      </div>
-
-      <!-- 4-Card Master Grid with 1px Hairlines (Brewns Spec A-7) -->
-      <div class="vault-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 border-t border-l border-neutral-300">
-        
-        <!-- Card 1: Cuban Links -->
-        <div class="vault-card group border-r border-b border-neutral-300 p-8 flex flex-col justify-between bg-white/40 hover:bg-white transition-all duration-300 relative overflow-hidden">
-          <div class="flex justify-between text-[10px] font-mono text-neutral-500 uppercase tracking-widest">
-            <span>[01 / CHAINS]</span>
-            <span class="text-amber-700 font-bold">14K / 925 SILVER</span>
-          </div>
-
-          <div class="vault-media-box my-10 relative h-64 flex items-center justify-center overflow-hidden">
-            <!-- Architectural SVG Render of Miami Cuban Link -->
-            <div class="chain-visual-sculpture w-full h-full flex items-center justify-center transition-transform duration-500 group-hover:scale-105">
-              <svg viewBox="0 0 200 200" class="w-48 h-48 drop-shadow-xl">
-                <defs>
-                  <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#FFF3B0"/>
-                    <stop offset="35%" stop-color="#D4AF37"/>
-                    <stop offset="70%" stop-color="#AA7C11"/>
-                    <stop offset="100%" stop-color="#583E00"/>
-                  </linearGradient>
-                  <linearGradient id="silverGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#FFFFFF"/>
-                    <stop offset="50%" stop-color="#D0D0D5"/>
-                    <stop offset="100%" stop-color="#808088"/>
-                  </linearGradient>
-                </defs>
-                <!-- Linked Cuban Geometry -->
-                <g transform="translate(10, 20) rotate(-15 90 90)">
-                  <rect x="20" y="30" width="80" height="40" rx="20" fill="none" stroke="url(#goldGrad)" stroke-width="14"/>
-                  <circle cx="60" cy="50" r="3" fill="#FFF"/>
-                  <rect x="50" y="60" width="80" height="40" rx="20" fill="none" stroke="url(#goldGrad)" stroke-width="14"/>
-                  <circle cx="90" cy="80" r="3" fill="#FFF"/>
-                  <rect x="80" y="90" width="80" height="40" rx="20" fill="none" stroke="url(#goldGrad)" stroke-width="14"/>
-                  <circle cx="120" cy="110" r="3" fill="#FFF"/>
-                  <rect x="110" y="120" width="80" height="40" rx="20" fill="none" stroke="url(#goldGrad)" stroke-width="14"/>
-                </g>
-              </svg>
-            </div>
-          </div>
-
-          <div>
-            <h3 class="font-sans font-bold text-lg text-neutral-900 uppercase tracking-tight">
-              MIAMI CUBAN CHAIN
-            </h3>
-            <p class="text-xs text-neutral-500 mt-1 font-mono">
-              8mm – 14mm · Pave / Solid Prong · Custom Lengths
-            </p>
-            <div class="mt-4 pt-3 border-t border-neutral-200 flex justify-between items-center text-xs font-mono">
-              <span class="text-neutral-400">STARTS AT</span>
-              <span class="font-bold text-neutral-950">$850 USD</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Card 2: Custom Pendants -->
-        <div class="vault-card group border-r border-b border-neutral-300 p-8 flex flex-col justify-between bg-white/40 hover:bg-white transition-all duration-300 relative overflow-hidden">
-          <div class="flex justify-between text-[10px] font-mono text-neutral-500 uppercase tracking-widest">
-            <span>[02 / PENDANTS]</span>
-            <span class="text-amber-700 font-bold">VVS ICED OUT</span>
-          </div>
-
-          <div class="vault-media-box my-10 relative h-64 flex items-center justify-center overflow-hidden">
-            <div class="pendant-visual-sculpture w-full h-full flex items-center justify-center transition-transform duration-500 group-hover:scale-105">
-              <svg viewBox="0 0 200 200" class="w-48 h-48 drop-shadow-xl">
-                <!-- Medallion & Custom Bust Pendant Blueprint -->
-                <circle cx="100" cy="110" r="55" fill="none" stroke="url(#goldGrad)" stroke-width="10"/>
-                <circle cx="100" cy="110" r="48" fill="none" stroke="#D4AF37" stroke-width="1" stroke-dasharray="3,3"/>
-                <path d="M90 35 L110 35 L105 60 L95 60 Z" fill="url(#goldGrad)"/>
-                <!-- Emblem Emblematic Centerpiece -->
-                <polygon points="100,75 120,95 112,125 88,125 80,95" fill="url(#silverGrad)"/>
-                <circle cx="100" cy="105" r="8" fill="#FFF" class="animate-pulse"/>
-              </svg>
-            </div>
-          </div>
-
-          <div>
-            <h3 class="font-sans font-bold text-lg text-neutral-900 uppercase tracking-tight">
-              BESPOKE ICED PENDANT
-            </h3>
-            <p class="text-xs text-neutral-500 mt-1 font-mono">
-              3D CAD Custom Names, Busts &amp; Corporate Logos
-            </p>
-            <div class="mt-4 pt-3 border-t border-neutral-200 flex justify-between items-center text-xs font-mono">
-              <span class="text-neutral-400">COMMISSION</span>
-              <span class="font-bold text-neutral-950">FROM $1,200</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Card 3: Dental Grillz -->
-        <div class="vault-card group border-r border-b border-neutral-300 p-8 flex flex-col justify-between bg-white/40 hover:bg-white transition-all duration-300 relative overflow-hidden">
-          <div class="flex justify-between text-[10px] font-mono text-neutral-500 uppercase tracking-widest">
-            <span>[03 / GRILLZ]</span>
-            <span class="text-amber-700 font-bold">DEEP CUT CUSTOM</span>
-          </div>
-
-          <div class="vault-media-box my-10 relative h-64 flex items-center justify-center overflow-hidden">
-            <div class="grillz-visual-sculpture w-full h-full flex items-center justify-center transition-transform duration-500 group-hover:scale-105">
-              <svg viewBox="0 0 200 200" class="w-48 h-48 drop-shadow-xl">
-                <!-- Custom Deep Cut Gold Teeth Grillz Architecture -->
-                <path d="M30 110 C50 80, 150 80, 170 110 C150 135, 50 135, 30 110 Z" fill="none" stroke="url(#goldGrad)" stroke-width="8"/>
-                <line x1="65" y1="92" x2="65" y2="128" stroke="url(#goldGrad)" stroke-width="4"/>
-                <line x1="100" y1="88" x2="100" y2="132" stroke="url(#goldGrad)" stroke-width="4"/>
-                <line x1="135" y1="92" x2="135" y2="128" stroke="url(#goldGrad)" stroke-width="4"/>
-                <!-- Diamond Inset Accents -->
-                <circle cx="82" cy="110" r="3" fill="#FFF"/>
-                <circle cx="118" cy="110" r="3" fill="#FFF"/>
-              </svg>
-            </div>
-          </div>
-
-          <div>
-            <h3 class="font-sans font-bold text-lg text-neutral-900 uppercase tracking-tight">
-              CUSTOM DENTAL GRILLZ
-            </h3>
-            <p class="text-xs text-neutral-500 mt-1 font-mono">
-              Open Face · Deep Cut · 10K / 14K / 18K / VVS Pave
-            </p>
-            <div class="mt-4 pt-3 border-t border-neutral-200 flex justify-between items-center text-xs font-mono">
-              <span class="text-neutral-400">PER TOOTH FROM</span>
-              <span class="font-bold text-neutral-950">$150 USD</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Card 4: Moissanite Watches & Rings -->
-        <div class="vault-card group border-r border-b border-neutral-300 p-8 flex flex-col justify-between bg-white/40 hover:bg-white transition-all duration-300 relative overflow-hidden">
-          <div class="flex justify-between text-[10px] font-mono text-neutral-500 uppercase tracking-widest">
-            <span>[04 / TIMEPIECES]</span>
-            <span class="text-amber-700 font-bold">LUMINOUS EDITION</span>
-          </div>
-
-          <div class="vault-media-box my-10 relative h-64 flex items-center justify-center overflow-hidden">
-            <div class="watch-visual-sculpture w-full h-full flex items-center justify-center transition-transform duration-500 group-hover:scale-105">
-              <svg viewBox="0 0 200 200" class="w-48 h-48 drop-shadow-xl">
-                <!-- Precision Luxury Timepiece Dial -->
-                <circle cx="100" cy="100" r="60" fill="none" stroke="url(#silverGrad)" stroke-width="8"/>
-                <circle cx="100" cy="100" r="48" fill="#1A1A1F"/>
-                <!-- Hour Markers -->
-                <line x1="100" y1="58" x2="100" y2="66" stroke="#D4AF37" stroke-width="3"/>
-                <line x1="100" y1="134" x2="100" y2="142" stroke="#D4AF37" stroke-width="3"/>
-                <line x1="60" y1="100" x2="68" y2="100" stroke="#D4AF37" stroke-width="3"/>
-                <line x1="132" y1="100" x2="140" y2="100" stroke="#D4AF37" stroke-width="3"/>
-                <!-- Hands -->
-                <line x1="100" y1="100" x2="120" y2="85" stroke="#FFFFFF" stroke-width="2"/>
-                <line x1="100" y1="100" x2="85" y2="115" stroke="#D4AF37" stroke-width="2"/>
-                <circle cx="100" cy="100" r="4" fill="#D4AF37"/>
-              </svg>
-            </div>
-          </div>
-
-          <div>
-            <h3 class="font-sans font-bold text-lg text-neutral-900 uppercase tracking-tight">
-              MOISSANITE TIMEPIECES
-            </h3>
-            <p class="text-xs text-neutral-500 mt-1 font-mono">
-              Fully Iced Bezel · Diamond Tester Passing · Automatic
-            </p>
-            <div class="mt-4 pt-3 border-t border-neutral-200 flex justify-between items-center text-xs font-mono">
-              <span class="text-neutral-400">STARTING AT</span>
-              <span class="font-bold text-neutral-950">$2,400 USD</span>
-            </div>
-          </div>
-        </div>
-
+    <!-- Piece 2: hero-pendant (23vw × 42vh, left: 45vw, top: 39vh) -->
+    <div class="hero-pendant-box" aria-label="Bespoke Pendant 3D Sequence">
+      <div class="frame-stack">
+        <img src="public/img/hero-pendant/hero-pendant-00.svg" alt="" loading="lazy">
+        <img src="public/img/hero-pendant/hero-pendant-01.svg" alt="" loading="lazy">
+        <img src="public/img/hero-pendant/hero-pendant-02.svg" alt="" loading="lazy">
+        <img src="public/img/hero-pendant/hero-pendant-03.svg" alt="" loading="lazy">
+        <img src="public/img/hero-pendant/hero-pendant-04.svg" alt="" loading="lazy">
+        <img src="public/img/hero-pendant/hero-pendant-05.svg" alt="" loading="lazy">
+        <img src="public/img/hero-pendant/hero-pendant-06.svg" alt="" loading="lazy">
+        <img src="public/img/hero-pendant/hero-pendant-07.svg" alt="WE Jewelry Bust Pendant" class="active-frame" fetchpriority="high" loading="eager">
+        <img src="public/img/hero-pendant/hero-pendant-08.svg" alt="" loading="lazy">
+        <img src="public/img/hero-pendant/hero-pendant-09.svg" alt="" loading="lazy">
+        <img src="public/img/hero-pendant/hero-pendant-10.svg" alt="" loading="lazy">
+        <img src="public/img/hero-pendant/hero-pendant-11.svg" alt="" loading="lazy">
+        <img src="public/img/hero-pendant/hero-pendant-12.svg" alt="" loading="lazy">
+        <img src="public/img/hero-pendant/hero-pendant-13.svg" alt="" loading="lazy">
+        <img src="public/img/hero-pendant/hero-pendant-14.svg" alt="" loading="lazy">
       </div>
     </div>
-  </section>
 
-  <!-- =========================================================================
-       SECTION 3: THE BESPOKE COMMISSION ATELIER (Helion Particle Morph B-6 to B-8)
-       ========================================================================= -->
-  <section id="bespoke" class="relative z-30 w-full min-h-screen bg-[#070709] text-white px-6 md:px-14 py-28 md:py-36 overflow-hidden">
-    <!-- Radiant Particle Bloom Ambient -->
-    <div class="bespoke-radiant-core"></div>
-
-    <div class="max-w-7xl mx-auto relative z-10">
-      
-      <!-- Section Kicker & Monograph -->
-      <div class="max-w-2xl">
-        <span class="text-xs font-mono tracking-[0.3em] uppercase text-amber-400 block mb-3">
-          // FOUR DISCIPLINES · ONE OBSIDIAN ORBIT
-        </span>
-        <h2 class="text-4xl sm:text-6xl md:text-7xl font-black uppercase tracking-tight font-sans text-white leading-none">
-          THE ART OF <span class="font-serif italic font-normal text-amber-300">bespoke</span> CRAFT
-        </h2>
-        <p class="mt-6 text-sm text-neutral-400 font-sans leading-relaxed">
-          From a hand-drawn napkin sketch to an unyielding VVS diamond masterpiece. Every custom piece undergoes an exact 4-stage Houston atelier protocol.
-        </p>
+    <!-- Floating Interactive Badge (17vw, top-right of chain, object hover trigger) -->
+    <div class="hero-floating-badge">
+      <div class="badge-row-1">
+        <span id="badge-name">8MM PAVE MIAMI CUBAN</span>
+        <span id="badge-price" class="font-mono" style="color: var(--gold-soft);">CONSULTAR</span>
       </div>
-
-      <!-- 4-Step Interactive Process Timeline -->
-      <div class="mt-20 grid grid-cols-1 md:grid-cols-4 gap-8 border-t border-white/10 pt-12">
-        
-        <!-- Step 1 -->
-        <div class="process-step group">
-          <div class="flex items-center justify-between text-xs font-mono text-neutral-500 pb-4 border-b border-white/10 group-hover:border-amber-400/50 transition-colors">
-            <span class="text-amber-400 font-bold">PHASE 01</span>
-            <span>BLUEPRINT</span>
-          </div>
-          <h3 class="mt-6 text-xl font-bold font-sans uppercase tracking-tight text-white group-hover:text-amber-300 transition-colors">
-            3D CAD MODELING
-          </h3>
-          <p class="mt-3 text-xs text-neutral-400 font-sans leading-relaxed">
-            Photorealistic 360-degree digital renders with micro-millimeter precision stone maps and weight calculations.
-          </p>
-          <div class="mt-6 inline-flex items-center gap-2 text-[10px] font-mono text-neutral-400 uppercase tracking-widest">
-            <i data-lucide="box" class="w-3.5 h-3.5 text-amber-400"></i>
-            <span>360° INSPECTION</span>
-          </div>
-        </div>
-
-        <!-- Step 2 -->
-        <div class="process-step group">
-          <div class="flex items-center justify-between text-xs font-mono text-neutral-500 pb-4 border-b border-white/10 group-hover:border-amber-400/50 transition-colors">
-            <span class="text-amber-400 font-bold">PHASE 02</span>
-            <span>METALLURGY</span>
-          </div>
-          <h3 class="mt-6 text-xl font-bold font-sans uppercase tracking-tight text-white group-hover:text-amber-300 transition-colors">
-            WAX PRINT &amp; CASTING
-          </h3>
-          <p class="mt-3 text-xs text-neutral-400 font-sans leading-relaxed">
-            High-resolution resin 3D wax molds cast in molten 10K, 14K, or 18K Yellow, White, or Rose Gold and 925 Silver.
-          </p>
-          <div class="mt-6 inline-flex items-center gap-2 text-[10px] font-mono text-neutral-400 uppercase tracking-widest">
-            <i data-lucide="flame" class="w-3.5 h-3.5 text-amber-400"></i>
-            <span>SOLID GOLD FOUNDRY</span>
-          </div>
-        </div>
-
-        <!-- Step 3 -->
-        <div class="process-step group">
-          <div class="flex items-center justify-between text-xs font-mono text-neutral-500 pb-4 border-b border-white/10 group-hover:border-amber-400/50 transition-colors">
-            <span class="text-amber-400 font-bold">PHASE 03</span>
-            <span>GEMOLOGY</span>
-          </div>
-          <h3 class="mt-6 text-xl font-bold font-sans uppercase tracking-tight text-white group-hover:text-amber-300 transition-colors">
-            MICROSCOPE SETTING
-          </h3>
-          <p class="mt-3 text-xs text-neutral-400 font-sans leading-relaxed">
-            Each VVS stone is handset under 40x magnification into custom prongs, honeycomb pave beds, or channel tracks.
-          </p>
-          <div class="mt-6 inline-flex items-center gap-2 text-[10px] font-mono text-neutral-400 uppercase tracking-widest">
-            <i data-lucide="gem" class="w-3.5 h-3.5 text-amber-400"></i>
-            <span>VVS1 DIAMOND / MOISSANITE</span>
-          </div>
-        </div>
-
-        <!-- Step 4 -->
-        <div class="process-step group">
-          <div class="flex items-center justify-between text-xs font-mono text-neutral-500 pb-4 border-b border-white/10 group-hover:border-amber-400/50 transition-colors">
-            <span class="text-amber-400 font-bold">PHASE 04</span>
-            <span>DELIVERY</span>
-          </div>
-          <h3 class="mt-6 text-xl font-bold font-sans uppercase tracking-tight text-white group-hover:text-amber-300 transition-colors">
-            MIRROR POLISH &amp; DISPATCH
-          </h3>
-          <p class="mt-3 text-xs text-neutral-400 font-sans leading-relaxed">
-            Ultrasonic cleaning, laser hallmark engraving, diamond testing verification, and insured worldwide delivery.
-          </p>
-          <div class="mt-6 inline-flex items-center gap-2 text-[10px] font-mono text-neutral-400 uppercase tracking-widest">
-            <i data-lucide="shield-check" class="w-3.5 h-3.5 text-amber-400"></i>
-            <span>CERTIFIED APPRAISAL</span>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Custom Consultation Terminal -->
-      <div class="mt-16 bg-[#101015] border border-white/10 p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8">
-        <div>
-          <span class="text-[10px] font-mono uppercase tracking-[0.25em] text-amber-400 block mb-2">
-            DIRECT ATELIER CONSULTATION
-          </span>
-          <h4 class="text-2xl md:text-3xl font-bold uppercase font-sans text-white">
-            READY TO REALIZE YOUR CUSTOM CONCEPT?
-          </h4>
-          <p class="text-xs text-neutral-400 mt-2 max-w-xl font-sans">
-            Send your reference images, budget, and metal preferences directly to our master jewelers on WhatsApp or visit our Sharpstown flagship.
-          </p>
-        </div>
-        <a href="https://wa.me/18326886688?text=Hello%20WE%20Jewelry,%20I%20have%20a%20custom%20concept%20I%20would%20like%20to%20discuss" target="_blank" rel="noopener" class="px-8 py-4 bg-amber-400 text-black font-mono text-xs uppercase tracking-[0.25em] font-bold hover:bg-white transition-all whitespace-nowrap shadow-xl flex items-center gap-3">
-          <i data-lucide="message-square" class="w-4 h-4"></i>
-          <span>START COMMISSION VIA WHATSAPP</span>
-        </a>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- =========================================================================
-       SECTION 4: MATERIAL SCIENCE & CLARITY MATRIX
-       ========================================================================= -->
-  <section id="craft" class="relative z-30 w-full bg-[#0D0D11] text-white px-6 md:px-14 py-28 border-t border-white/10">
-    <div class="max-w-7xl mx-auto">
-      
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-        <!-- Left Explanatory -->
-        <div class="lg:col-span-5">
-          <span class="text-xs font-mono tracking-[0.3em] uppercase text-amber-400 block mb-3">
-            // UNCOMPROMISING ALLOY SELECTION
-          </span>
-          <h2 class="text-4xl md:text-5xl font-black uppercase tracking-tight font-sans text-white leading-none">
-            METALS &amp; <span class="font-serif italic font-normal text-amber-300">stones</span> INTEGRITY
-          </h2>
-          <p class="mt-6 text-sm text-neutral-400 font-sans leading-relaxed">
-            Every millimeter of WE Jewelry reflects authentic metal density and superior stone grading. We reject hollow castings, inferior copper alloys, and low-grade cubic zirconia.
-          </p>
-
-          <div class="mt-8 space-y-4">
-            <div class="p-4 bg-white/5 border border-white/10 flex items-center justify-between">
-              <div>
-                <span class="text-xs font-mono font-bold text-white uppercase block">SOLID 10K / 14K / 18K GOLD</span>
-                <span class="text-[11px] font-mono text-neutral-400">Authentic yellow, white, and rose alloy blends</span>
-              </div>
-              <span class="text-xs font-mono text-amber-400 font-bold">HALLMARKED</span>
-            </div>
-            
-            <div class="p-4 bg-white/5 border border-white/10 flex items-center justify-between">
-              <div>
-                <span class="text-xs font-mono font-bold text-white uppercase block">VVS1 MOISSANITE &amp; LAB DIAMONDS</span>
-                <span class="text-[11px] font-mono text-neutral-400">Passes standard thermal and electrical diamond pens</span>
-              </div>
-              <span class="text-xs font-mono text-emerald-400 font-bold">POSITIVE TEST</span>
-            </div>
-
-            <div class="p-4 bg-white/5 border border-white/10 flex items-center justify-between">
-              <div>
-                <span class="text-xs font-mono font-bold text-white uppercase block">925 STERLING SILVER FOUNDRY</span>
-                <span class="text-[11px] font-mono text-neutral-400">Electroplated in double rhodium for lasting luster</span>
-              </div>
-              <span class="text-xs font-mono text-neutral-300 font-bold">ANTI-TARNISH</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Right Interactive Matrix Display -->
-        <div class="lg:col-span-7 bg-[#14141A] border border-white/10 p-8 md:p-10">
-          <div class="flex items-center justify-between pb-6 border-b border-white/10">
-            <span class="text-xs font-mono text-neutral-400 uppercase tracking-widest">ATELIER SPECIFICATION BENCHMARK</span>
-            <span class="text-xs font-mono text-amber-400">WE JEWELRY CERTIFICATION</span>
-          </div>
-
-          <div class="mt-8 space-y-6">
-            <!-- Metric 1: Hardness -->
-            <div>
-              <div class="flex justify-between text-xs font-mono mb-2">
-                <span class="text-neutral-300">MOHS HARDNESS RATING</span>
-                <span class="text-white font-bold">9.25 – 10.0 MOHS</span>
-              </div>
-              <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
-                <div class="w-[96%] h-full bg-gradient-to-r from-amber-500 to-white"></div>
-              </div>
-            </div>
-
-            <!-- Metric 2: Fire & Brilliance Index -->
-            <div>
-              <div class="flex justify-between text-xs font-mono mb-2">
-                <span class="text-neutral-300">REFRACTIVE INDEX &amp; DISPERSION FIRE</span>
-                <span class="text-white font-bold">2.65 – 2.69 (HIGH BRILLIANCE)</span>
-              </div>
-              <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
-                <div class="w-[98%] h-full bg-gradient-to-r from-amber-500 to-emerald-300"></div>
-              </div>
-            </div>
-
-            <!-- Metric 3: Clasp & Setting Shear Strength -->
-            <div>
-              <div class="flex justify-between text-xs font-mono mb-2">
-                <span class="text-neutral-300">DOUBLE / TRIPLE LOCK BOX CLASP RESISTANCE</span>
-                <span class="text-white font-bold">HEAVYWEIGHT SECURITY</span>
-              </div>
-              <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
-                <div class="w-[94%] h-full bg-gradient-to-r from-amber-500 to-neutral-200"></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="mt-10 p-4 bg-amber-400/5 border border-amber-400/20 text-xs font-mono text-amber-200/90 leading-relaxed">
-            ✦ GUARANTEE: Every item purchased in our Houston showroom or online comes with a certificate of authenticity detailing exact metal karatage and stone verification.
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- =========================================================================
-       SECTION 5: HOUSTON FLAGSHIP & VIP APPOINTMENTS
-       ========================================================================= -->
-  <section id="flagship" class="relative z-30 w-full bg-[#08080A] text-white px-6 md:px-14 py-28 border-t border-white/10">
-    <div class="max-w-7xl mx-auto">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-        
-        <div>
-          <span class="text-xs font-mono tracking-[0.3em] uppercase text-amber-400 block mb-3">
-            // PHYSICAL PRESENCE · HOUSTON, TX
-          </span>
-          <h2 class="text-4xl sm:text-5xl font-black uppercase tracking-tight font-sans text-white leading-tight">
-            THE SHARPSTOWN <br>
-            <span class="font-serif italic font-normal text-amber-300">flagship</span> EXPERIENCE
-          </h2>
-          
-          <p class="mt-6 text-sm text-neutral-400 font-sans leading-relaxed">
-            Visit our private Houston showroom for direct mold impressions, diamond sizing, bespoke custom commissions, and private consultation in a secure, luxury environment.
-          </p>
-
-          <div class="mt-8 space-y-4 font-mono text-xs text-neutral-300">
-            <div class="flex items-start gap-3">
-              <i data-lucide="map-pin" class="w-4 h-4 text-amber-400 shrink-0 mt-0.5"></i>
-              <div>
-                <strong class="text-white block">WE JEWELRY &amp; CO. SHOWROOM</strong>
-                <span>100 Sharpstown Center, Suite #1168<br>Houston, Texas 77036, USA</span>
-              </div>
-            </div>
-
-            <div class="flex items-start gap-3">
-              <i data-lucide="clock" class="w-4 h-4 text-amber-400 shrink-0 mt-0.5"></i>
-              <div>
-                <strong class="text-white block">OPERATING HOURS</strong>
-                <span>Monday – Saturday: 11:00 AM – 7:30 PM CST<br>Sunday: By Prior Appointment Only</span>
-              </div>
-            </div>
-
-            <div class="flex items-start gap-3">
-              <i data-lucide="phone" class="w-4 h-4 text-amber-400 shrink-0 mt-0.5"></i>
-              <div>
-                <strong class="text-white block">PHONE &amp; DIRECT CONCIERGE</strong>
-                <a href="tel:8326886688" class="text-amber-300 hover:underline">(832) 688-6688</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="mt-10 flex flex-wrap gap-4">
-            <a href="https://wa.me/18326886688?text=I%20would%20like%20to%20book%20a%20private%20appointment%20at%20the%20Houston%20showroom" target="_blank" rel="noopener" class="px-6 py-3.5 bg-white text-black font-mono text-xs uppercase tracking-[0.2em] font-bold hover:bg-amber-400 transition-colors">
-              BOOK PRIVATE APPOINTMENT
-            </a>
-            <a href="https://maps.google.com/?q=100+Sharpstown+Center+Houston+TX+77036" target="_blank" rel="noopener" class="px-6 py-3.5 border border-white/20 text-white font-mono text-xs uppercase tracking-[0.2em] hover:border-amber-400 transition-colors flex items-center gap-2">
-              <span>GOOGLE MAPS ↗</span>
-            </a>
-          </div>
-        </div>
-
-        <!-- Right Monolith Showcase Card -->
-        <div class="relative bg-gradient-to-b from-[#14141B] to-[#0A0A0E] border border-white/10 p-8 md:p-12 shadow-2xl">
-          <div class="absolute -top-3 -right-3 w-20 h-20 border-r-2 border-t-2 border-amber-400/40"></div>
-          <div class="text-[10px] font-mono tracking-[0.3em] text-neutral-500 uppercase pb-4 border-b border-white/10 flex justify-between">
-            <span>SHOWROOM DISPATCH</span>
-            <span class="text-emerald-400 flex items-center gap-1.5">
-              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
-              ACTIVE
-            </span>
-          </div>
-
-          <div class="my-8">
-            <h3 class="text-2xl font-bold font-sans uppercase text-white tracking-tight">
-              COMMISSION INQUIRY TERMINAL
-            </h3>
-            <p class="text-xs text-neutral-400 mt-2 font-sans">
-              Enter your specifications to generate a direct quote dossier for our master jeweler.
-            </p>
-          </div>
-
-          <form id="inquiry-form" class="space-y-4 font-mono text-xs">
-            <div>
-              <label class="block text-neutral-400 text-[10px] uppercase mb-1">INTERESTED CATEGORY</label>
-              <select id="inquiry-cat" class="w-full bg-black/60 border border-white/20 px-3 py-2.5 text-white focus:border-amber-400 outline-none">
-                <option value="Miami Cuban Chain">Miami Cuban Chain (8mm – 14mm)</option>
-                <option value="Custom 3D Bust Pendant">Custom 3D Bust / Name Pendant</option>
-                <option value="Custom Dental Grillz">Custom Gold &amp; Diamond Grillz</option>
-                <option value="Iced Moissanite Watch">Luminous Moissanite Timepiece</option>
-                <option value="Full Custom Suite">Full Custom Jewelry Suite</option>
-              </select>
-            </div>
-
-            <div class="grid grid-cols-2 gap-4">
-              <div>
-                <label class="block text-neutral-400 text-[10px] uppercase mb-1">PREFERRED METAL</label>
-                <select id="inquiry-metal" class="w-full bg-black/60 border border-white/20 px-3 py-2.5 text-white focus:border-amber-400 outline-none">
-                  <option value="14K Yellow Gold">14K Yellow Gold</option>
-                  <option value="14K White Gold">14K White Gold</option>
-                  <option value="18K Gold">18K Solid Gold</option>
-                  <option value="925 Sterling Silver">925 Sterling Silver</option>
-                </select>
-              </div>
-              <div>
-                <label class="block text-neutral-400 text-[10px] uppercase mb-1">EST. BUDGET (USD)</label>
-                <input id="inquiry-budget" type="text" placeholder="$1,500 – $5,000+" class="w-full bg-black/60 border border-white/20 px-3 py-2.5 text-white focus:border-amber-400 outline-none">
-              </div>
-            </div>
-
-            <div>
-              <label class="block text-neutral-400 text-[10px] uppercase mb-1">YOUR NAME &amp; CONTACT</label>
-              <input id="inquiry-contact" type="text" placeholder="Name or Instagram handle" class="w-full bg-black/60 border border-white/20 px-3 py-2.5 text-white focus:border-amber-400 outline-none" required>
-            </div>
-
-            <button type="submit" class="w-full mt-4 py-3 bg-white text-black font-bold uppercase tracking-[0.2em] hover:bg-amber-300 transition-colors flex items-center justify-center gap-2 cursor-pointer">
-              <span>SEND DOSSIER TO CONCIERGE</span>
-              <i data-lucide="send" class="w-3.5 h-3.5"></i>
-            </button>
-          </form>
-        </div>
-
+      <div class="badge-row-2 font-mono">
+        <span id="badge-meta">14K SOLID · VVS1 MOISSANITE</span>
+        <span>HOUSTON</span>
       </div>
     </div>
-  </section>
 
-  <!-- =========================================================================
-       FOOTER / COLOPHON
-       ========================================================================= -->
-  <footer class="relative z-30 w-full bg-[#050507] text-neutral-400 px-6 md:px-14 py-16 border-t border-white/10 font-mono text-xs">
-    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+    <!-- Bottom Telemetry Bar (3 cols, bottom: 6vh) -->
+    <div class="hero-bottom-bar font-mono">
       <div>
-        <span class="font-serif italic text-xl text-white block">WE Jewelry &amp; Co.</span>
-        <span class="text-[10px] text-neutral-600 uppercase tracking-widest mt-1 block">
-          THE LUMINOUS INC. · HOUSTON FLAGSHIP ATELIER · EST. TEXAS
-        </span>
+        <span class="bottom-col-title">FLAGSHIP STORE</span>
+        <span class="bottom-col-val">100 SHARPSTOWN CTR #1168</span>
+      </div>
+      <div>
+        <span class="bottom-col-title">CONCIERGE HOTLINE</span>
+        <a href="tel:8326886688" class="bottom-col-val">(832) 688-6688</a>
+      </div>
+      <div>
+        <span class="bottom-col-title">INSTAGRAM OFFICIAL</span>
+        <a href="https://www.instagram.com/the.luminous.official/" target="_blank" rel="noopener" class="bottom-col-val">@THE.LUMINOUS.OFFICIAL ↗</a>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- =========================================================================
+       8. VAULT CATALOG (A-6, A-7, A-8)
+       Ascending cover curtain: straight edge, no border-radius, no shadow
+       ========================================================================= -->
+  <section id="vault">
+    
+    <div class="vault-header">
+      <h2 class="vault-h2 font-title">
+        FAVORITES<br>
+        CRAFTED<br>
+        IN HOUSTON
+      </h2>
+      <div class="vault-header-right">
+        <p class="vault-header-desc">
+          Solid gold, 925 silver and custom pavé diamond settings crafted in our Houston atelier.
+        </p>
+        <a href="https://wa.me/18326886688" target="_blank" rel="noopener" class="vault-full-link">
+          VIEW COMPLETE CATALOG ↗
+        </a>
+      </div>
+    </div>
+
+    <!-- 4-Column Grid with 1px hairlines -->
+    <div class="vault-grid">
+      
+      <!-- Card 1 -->
+      <article class="vault-cell">
+        <div class="font-mono" style="color: #6E6E78; font-size: 10px;">[01 / CHAINS]</div>
+        <img src="public/img/catalog/catalog-cuban.svg" alt="Miami Cuban Chain" class="vault-product-img" loading="lazy">
+        <div class="vault-cell-meta font-mono">
+          <span style="font-weight: 700;">MIAMI CUBAN CHAIN</span>
+          <span style="color: var(--gold);">CONSULTAR</span>
+        </div>
+      </article>
+
+      <!-- Card 2 -->
+      <article class="vault-cell">
+        <div class="font-mono" style="color: #6E6E78; font-size: 10px;">[02 / PENDANTS]</div>
+        <img src="public/img/catalog/catalog-pendant.svg" alt="Custom Bust Pendant" class="vault-product-img" loading="lazy">
+        <div class="vault-cell-meta font-mono">
+          <span style="font-weight: 700;">CUSTOM BUST PENDANT</span>
+          <span style="color: var(--gold);">CONSULTAR</span>
+        </div>
+      </article>
+
+      <!-- Card 3 -->
+      <article class="vault-cell">
+        <div class="font-mono" style="color: #6E6E78; font-size: 10px;">[03 / GRILLZ]</div>
+        <img src="public/img/catalog/catalog-grillz.svg" alt="Dental Grillz" class="vault-product-img" loading="lazy">
+        <div class="vault-cell-meta font-mono">
+          <span style="font-weight: 700;">DEEP CUT GRILLZ</span>
+          <span style="color: var(--gold);">CONSULTAR</span>
+        </div>
+      </article>
+
+      <!-- Card 4 -->
+      <article class="vault-cell">
+        <div class="font-mono" style="color: #6E6E78; font-size: 10px;">[04 / TIMEPIECES]</div>
+        <img src="public/img/catalog/catalog-watch.svg" alt="Luminous Timepiece" class="vault-product-img" loading="lazy">
+        <div class="vault-cell-meta font-mono">
+          <span style="font-weight: 700;">LUMINOUS TIMEPIECE</span>
+          <span style="color: var(--gold);">CONSULTAR</span>
+        </div>
+      </article>
+
+    </div>
+
+  </section>
+
+  <!-- =========================================================================
+       9. CLOCK SECTION (A-9, A-10)
+       Continuous light background, pinned 220vh
+       ========================================================================= -->
+  <section id="clock-section">
+    
+    <div class="clock-telemetry-left font-mono">
+      <span style="color: #8E8E98; font-size: 10px; display: block;">CHRONOMETRY PROTOCOL</span>
+      <span id="clock-time-val" style="font-weight: 700; font-size: 11px;">HOUSTON CST · 11:42 · REF #LUM-1168</span>
+      <span style="color: #8E8E98; font-size: 10px; display: block;">AUTOMATIC JEWELED MOVEMENT</span>
+    </div>
+
+    <!-- Center Stage: Dial SVG + Centered Watch Hero -->
+    <div class="clock-stage-center">
+      <svg class="clock-dial-svg" viewBox="0 0 400 400">
+        <!-- Radial Diffuse Halo -->
+        <circle cx="200" cy="200" r="185" fill="none" stroke="rgba(17,17,22,0.12)" stroke-width="1"/>
+        <circle cx="200" cy="200" r="170" fill="none" stroke="rgba(17,17,22,0.06)" stroke-width="1" stroke-dasharray="2,6"/>
+        
+        <!-- 12 Dial Numbers in Inter Tight 300 -->
+        <text x="200" y="44" font-family="'Inter Tight', sans-serif" font-weight="300" font-size="20" fill="#111116" text-anchor="middle">12</text>
+        <text x="356" y="206" font-family="'Inter Tight', sans-serif" font-weight="300" font-size="20" fill="#111116" text-anchor="middle">3</text>
+        <text x="200" y="368" font-family="'Inter Tight', sans-serif" font-weight="300" font-size="20" fill="#111116" text-anchor="middle">6</text>
+        <text x="44" y="206" font-family="'Inter Tight', sans-serif" font-weight="300" font-size="20" fill="#111116" text-anchor="middle">9</text>
+      </svg>
+
+      <img src="public/img/watch-hero.svg" alt="WE Jewelry Luminous Watch" class="watch-hero-img">
+    </div>
+
+    <!-- Bottom Incoming Band from Next Section (8vh) -->
+    <div class="clock-bottom-band"></div>
+
+  </section>
+
+  <!-- =========================================================================
+       10. PARTICLES SECTION (B-3...B-8)
+       The ONLY canvas on the entire site (WebGL, 60k particles morphing)
+       ========================================================================= -->
+  <section id="particles-section">
+    <canvas id="particles-canvas"></canvas>
+
+    <div class="particles-content-overlay">
+      <h2 class="particles-h2 font-outfit">
+        BUILT FOR THE FAR SIDE.
+        <span class="line-2">MADE TO PULL YOU BACK.</span>
+      </h2>
+
+      <div class="four-disciplines-center">
+        FOUR DISCIPLINES.<br>ONE STEADY ORBIT.
       </div>
 
-      <div class="flex flex-wrap items-center gap-8 text-[11px] uppercase tracking-wider">
-        <a href="https://www.instagram.com/the.luminous.official/" target="_blank" rel="noopener" class="hover:text-amber-300 transition-colors">
-          INSTAGRAM: @THE.LUMINOUS.OFFICIAL ↗
+      <div class="particles-side-flanks font-mono" style="font-size: 11px; color: var(--gold-soft);">
+        <span>[01] 3D CAD BLUEPRINT</span>
+        <span>[02] SOLID GOLD FOUNDRY</span>
+        <span>[03] VVS PAVE SETTING</span>
+        <span>[04] INSURED DISPATCH</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       FOOTER
+       ========================================================================= -->
+  <footer id="site-footer">
+    <div class="footer-inner font-mono">
+      <div>
+        <span style="font-weight: 700; color: #FFFFFF; display: block;">WE JEWELRY &amp; CO.</span>
+        <span style="font-size: 10px;">100 SHARPSTOWN CENTER #1168 · HOUSTON, TX 77036</span>
+      </div>
+      <div>
+        <a href="https://www.instagram.com/the.luminous.official/" target="_blank" rel="noopener" style="color: var(--text-light); text-decoration: underline; margin-right: 20px;">
+          @THE.LUMINOUS.OFFICIAL ↗
         </a>
-        <a href="https://wa.me/18326886688" target="_blank" rel="noopener" class="hover:text-amber-300 transition-colors">
-          WHATSAPP: (832) 688-6688
+        <a href="tel:8326886688" style="color: var(--gold-soft); text-decoration: underline;">
+          (832) 688-6688
         </a>
-        <span class="text-neutral-600">ALL RIGHTS RESERVED © 2026</span>
       </div>
     </div>
   </footer>
 
-  <!-- Main Application Script -->
-  <script src="app.js"></script>
+  <!-- Application Entry Point (ES Modules) -->
+  <script type="module" src="src/js/main.js"></script>
 </body>
 </html>
