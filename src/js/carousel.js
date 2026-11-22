@@ -180,7 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const vw = window.innerWidth;
-    const baseSpacing = Math.min(vw * 0.38, 480);
+    const baseSpacing = Math.min(vw * 0.35, 480);
 
     let minOffset = Infinity;
     let closestIndex = 0;
@@ -200,29 +200,28 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       // Exact Hyperbolic Tangent Spacing Distortion from Agrumea
-      // Math.tanh creates the fish-eye focal expansion at center, compressing at edges
-      const distortedOffset = Math.tanh(offset / 0.65) * 0.65;
-      const x = distortedOffset * baseSpacing * 2.8;
+      // Math.tanh expands the center focal active jar and compresses at lateral edges
+      const distortedOffset = Math.tanh(offset * 2.6);
+      const x = distortedOffset * baseSpacing * 2.35;
 
       // Arc curvature in Y
-      const y = Math.pow(distortedOffset, 2) * 80;
+      const y = Math.pow(Math.abs(distortedOffset), 1.8) * 110;
 
       // 3D Tilts matching video:
-      // When at center: upright
-      // When to the left: rolls right and tilts forward showing top lid in perspective!
-      // When to the right: tilts symmetrically
-      const rotY = -distortedOffset * 36;
-      const rotX = Math.abs(distortedOffset) * 18; // tilts forward showing lid
-      const rotZ = -distortedOffset * 14 + (velocity * 0.04); // dynamic inertial lean
+      // Active center: upright, slight forward tilt showing top lid
+      // Lateral items: roll towards center, yaw, and pitch forward
+      const rotY = -distortedOffset * 30;
+      const rotX = 7 + Math.abs(distortedOffset) * 14; // tilts forward showing metallic lid in perspective
+      const rotZ = -distortedOffset * 18 + (velocity * 0.05); // dynamic inertial lean
 
       // Dynamic Scale & Depth of Field (DoF)
-      const scale = Math.max(1.08 - Math.pow(absOffset, 1.2) * 0.65, 0.65);
-      const blurPx = Math.min(Math.pow(absOffset * 2.5, 1.5) * 3.5, 4.5);
-      const brightness = Math.max(1.0 - absOffset * 0.35, 0.72);
+      const scale = Math.max(1.08 - Math.pow(absOffset * 2.2, 1.25) * 0.52, 0.65);
+      const blurPx = Math.max(0, (absOffset - 0.05) * 16);
+      const brightness = Math.max(1.0 - absOffset * 0.28, 0.75);
       const zIndex = Math.round((1 - absOffset) * 100);
 
       item.style.transform = `translate3d(${x}px, ${y}px, 0px) rotateY(${rotY}deg) rotateX(${rotX}deg) rotateZ(${rotZ}deg) scale(${scale})`;
-      item.style.filter = blurPx > 0.3 ? `blur(${blurPx.toFixed(1)}px) brightness(${brightness.toFixed(2)})` : 'none';
+      item.style.filter = blurPx > 0.4 ? `blur(${blurPx.toFixed(1)}px) brightness(${brightness.toFixed(2)})` : 'none';
       item.style.zIndex = zIndex;
       item.style.opacity = absOffset < 0.45 ? 1.0 : Math.max(0, 1 - (absOffset - 0.45) * 6);
 
@@ -241,9 +240,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (floatingCapsule) {
-      // Position capsule slightly above and to the left of the center jar
-      const badgeX = centerJarX - 95;
-      const badgeY = centerJarY - 145;
+      // Position capsule slightly to the left of the active jar, matching screenshot
+      const badgeX = centerJarX - 220;
+      const badgeY = centerJarY - 45;
       floatingCapsule.style.transform = `translate(${badgeX}px, ${badgeY}px)`;
     }
 
