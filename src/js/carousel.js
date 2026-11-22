@@ -1,60 +1,58 @@
 /**
- * AGRUMEA FARM / STUDIO K95 AWWWARDS SOTD — 3D MARQUEE ENGINE
- * Replicated using hyperbolic tangent spacing distortion, 10° tilted track,
- * simulated depth-of-field, critically damped spring physics, and inertial tilt.
+ * WE JEWELRY & CO. — HOUSTON BESPOKE ATELIER
+ * 3D Marquee Kinetic Engine with Hyperbolic Spacing & Spring Physics
  */
 
 document.addEventListener('DOMContentLoaded', () => {
 
   const products = [
     {
-      title: "Confettura Extra di Fragole e Bacche Goji",
-      subtitle: "Confettura Extra Artigianale",
-      desc: "Coltivate nei terreni vulcanici della Sicilia, le nostre fragole vengono raccolte a mano al perfetto grado di maturazione e cotte lentamente a bassa temperatura per preservare intatti sapore, profumo e principi nutritivi.",
-      format: "VASO VETRO 240g",
-      origin: "100% SICILIA (ITALIA)"
+      title: "18mm Miami Cuban Chain",
+      subtitle: "Solid 14K Yellow Gold • Hand-Set VVS Diamond Pavé",
+      desc: "The quintessential Houston signature. Cast in heavy solid 14-karat yellow gold with hand-filed flat-top links, handset with microscopic VVS diamond pavé across all link faces and finished with our bespoke dual-safety iced box clasp.",
+      material: "SOLID 14K / 18K YELLOW GOLD",
+      stones: "VVS COLORLESS DIAMONDS",
+      ctaText: "COMMISSION PIECE — (832) 688-6688 ↗"
     },
     {
-      title: "Marmellata di Arance a fette Bio",
-      subtitle: "Agrumi di Sicilia Biologici",
-      desc: "Fette sottili di arance siciliane biologiche selezionate, cotte con la scorza per una consistenza rustica e un aroma inconfondibile di zagara e sole siciliano.",
-      format: "VASO VETRO 240g",
-      origin: "100% SICILIA BIO"
+      title: "Custom 3D Bust Diamond Pendant",
+      subtitle: "Bespoke 3D Sculpted Gold • Multi-Tier Baguette Pavé",
+      desc: "One-of-one custom sculpted medallion modeled in 3D CAD from client reference, featuring a high-relief Roman Emperor bust micro-set with over 1,400 round brilliant and tapered baguette diamonds on an iced-out custom bail.",
+      material: "14K TWO-TONE YELLOW & WHITE GOLD",
+      stones: "VVS BAGUETTES & ROUND MICRO-PAVÉ",
+      ctaText: "START 3D CUSTOM COMMISSION ↗"
     },
     {
-      title: "Caponata Siciliana Sinfonia Barocca",
-      subtitle: "Ricetta Tradizionale Iblea",
-      desc: "Melanzane fresche, sedano croccante, capperi di Pantelleria e olive nocellara in un perfetto equilibrio agrodolce secondo l'antica ricetta barocca.",
-      format: "VASO VETRO 280g",
-      origin: "100% SICILIA (ITALIA)"
+      title: "Custom Honeycomb Diamond Grillz",
+      subtitle: "8-Top / 8-Bottom Precision Dental Fit • VVS Moissanite / Diamond",
+      desc: "Custom impression-molded dental grillz featuring deep cut tooth separation and honeycomb micro-pavé setting. Hand-polished mirror gold finish for seamless, comfortable everyday wear.",
+      material: "SOLID 10K / 14K GOLD OR 925 SILVER",
+      stones: "VVS MOISSANITE / NATURAL DIAMOND",
+      ctaText: "BOOK DENTAL IMPRESSION ↗"
     },
     {
-      title: "Pesto Rosso Ibleo",
-      subtitle: "Pomodori Secchi e Mandorle",
-      desc: "Pomodori essiccati al sole dell'Etna, mandorle di Avola tostate e basilico fresco macinati a pietra con olio extravergine d'oliva monti iblei.",
-      format: "VASO VETRO 190g",
-      origin: "100% SICILIA (ITALIA)"
+      title: "Bespoke Baguette Skeleton Watch",
+      subtitle: "Custom Diamond Bezel • Automatic Movement • Fluted Case",
+      desc: "Bespoke horological craftsmanship. Features an invisible-set baguette cut diamond bezel, diamond pavé dial with blued steel hands, exposed tourbillon window, and iced Presidential bracelet.",
+      material: "SOLID 18K GOLD & 316L STEEL",
+      stones: "STEP-CUT BAGUETTE DIAMONDS",
+      ctaText: "TIMEPIECE CONSULTATION ↗"
     },
     {
-      title: "Smeraldo Pesto di Pistacchio",
-      subtitle: "Pistacchio di Sicilia Puro",
-      desc: "Pregiati pistacchi siciliani tostati al punto giusto con una punta di sale marino e olio extravergine d'oliva, dalla grana rustica e sapore persistente.",
-      format: "VASO VETRO 190g",
-      origin: "100% SICILIA (ITALIA)"
+      title: "Channel-Set Baguette Eternity Band",
+      subtitle: "Step-Cut Baguette Diamonds • Solid Platinum & 14K White Gold",
+      desc: "A continuous halo of precision step-cut baguette diamonds, individually calibrated and channel-set in heavy solid platinum for eternal brilliance, engraved PT950 14K BESPOKE.",
+      material: "PLATINUM 950 / 14K WHITE GOLD",
+      stones: "VS1 STEP-CUT BAGUETTES (4.50 CTW)",
+      ctaText: "ORDER BESPOKE SIZE ↗"
     },
     {
-      title: "Confettura Extra di Gelsi Neri",
-      subtitle: "Gelsi Neri dell'Etna",
-      desc: "Frutto antico e prezioso delle pendici etnee, dal colore rubino profondo e note balsamiche uniche.",
-      format: "VASO VETRO 240g",
-      origin: "100% SICILIA (ITALIA)"
-    },
-    {
-      title: "Cipolla in Agrodolce Gourmet",
-      subtitle: "Cipolle Giarratana Tradizionali",
-      desc: "La dolcezza naturale della celebre cipolla di Giarratana esaltata da un caramellamento lento con aceto di vino e spezie aromatiche.",
-      format: "VASO VETRO 280g",
-      origin: "100% SICILIA (ITALIA)"
+      title: "Two-Tone Royal Cuban Bracelet",
+      subtitle: "14mm Interlocking Pavé • Dual-Gold Contrast Clasp",
+      desc: "An elegant companion piece engineered with alternating high-polish and diamond-paved links in contrasting yellow and white gold, secured by our signature diamond-encrusted box lock clasp.",
+      material: "SOLID 14K TWO-TONE GOLD",
+      stones: "MICRO-PAVÉ VVS DIAMONDS (2.80 CTW)",
+      ctaText: "INQUIRE ATELIER INVENTORY ↗"
     }
   ];
 
@@ -62,7 +60,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const marquee = document.getElementById('jar-slider-marquee');
   const stampWrapper = document.getElementById('backdrop-stamp');
   const floatingCapsule = document.getElementById('floating-discover-capsule');
-  const capsuleText = document.getElementById('capsule-text');
   const capsuleBtn = document.getElementById('capsule-btn');
 
   // Modal elements
@@ -71,6 +68,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const modalTitle = document.getElementById('modal-title');
   const modalSubtitle = document.getElementById('modal-subtitle');
   const modalDesc = document.getElementById('modal-desc');
+  const modalMaterial = document.getElementById('modal-material');
+  const modalStones = document.getElementById('modal-stones');
+  const modalInquireBtn = document.getElementById('modal-inquire-btn');
+
+  const headerMenuBtn = document.getElementById('header-menu-btn');
+  const headerCircleBtn = document.getElementById('header-circle-btn');
 
   const N = items.length;
   let targetProgress = 0;
@@ -82,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let isDragging = false;
   let startX = 0;
 
-  // Wheel interaction (horizontal and vertical wheel drive slider)
+  // Wheel interaction (vertical or horizontal wheel traverses 3D slider)
   window.addEventListener('wheel', (e) => {
     const delta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
     targetProgress += delta * 0.0016;
@@ -123,11 +126,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Open drawer modal
   function openModal(idx) {
-    const p = products[idx];
-    modalTitle.textContent = p.title;
-    modalSubtitle.textContent = p.subtitle;
-    modalDesc.textContent = p.desc;
-    drawer.classList.add('active');
+    const p = products[idx % products.length];
+    if (modalTitle) modalTitle.textContent = p.title;
+    if (modalSubtitle) modalSubtitle.textContent = p.subtitle;
+    if (modalDesc) modalDesc.textContent = p.desc;
+    if (modalMaterial) modalMaterial.textContent = p.material;
+    if (modalStones) modalStones.textContent = p.stones;
+    if (modalInquireBtn) modalInquireBtn.textContent = p.ctaText;
+    if (drawer) drawer.classList.add('active');
   }
 
   if (capsuleBtn) {
@@ -137,15 +143,31 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  if (drawerCloseBtn) {
-    drawerCloseBtn.addEventListener('click', () => {
-      drawer.classList.remove('active');
+  if (headerMenuBtn) {
+    headerMenuBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      openModal(activeIndex);
     });
   }
 
-  drawer.addEventListener('click', (e) => {
-    if (e.target === drawer) drawer.classList.remove('active');
-  });
+  if (headerCircleBtn) {
+    headerCircleBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      openModal(activeIndex);
+    });
+  }
+
+  if (drawerCloseBtn) {
+    drawerCloseBtn.addEventListener('click', () => {
+      if (drawer) drawer.classList.remove('active');
+    });
+  }
+
+  if (drawer) {
+    drawer.addEventListener('click', (e) => {
+      if (e.target === drawer) drawer.classList.remove('active');
+    });
+  }
 
   items.forEach((item) => {
     item.addEventListener('click', (e) => {
@@ -176,7 +198,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Rotate circular background vector stamp in sync
     if (stampWrapper) {
-      stampWrapper.style.transform = `translate(-50%, -50%) rotate(${currentProgress * 80}deg)`;
+      stampWrapper.style.transform = `translate(-50%, -50%) rotate(${currentProgress * 75}deg)`;
     }
 
     const vw = window.innerWidth;
@@ -199,20 +221,20 @@ document.addEventListener('DOMContentLoaded', () => {
         closestIndex = i;
       }
 
-      // Exact Hyperbolic Tangent Spacing Distortion from Agrumea
-      // Math.tanh expands the center focal active jar and compresses at lateral edges
-      const distortedOffset = Math.tanh(offset * 3.2);
-      const x = distortedOffset * (baseWidth * 0.58);
+      // Exact Hyperbolic Tangent Spacing Distortion
+      // Math.tanh creates the fish-eye focal expansion at center, compressing at edges
+      const distortedOffset = Math.tanh(offset * 3.0);
+      const x = distortedOffset * (baseWidth * 0.54);
 
       // Arc curvature in Y
       const y = Math.pow(Math.abs(distortedOffset), 2) * 85;
 
       // 3D Tilts matching video:
-      // Active center: upright, slight forward tilt showing top lid
+      // Active center: upright, slight forward tilt showing top perspective
       // Lateral items: roll towards center, yaw, and pitch forward
-      const rotY = -distortedOffset * 28;
-      const rotX = 7 + Math.abs(distortedOffset) * 12; // tilts forward showing metallic lid in perspective
-      const rotZ = -distortedOffset * 16 + (velocity * 0.04); // dynamic inertial lean
+      const rotY = -distortedOffset * 26;
+      const rotX = 6 + Math.abs(distortedOffset) * 12; // tilts forward in perspective
+      const rotZ = -distortedOffset * 15 + (velocity * 0.04); // dynamic inertial lean
 
       // Dynamic Scale & Depth of Field (DoF)
       const scale = Math.max(1.08 - Math.pow(absOffset * 2.2, 1.25) * 0.52, 0.65);
@@ -240,7 +262,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (floatingCapsule) {
-      // Position capsule slightly to the left of the active jar, matching screenshot
+      // Position capsule slightly to the left of the active jewelry hero
       const badgeX = centerJarX - 250;
       const badgeY = centerJarY - 30;
       floatingCapsule.style.transform = `translate(${badgeX}px, ${badgeY}px)`;
