@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="800" height="1000">
+  <defs>
+    <linearGradient id="gold_g3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF6CC"/>
+      <stop offset="35%" stop-color="#E5C158"/>
+      <stop offset="70%" stop-color="#AA7C11"/>
+      <stop offset="100%" stop-color="#4E3B0A"/>
+    </linearGradient>
+    <filter id="shadow_g3" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="24" stdDeviation="20" flood-color="rgba(0,0,0,0.36)"/>
+    </filter>
+  </defs>
+  <g filter="url(#shadow_g3)" transform="translate(0, 150)">
+    <path d="M 120,450 C 220,320 580,320 680,450 C 580,580 220,580 120,450 Z" 
+          fill="none" stroke="url(#gold_g3)" stroke-width="48" stroke-linecap="round"/>
+    <!-- Deep Cut Teeth Separations -->
+    <line x1="260" y1="360" x2="260" y2="530" stroke="url(#gold_g3)" stroke-width="14"/>
+    <line x1="350" y1="330" x2="350" y2="550" stroke="url(#gold_g3)" stroke-width="14"/>
+    <line x1="450" y1="330" x2="450" y2="550" stroke="url(#gold_g3)" stroke-width="14"/>
+    <line x1="540" y1="360" x2="540" y2="530" stroke="url(#gold_g3)" stroke-width="14"/>
+    <!-- Diamonds Insets -->
+    <circle cx="305" cy="450" r="12" fill="#FFFFFF"/>
+    <circle cx="495" cy="450" r="12" fill="#FFFFFF"/>
+  </g>
+</svg>
