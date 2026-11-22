@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" width="1200" height="1200">
+  <defs>
+    <linearGradient id="cgrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="50%" stop-color="#D4AF37"/>
+      <stop offset="100%" stop-color="#5A4308"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="1200" fill="transparent"/>
+  <!-- Subtle Soft Contact Shadow -->
+  <ellipse cx="600" cy="1020" rx="360" ry="40" fill="rgba(17,17,22,0.08)"/>
+  <circle cx="600" cy="580" r="360" fill="none" stroke="url(#cgrad)" stroke-width="32"/>
+  <circle cx="600" cy="580" r="300" fill="none" stroke="#D4AF37" stroke-width="2" stroke-dasharray="12,12"/>
+  <text x="600" y="600" font-family="sans-serif" font-size="42" font-weight="800" fill="#111116" text-anchor="middle" letter-spacing="4">LUMINOUS TIMEPIECE</text>
+  <text x="600" y="660" font-family="monospace" font-size="20" fill="#71717A" text-anchor="middle">ATELIER ARCHIVE · HOUSTON</text>
+</svg>
