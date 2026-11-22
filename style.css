@@ -1,0 +1,163 @@
+/* ==========================================================================
+   WE JEWELRY & CO. — LUXURY FLAGSHIP STYLESHEET
+   Crafted for Editorial Immersion & Experimental WebGL Interaction
+   ========================================================================== */
+
+:root {
+  --bg-dark: #070709;
+  --bg-card: #121217;
+  --gold-primary: #D4AF37;
+  --gold-light: #F7E7A9;
+  --silver-bright: #F5F5F7;
+  --silver-dim: #A1A1AA;
+}
+
+html {
+  scroll-behavior: auto; /* Handled smoothly by Lenis */
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--silver-bright);
+}
+
+body {
+  overflow-x: hidden;
+  position: relative;
+  width: 100%;
+}
+
+/* Luxury Font Assignments */
+.font-sans {
+  font-family: 'Syne', 'Plus Jakarta Sans', sans-serif !important;
+}
+
+.font-serif {
+  font-family: 'Instrument Serif', 'Cinzel', serif !important;
+}
+
+.font-mono {
+  font-family: 'Space Mono', monospace !important;
+}
+
+/* Micro-noise Texture Overlay */
+.grain-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 99;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+/* Ambient Volumetric Lighting (Helion & Brewns Specs) */
+.hero-radial-glow {
+  position: absolute;
+  top: 35%;
+  left: 30%;
+  width: 65vw;
+  height: 65vh;
+  transform: translate(-30%, -30%);
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.09) 0%, rgba(20, 20, 28, 0.04) 50%, transparent 80%);
+  filter: blur(80px);
+  z-index: 1;
+}
+
+.preloader-bloom {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 480px;
+  height: 480px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.16) 0%, rgba(59, 130, 246, 0.06) 45%, transparent 70%);
+  filter: blur(70px);
+  pointer-events: none;
+}
+
+.bespoke-radiant-core {
+  position: absolute;
+  top: 50%;
+  right: 15%;
+  width: 520px;
+  height: 520px;
+  transform: translate(0, -50%);
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.12) 0%, rgba(139, 92, 246, 0.05) 50%, transparent 75%);
+  filter: blur(95px);
+  pointer-events: none;
+}
+
+/* WebGL 3D Interactive Viewport */
+#webgl-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+}
+
+#webgl-container:active {
+  cursor: grabbing;
+}
+
+/* Adaptive Navigation State (Brewns Cover Switch) */
+header.header-light {
+  color: #111116 !important;
+}
+
+header.header-light .brand-wordmark span:first-child {
+  color: #111116 !important;
+}
+
+header.header-light .nav-link {
+  color: #33333C !important;
+}
+
+header.header-light .concierge-btn {
+  border-color: rgba(0, 0, 0, 0.3) !important;
+  color: #111116 !important;
+  background-color: rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Vault Ascending Curtain Panel (Spec A-6) */
+.vault-curtain-panel {
+  box-shadow: 0 -35px 70px rgba(0, 0, 0, 0.45);
+}
+
+/* Editorial Card Hover Interaction */
+.vault-card {
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.45s ease;
+}
+
+.vault-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.09);
+  z-index: 2;
+}
+
+/* Monogram Slow Rotation */
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+  animation: spinSlow 20s linear infinite;
+}
+
+/* Responsive Overrides */
+@media (max-width: 768px) {
+  #floating-badge {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    margin-top: 2rem;
+    max-width: 100%;
+  }
+
+  #webgl-container {
+    height: 65vh;
+  }
+}
