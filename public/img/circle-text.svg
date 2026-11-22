@@ -1,10 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
   <defs>
-    <path id="textCircle" d="M 500, 500 m -385, 0 a 385, 385 0 1, 1 770, 0 a 385, 385 0 1, 1 -770, 0" />
+    <!-- Seamless 360-degree circle path, radius 440 -->
+    <path id="circlePath" d="M 500, 500 m -440, 0 a 440, 440 0 1, 1 880, 0 a 440, 440 0 1, 1 -880, 0" />
   </defs>
-  <text font-family="'Times New Roman', Georgia, 'Playfair Display', serif" font-size="28" font-weight="700" letter-spacing="0.22em" fill="#C5A059">
-    <textPath href="#textCircle" startOffset="0%">
-      • WE JEWELRY &amp; CO. • HOUSTON BESPOKE ATELIER • SOLID GOLD &amp; VVS PAVÉ • SHARPSTOWN #1168 
+  <text font-family="-apple-system, BlinkMacSystemFont, 'Inter Tight', 'Helvetica Neue', sans-serif" font-size="18.5" font-weight="700" letter-spacing="0.26em" fill="#C5A059" opacity="0.85">
+    <textPath href="#circlePath" startOffset="0%">
+      • WE JEWELRY &amp; CO. • HOUSTON BESPOKE ATELIER • SOLID GOLD &amp; VVS PAVÉ • SHARPSTOWN #1168 • WE JEWELRY &amp; CO. • HOUSTON BESPOKE ATELIER • SOLID GOLD &amp; VVS PAVÉ • SHARPSTOWN #1168 
     </textPath>
   </text>
 </svg>
