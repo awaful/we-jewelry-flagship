@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1030" width="900" height="1030">
+  <defs>
+    <linearGradient id="pgrad_06" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="46.9%" stop-color="#D4AF37"/>
+      <stop offset="100%" stop-color="#3B2602"/>
+    </linearGradient>
+    <radialGradient id="iced_06" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="40%" stop-color="#F2E6C4"/>
+      <stop offset="100%" stop-color="#8C6E1C"/>
+    </radialGradient>
+  </defs>
+  <g transform="translate(450, 515) rotate(-6) scale(0.999, 1) translate(-450, -515)">
+    <!-- Bail -->
+    <rect x="390" y="60" width="120" height="140" rx="20" fill="url(#pgrad_06)" stroke="#FFFFFF" stroke-width="6"/>
+    <!-- Medallion Frame -->
+    <circle cx="450" cy="560" r="340" fill="#0C0C10" stroke="url(#pgrad_06)" stroke-width="38"/>
+    <circle cx="450" cy="560" r="300" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-dasharray="14,14"/>
+    <!-- Sculpted Bust / Emblem in relief -->
+    <polygon points="450,340 580,480 530,680 370,680 320,480" fill="url(#iced_06)"/>
+    <circle cx="450" cy="530" r="70" fill="#FFFFFF" opacity="0.95"/>
+    <text x="450" y="740" font-family="sans-serif" font-size="44" font-weight="900" fill="#FFFFFF" text-anchor="middle" letter-spacing="8">WE LUMINOUS</text>
+  </g>
+</svg>
