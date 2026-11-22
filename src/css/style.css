@@ -247,10 +247,10 @@ html, body {
 /* Individual Jar Item */
 .jar-item {
   position: absolute;
-  top: -240px;
-  left: -130px;
-  width: 260px;
-  height: 480px;
+  top: -270px;
+  left: -155px;
+  width: 310px;
+  height: 540px;
   transform-style: preserve-3d;
   display: flex;
   flex-direction: column;
@@ -271,7 +271,7 @@ html, body {
   object-fit: contain;
   pointer-events: none;
   -webkit-user-drag: none;
-  filter: drop-shadow(0 25px 35px rgba(0, 0, 0, 0.35));
+  filter: drop-shadow(0 30px 45px rgba(0, 0, 0, 0.3));
 }
 
 /* Cylindrical Label Overlay */
