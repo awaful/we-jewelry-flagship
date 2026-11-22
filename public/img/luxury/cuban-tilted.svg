@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="800" height="1000">
+  <defs>
+    <linearGradient id="gold_t1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF8D6"/>
+      <stop offset="30%" stop-color="#E5C158"/>
+      <stop offset="60%" stop-color="#AA7C11"/>
+      <stop offset="100%" stop-color="#3A2904"/>
+    </linearGradient>
+    <filter id="shadow_t1" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="-15" dy="30" stdDeviation="24" flood-color="rgba(0,0,0,0.4)"/>
+    </filter>
+  </defs>
+  <g filter="url(#shadow_t1)" transform="translate(400,500) rotate(-22) skewX(12) scale(0.9, 0.95) translate(-400,-500)">
+    <path d="M 400,120 C 650,120 700,550 550,750 C 450,880 350,880 250,750 C 100,550 150,120 400,120 Z" 
+          fill="none" stroke="url(#gold_t1)" stroke-width="76" stroke-linejoin="round" stroke-linecap="round"/>
+    <path d="M 400,120 C 650,120 700,550 550,750 C 450,880 350,880 250,750 C 100,550 150,120 400,120 Z" 
+          fill="none" stroke="#FFFFFF" stroke-width="10" stroke-dasharray="12,18" opacity="0.85"/>
+    <rect x="340" y="80" width="120" height="70" rx="8" fill="url(#gold_t1)" stroke="#FFFFFF" stroke-width="3"/>
+  </g>
+</svg>
