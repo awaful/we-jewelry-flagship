@@ -6,320 +6,166 @@
   <title>WE Jewelry &amp; Co. — Bespoke Fine Diamond &amp; Gold Atelier | Houston, TX</title>
   <meta name="description" content="Houston's premier bespoke diamond jewelry atelier. Handcrafted Miami Cuban links, VVS custom pendants, and precision timepieces.">
   
-  <!-- Exact Typography Families (Inter Tight 800/400, Instrument Serif, JetBrains Mono, Outfit 300) -->
+  <!-- Premium Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@300;400;800&family=JetBrains+Mono:wght@400;700&family=Outfit:wght@300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 
-  <!-- Critical Asset Preloads -->
-  <link rel="preload" href="public/img/hero-chain/hero-chain-07.svg" as="image">
-  <link rel="preload" href="public/img/hero-pendant/hero-pendant-07.svg" as="image">
-
-  <!-- Core Libraries: Three.js, GSAP, ScrollTrigger, Lenis -->
+  <!-- Three.js, GSAP, ScrollTrigger, Lenis -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://unpkg.com/lenis@1.1.9/dist/lenis.min.js"></script>
 
-  <!-- Clean Token-based Stylesheet -->
   <link rel="stylesheet" href="src/css/style.css">
 </head>
-<body>
+<body class="bg-[#F3F2EE] text-[#111116] overflow-x-hidden antialiased select-none">
 
   <!-- =========================================================================
-       5. PRELOADER (Spec B-1, B-2, B-3)
-       Fullscreen #070709, tabular counter with superindex %, progress line scaleX
+       PRELOADER: MINIMALIST LUXURY (Fast & Smooth)
        ========================================================================= -->
-  <aside id="preloader" aria-label="Loading Atelier Vault">
-    <div class="preloader-sweep-band"></div>
-
-    <div class="font-mono text-muted flex justify-between">
+  <aside id="preloader" class="fixed inset-0 z-50 bg-[#F3F2EE] flex flex-col justify-between p-8 md:p-12 transition-opacity duration-500">
+    <div class="flex justify-between items-center text-[10px] font-mono tracking-widest text-[#71717A] uppercase">
       <span>WE JEWELRY &amp; CO. // THE LUMINOUS INC.</span>
       <span>HOUSTON · 29°43'N 95°31'W</span>
     </div>
 
-    <div class="preloader-center-meta font-mono">
-      <span style="font-size: 11px; letter-spacing: 0.3em; color: var(--gold-soft);">FINE JEWELRY ATELIER</span>
+    <div class="text-center my-auto">
+      <h2 class="font-serif italic text-4xl md:text-5xl text-[#111116] mb-3">WE Jewelry</h2>
+      <p class="font-mono text-[10px] tracking-[0.3em] uppercase text-[#8B6B23]">Digital Flagship Atelier</p>
     </div>
 
-    <div class="preloader-counter-wrap">
-      <div id="preloader-num" class="preloader-number">0<sup>%</sup></div>
-      <div class="preloader-track">
-        <div id="preloader-bar" class="preloader-bar"></div>
-      </div>
-      <div class="font-mono" style="margin-top: 10px; font-size: 10px; color: #555560; letter-spacing: 0.15em;">
-        INITIALIZING VAULT ASSETS
+    <div class="w-full max-w-sm mx-auto text-center">
+      <div id="preloader-counter" class="font-mono text-xl text-[#111116] tabular-nums mb-2">0%</div>
+      <div class="w-full h-[1px] bg-[#D4D2C9] relative overflow-hidden">
+        <div id="preloader-bar" class="absolute left-0 top-0 bottom-0 w-0 bg-[#8B6B23] transition-all duration-75"></div>
       </div>
     </div>
   </aside>
 
   <!-- =========================================================================
-       ADAPTIVE NAVIGATION (Cover switch, 6vh)
+       HEADER: EXACT SOTD FRAMING (Agrumea Architecture)
        ========================================================================= -->
-  <header id="site-header">
-    <nav class="nav-links font-mono" aria-label="Main Navigation">
-      <a href="#hero">ATELIER</a>
-      <a href="#vault">THE VAULT</a>
-      <a href="#particles-section">CUSTOM PROCESS</a>
-      <a href="#clock-section">TIMEPIECES</a>
-    </nav>
+  <header id="site-header" class="fixed top-0 left-0 w-full z-40 px-6 md:px-12 py-6 flex items-center justify-between pointer-events-none">
+    <!-- Left Language / Region Pills -->
+    <div class="flex items-center gap-2 pointer-events-auto">
+      <span class="pill-btn font-mono text-[10px] active">HTX</span>
+      <span class="pill-btn font-mono text-[10px]">USA</span>
+    </div>
 
-    <a href="#" class="nav-wordmark">WE JEWELRY &amp; CO.</a>
+    <!-- Center Wordmark / Logo -->
+    <a href="#" class="brand-center flex flex-col items-center pointer-events-auto text-center">
+      <span class="font-serif italic text-2xl md:text-3xl tracking-tight text-[#111116] leading-none">
+        WE Jewelry
+      </span>
+      <span class="font-mono text-[8px] tracking-[0.35em] text-[#8B6B23] uppercase mt-1">
+        Houston Flagship
+      </span>
+    </a>
 
-    <div>
-      <a href="https://wa.me/18326886688?text=Hello%20WE%20Jewelry,%20I%20would%20like%20to%20consult%20about%20a%20piece" target="_blank" rel="noopener" class="nav-cta font-mono">
-        VIP CONCIERGE ↗
+    <!-- Right Menu / Concierge Action -->
+    <div class="flex items-center gap-3 pointer-events-auto">
+      <a href="https://wa.me/18326886688?text=Hello%20WE%20Jewelry,%20I%20would%20like%20to%20consult%20about%20a%20piece" target="_blank" rel="noopener" class="menu-pill-btn flex items-center gap-2 font-mono text-[11px] uppercase tracking-wider text-[#111116]">
+        <span>CONCIERGE</span>
+        <span class="w-2 h-2 rounded-full bg-[#D4AF37] animate-pulse"></span>
       </a>
     </div>
   </header>
 
   <!-- =========================================================================
-       6. HERO SECTION (A-1, A-2, A-3)
+       HERO: 3D CIRCULAR CAROUSEL & CURVED PATH TYPOGRAPHY (Exact Reference)
        ========================================================================= -->
-  <section id="hero">
+  <main id="hero-stage" class="relative w-full h-screen overflow-hidden flex items-center justify-center bg-[#F3F2EE]">
     
-    <!-- Left Editorial Typography Block (Single <h1>) -->
-    <div class="hero-text-block">
-      <div class="hero-kicker font-mono">
-        <span>✦ SPECIALTY DIAMOND ATELIER</span>
-      </div>
-
-      <h1 class="hero-h1 font-title">
-        <span class="h1-line">CHISELED IN</span>
-        <span class="h1-line">ICE &amp; GOLD</span>
-      </h1>
-
-      <span class="hero-script">bespoke</span>
-
-      <p class="hero-desc">
-        Fine diamond craftsmanship meeting Houston street culture. Hand-cast solid gold and master pavé settings.
-      </p>
-
-      <a href="#vault" class="hero-cta font-mono">EXPLORE THE VAULT ↗</a>
-    </div>
-
-    <!-- Piece 1: hero-chain (31vw × 78vh, left: 62vw, top: 20vh) -->
-    <div class="hero-chain-box" aria-label="Miami Cuban Chain 3D Sequence">
-      <div class="frame-stack">
-        <img src="public/img/hero-chain/hero-chain-00.svg" alt="" loading="lazy">
-        <img src="public/img/hero-chain/hero-chain-01.svg" alt="" loading="lazy">
-        <img src="public/img/hero-chain/hero-chain-02.svg" alt="" loading="lazy">
-        <img src="public/img/hero-chain/hero-chain-03.svg" alt="" loading="lazy">
-        <img src="public/img/hero-chain/hero-chain-04.svg" alt="" loading="lazy">
-        <img src="public/img/hero-chain/hero-chain-05.svg" alt="" loading="lazy">
-        <img src="public/img/hero-chain/hero-chain-06.svg" alt="" loading="lazy">
-        <img src="public/img/hero-chain/hero-chain-07.svg" alt="WE Jewelry Miami Cuban Link" class="active-frame" fetchpriority="high" loading="eager">
-        <img src="public/img/hero-chain/hero-chain-08.svg" alt="" loading="lazy">
-        <img src="public/img/hero-chain/hero-chain-09.svg" alt="" loading="lazy">
-        <img src="public/img/hero-chain/hero-chain-10.svg" alt="" loading="lazy">
-        <img src="public/img/hero-chain/hero-chain-11.svg" alt="" loading="lazy">
-        <img src="public/img/hero-chain/hero-chain-12.svg" alt="" loading="lazy">
-        <img src="public/img/hero-chain/hero-chain-13.svg" alt="" loading="lazy">
-        <img src="public/img/hero-chain/hero-chain-14.svg" alt="" loading="lazy">
-      </div>
-    </div>
-
-    <!-- Piece 2: hero-pendant (23vw × 42vh, left: 45vw, top: 39vh) -->
-    <div class="hero-pendant-box" aria-label="Bespoke Pendant 3D Sequence">
-      <div class="frame-stack">
-        <img src="public/img/hero-pendant/hero-pendant-00.svg" alt="" loading="lazy">
-        <img src="public/img/hero-pendant/hero-pendant-01.svg" alt="" loading="lazy">
-        <img src="public/img/hero-pendant/hero-pendant-02.svg" alt="" loading="lazy">
-        <img src="public/img/hero-pendant/hero-pendant-03.svg" alt="" loading="lazy">
-        <img src="public/img/hero-pendant/hero-pendant-04.svg" alt="" loading="lazy">
-        <img src="public/img/hero-pendant/hero-pendant-05.svg" alt="" loading="lazy">
-        <img src="public/img/hero-pendant/hero-pendant-06.svg" alt="" loading="lazy">
-        <img src="public/img/hero-pendant/hero-pendant-07.svg" alt="WE Jewelry Bust Pendant" class="active-frame" fetchpriority="high" loading="eager">
-        <img src="public/img/hero-pendant/hero-pendant-08.svg" alt="" loading="lazy">
-        <img src="public/img/hero-pendant/hero-pendant-09.svg" alt="" loading="lazy">
-        <img src="public/img/hero-pendant/hero-pendant-10.svg" alt="" loading="lazy">
-        <img src="public/img/hero-pendant/hero-pendant-11.svg" alt="" loading="lazy">
-        <img src="public/img/hero-pendant/hero-pendant-12.svg" alt="" loading="lazy">
-        <img src="public/img/hero-pendant/hero-pendant-13.svg" alt="" loading="lazy">
-        <img src="public/img/hero-pendant/hero-pendant-14.svg" alt="" loading="lazy">
-      </div>
-    </div>
-
-    <!-- Floating Interactive Badge (17vw, top-right of chain, object hover trigger) -->
-    <div class="hero-floating-badge">
-      <div class="badge-row-1">
-        <span id="badge-name">8MM PAVE MIAMI CUBAN</span>
-        <span id="badge-price" class="font-mono" style="color: var(--gold-soft);">CONSULTAR</span>
-      </div>
-      <div class="badge-row-2 font-mono">
-        <span id="badge-meta">14K SOLID · VVS1 MOISSANITE</span>
-        <span>HOUSTON</span>
-      </div>
-    </div>
-
-    <!-- Bottom Telemetry Bar (3 cols, bottom: 6vh) -->
-    <div class="hero-bottom-bar font-mono">
-      <div>
-        <span class="bottom-col-title">FLAGSHIP STORE</span>
-        <span class="bottom-col-val">100 SHARPSTOWN CTR #1168</span>
-      </div>
-      <div>
-        <span class="bottom-col-title">CONCIERGE HOTLINE</span>
-        <a href="tel:8326886688" class="bottom-col-val">(832) 688-6688</a>
-      </div>
-      <div>
-        <span class="bottom-col-title">INSTAGRAM OFFICIAL</span>
-        <a href="https://www.instagram.com/the.luminous.official/" target="_blank" rel="noopener" class="bottom-col-val">@THE.LUMINOUS.OFFICIAL ↗</a>
-      </div>
-    </div>
-
-  </section>
-
-  <!-- =========================================================================
-       8. VAULT CATALOG (A-6, A-7, A-8)
-       Ascending cover curtain: straight edge, no border-radius, no shadow
-       ========================================================================= -->
-  <section id="vault">
-    
-    <div class="vault-header">
-      <h2 class="vault-h2 font-title">
-        FAVORITES<br>
-        CRAFTED<br>
-        IN HOUSTON
-      </h2>
-      <div class="vault-header-right">
-        <p class="vault-header-desc">
-          Solid gold, 925 silver and custom pavé diamond settings crafted in our Houston atelier.
-        </p>
-        <a href="https://wa.me/18326886688" target="_blank" rel="noopener" class="vault-full-link">
-          VIEW COMPLETE CATALOG ↗
-        </a>
-      </div>
-    </div>
-
-    <!-- 4-Column Grid with 1px hairlines -->
-    <div class="vault-grid">
-      
-      <!-- Card 1 -->
-      <article class="vault-cell">
-        <div class="font-mono" style="color: #6E6E78; font-size: 10px;">[01 / CHAINS]</div>
-        <img src="public/img/catalog/catalog-cuban.svg" alt="Miami Cuban Chain" class="vault-product-img" loading="lazy">
-        <div class="vault-cell-meta font-mono">
-          <span style="font-weight: 700;">MIAMI CUBAN CHAIN</span>
-          <span style="color: var(--gold);">CONSULTAR</span>
-        </div>
-      </article>
-
-      <!-- Card 2 -->
-      <article class="vault-cell">
-        <div class="font-mono" style="color: #6E6E78; font-size: 10px;">[02 / PENDANTS]</div>
-        <img src="public/img/catalog/catalog-pendant.svg" alt="Custom Bust Pendant" class="vault-product-img" loading="lazy">
-        <div class="vault-cell-meta font-mono">
-          <span style="font-weight: 700;">CUSTOM BUST PENDANT</span>
-          <span style="color: var(--gold);">CONSULTAR</span>
-        </div>
-      </article>
-
-      <!-- Card 3 -->
-      <article class="vault-cell">
-        <div class="font-mono" style="color: #6E6E78; font-size: 10px;">[03 / GRILLZ]</div>
-        <img src="public/img/catalog/catalog-grillz.svg" alt="Dental Grillz" class="vault-product-img" loading="lazy">
-        <div class="vault-cell-meta font-mono">
-          <span style="font-weight: 700;">DEEP CUT GRILLZ</span>
-          <span style="color: var(--gold);">CONSULTAR</span>
-        </div>
-      </article>
-
-      <!-- Card 4 -->
-      <article class="vault-cell">
-        <div class="font-mono" style="color: #6E6E78; font-size: 10px;">[04 / TIMEPIECES]</div>
-        <img src="public/img/catalog/catalog-watch.svg" alt="Luminous Timepiece" class="vault-product-img" loading="lazy">
-        <div class="vault-cell-meta font-mono">
-          <span style="font-weight: 700;">LUMINOUS TIMEPIECE</span>
-          <span style="color: var(--gold);">CONSULTAR</span>
-        </div>
-      </article>
-
-    </div>
-
-  </section>
-
-  <!-- =========================================================================
-       9. CLOCK SECTION (A-9, A-10)
-       Continuous light background, pinned 220vh
-       ========================================================================= -->
-  <section id="clock-section">
-    
-    <div class="clock-telemetry-left font-mono">
-      <span style="color: #8E8E98; font-size: 10px; display: block;">CHRONOMETRY PROTOCOL</span>
-      <span id="clock-time-val" style="font-weight: 700; font-size: 11px;">HOUSTON CST · 11:42 · REF #LUM-1168</span>
-      <span style="color: #8E8E98; font-size: 10px; display: block;">AUTOMATIC JEWELED MOVEMENT</span>
-    </div>
-
-    <!-- Center Stage: Dial SVG + Centered Watch Hero -->
-    <div class="clock-stage-center">
-      <svg class="clock-dial-svg" viewBox="0 0 400 400">
-        <!-- Radial Diffuse Halo -->
-        <circle cx="200" cy="200" r="185" fill="none" stroke="rgba(17,17,22,0.12)" stroke-width="1"/>
-        <circle cx="200" cy="200" r="170" fill="none" stroke="rgba(17,17,22,0.06)" stroke-width="1" stroke-dasharray="2,6"/>
-        
-        <!-- 12 Dial Numbers in Inter Tight 300 -->
-        <text x="200" y="44" font-family="'Inter Tight', sans-serif" font-weight="300" font-size="20" fill="#111116" text-anchor="middle">12</text>
-        <text x="356" y="206" font-family="'Inter Tight', sans-serif" font-weight="300" font-size="20" fill="#111116" text-anchor="middle">3</text>
-        <text x="200" y="368" font-family="'Inter Tight', sans-serif" font-weight="300" font-size="20" fill="#111116" text-anchor="middle">6</text>
-        <text x="44" y="206" font-family="'Inter Tight', sans-serif" font-weight="300" font-size="20" fill="#111116" text-anchor="middle">9</text>
+    <!-- Central Organic Curved Badge / Backdrop -->
+    <div class="curved-organic-badge">
+      <!-- Curved SVG Path with Rotating Ring Typography -->
+      <svg class="curved-text-svg" viewBox="0 0 1000 1000">
+        <path id="curvePath" d="M 120,500 A 380,380 0 1,1 880,500 A 380,380 0 1,1 120,500" fill="none" />
+        <text class="curved-svg-text">
+          <textPath id="curvedTextPath" href="#curvePath" startOffset="0%">
+            ✦ BESPOKE FINE JEWELRY · WE JEWELRY &amp; CO. · SCULPTED IN GOLD · MASTER PAVE SETTINGS · HOUSTON TEXAS · THE LUMINOUS INC · 
+          </textPath>
+        </text>
       </svg>
-
-      <img src="public/img/watch-hero.svg" alt="WE Jewelry Luminous Watch" class="watch-hero-img">
     </div>
 
-    <!-- Bottom Incoming Band from Next Section (8vh) -->
-    <div class="clock-bottom-band"></div>
+    <!-- WebGL 3D Interactive Carousel Canvas -->
+    <canvas id="carousel-canvas" class="absolute inset-0 z-10 w-full h-full cursor-grab active:cursor-grabbing"></canvas>
 
-  </section>
+    <!-- Floating Interactive Pill Tooltip (Above Active Center Piece) -->
+    <div id="active-product-tooltip" class="absolute z-20 pointer-events-auto transition-transform duration-300">
+      <a id="tooltip-link" href="https://wa.me/18326886688" target="_blank" rel="noopener" class="tooltip-pill flex items-center gap-2 px-4 py-2 rounded-full bg-white/95 text-[#111116] shadow-xl border border-black/5 font-mono text-[11px] uppercase tracking-wider hover:bg-[#111116] hover:text-white transition-all">
+        <span class="w-1.5 h-1.5 rounded-full bg-[#D4AF37]"></span>
+        <span id="tooltip-title">DISCOVER THE PIECE</span>
+        <span class="text-[#8B6B23]">↗</span>
+      </a>
+    </div>
+
+    <!-- Bottom Center Scroll Indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center pointer-events-none text-center">
+      <span class="font-mono text-[9px] uppercase tracking-[0.25em] text-[#71717A] mb-2">SCROLL TO DISCOVER</span>
+      <div class="scroll-track-pill">
+        <div class="scroll-thumb"></div>
+      </div>
+    </div>
+
+    <!-- Bottom Left / Right Meta Tags -->
+    <div class="absolute bottom-8 left-6 md:left-12 z-20 font-mono text-[10px] text-[#71717A] uppercase tracking-wider hidden md:block">
+      <span>100 SHARPSTOWN CENTER #1168</span>
+    </div>
+
+    <div class="absolute bottom-8 right-6 md:right-12 z-20 font-mono text-[10px] text-[#71717A] uppercase tracking-wider hidden md:block">
+      <a href="https://www.instagram.com/the.luminous.official/" target="_blank" rel="noopener" class="hover:text-[#111116] transition-colors">
+        @THE.LUMINOUS.OFFICIAL ↗
+      </a>
+    </div>
+
+  </main>
 
   <!-- =========================================================================
-       10. PARTICLES SECTION (B-3...B-8)
-       The ONLY canvas on the entire site (WebGL, 60k particles morphing)
+       CURATED VAULT DRAWER / PRODUCT DETAILS MODAL
        ========================================================================= -->
-  <section id="particles-section">
-    <canvas id="particles-canvas"></canvas>
-
-    <div class="particles-content-overlay">
-      <h2 class="particles-h2 font-outfit">
-        BUILT FOR THE FAR SIDE.
-        <span class="line-2">MADE TO PULL YOU BACK.</span>
-      </h2>
-
-      <div class="four-disciplines-center">
-        FOUR DISCIPLINES.<br>ONE STEADY ORBIT.
-      </div>
-
-      <div class="particles-side-flanks font-mono" style="font-size: 11px; color: var(--gold-soft);">
-        <span>[01] 3D CAD BLUEPRINT</span>
-        <span>[02] SOLID GOLD FOUNDRY</span>
-        <span>[03] VVS PAVE SETTING</span>
-        <span>[04] INSURED DISPATCH</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- =========================================================================
-       FOOTER
-       ========================================================================= -->
-  <footer id="site-footer">
-    <div class="footer-inner font-mono">
+  <div id="detail-drawer" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 flex justify-end">
+    <div class="drawer-panel w-full max-w-md bg-white h-full p-8 md:p-12 flex flex-col justify-between transform translate-x-full transition-transform duration-400">
       <div>
-        <span style="font-weight: 700; color: #FFFFFF; display: block;">WE JEWELRY &amp; CO.</span>
-        <span style="font-size: 10px;">100 SHARPSTOWN CENTER #1168 · HOUSTON, TX 77036</span>
-      </div>
-      <div>
-        <a href="https://www.instagram.com/the.luminous.official/" target="_blank" rel="noopener" style="color: var(--text-light); text-decoration: underline; margin-right: 20px;">
-          @THE.LUMINOUS.OFFICIAL ↗
-        </a>
-        <a href="tel:8326886688" style="color: var(--gold-soft); text-decoration: underline;">
-          (832) 688-6688
-        </a>
-      </div>
-    </div>
-  </footer>
+        <div class="flex justify-between items-center pb-4 border-b border-neutral-200">
+          <span class="font-mono text-[10px] uppercase text-[#8B6B23] tracking-widest">ATELIER SPECIFICATION</span>
+          <button id="close-drawer" class="font-mono text-sm uppercase text-neutral-500 hover:text-black">✕</button>
+        </div>
 
-  <!-- Application Entry Point (ES Modules) -->
-  <script type="module" src="src/js/main.js"></script>
+        <div class="mt-8">
+          <span id="drawer-cat" class="font-mono text-xs text-neutral-400 uppercase tracking-widest block mb-2">[01 / CHAINS]</span>
+          <h3 id="drawer-title" class="font-serif italic text-3xl md:text-4xl text-neutral-900 leading-tight">
+            Miami Cuban Chain
+          </h3>
+          <p id="drawer-desc" class="font-sans text-xs text-neutral-500 mt-4 leading-relaxed">
+            Handcrafted with solid 14K gold links and precision triple-lock clasp. Each pavé setting is finished under microscope magnification.
+          </p>
+        </div>
+
+        <div class="mt-8 p-4 bg-neutral-50 border border-neutral-200 font-mono text-xs space-y-2">
+          <div class="flex justify-between">
+            <span class="text-neutral-400">PRECIOUS ALLOY</span>
+            <span id="drawer-metal" class="font-bold text-neutral-900">14K / 18K SOLID GOLD</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-neutral-400">DIAMOND CLARITY</span>
+            <span id="drawer-stones" class="font-bold text-neutral-900">VVS1 MOISSANITE / NATURAL</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-neutral-400">ATELIER APPRAISAL</span>
+            <span class="font-bold text-[#8B6B23]">CONSULTAR</span>
+          </div>
+        </div>
+      </div>
+
+      <a id="drawer-consult-btn" href="https://wa.me/18326886688" target="_blank" rel="noopener" class="w-full py-4 bg-[#111116] text-white font-mono text-xs uppercase tracking-widest text-center hover:bg-[#D4AF37] hover:text-black transition-colors block">
+        INQUIRE WITH MASTER JEWELER ↗
+      </a>
+    </div>
+  </div>
+
+  <script src="src/js/carousel.js"></script>
 </body>
 </html>
