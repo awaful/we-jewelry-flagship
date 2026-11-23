@@ -151,127 +151,6 @@ body.loaded .preloader-overlay {
 }
 
 /* ==========================================================================
-   2. CUSTOM INTERACTIVE MOUSE CURSOR
-   ========================================================================== */
-@media (hover: hover) and (pointer: fine) {
-  body {
-    cursor: none;
-  }
-  a, button, input, select, textarea, [data-tilt], .hero-stage-col, .clock-dial-wrapper {
-    cursor: none !important;
-  }
-}
-
-@media (hover: none), (pointer: coarse) {
-  .custom-cursor {
-    display: none !important;
-  }
-  body, a, button, input, select, textarea {
-    cursor: auto !important;
-  }
-}
-
-.custom-cursor {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 0;
-  pointer-events: none;
-  z-index: 10000;
-  display: none;
-  transition: opacity 0.3s ease;
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .custom-cursor {
-    display: block;
-  }
-}
-
-.cursor-dot {
-  position: fixed;
-  width: 8px;
-  height: 8px;
-  background: #C5A059;
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-  box-shadow: 0 0 12px rgba(197, 160, 89, 0.9);
-  z-index: 10002;
-  transition: transform 0.12s ease-out, background-color 0.2s, opacity 0.2s;
-}
-
-.cursor-ring {
-  position: fixed;
-  width: 44px;
-  height: 44px;
-  border: 1px solid rgba(197, 160, 89, 0.65);
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 10001;
-  background: rgba(197, 160, 89, 0.05);
-  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1), height 0.3s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s, border-color 0.3s, transform 0.15s ease-out;
-}
-
-.cursor-label {
-  font-family: 'Space Mono', monospace;
-  font-size: 8px;
-  font-weight: 800;
-  letter-spacing: 0.14em;
-  color: #121110;
-  text-transform: uppercase;
-  opacity: 0;
-  transform: scale(0.6);
-  transition: opacity 0.2s, transform 0.2s;
-  pointer-events: none;
-  white-space: nowrap;
-}
-
-/* Hovering interactive links & buttons */
-.cursor-hover .cursor-dot {
-  transform: translate(-50%, -50%) scale(0.4);
-  opacity: 0.6;
-}
-
-.cursor-hover .cursor-ring {
-  width: 62px;
-  height: 62px;
-  border-color: #D4AF37;
-  background: rgba(212, 175, 55, 0.16);
-  backdrop-filter: blur(2px);
-}
-
-/* Hovering hero 3D interactive stage */
-.cursor-hero .cursor-dot {
-  opacity: 0;
-}
-
-.cursor-hero .cursor-ring {
-  width: 82px;
-  height: 82px;
-  background: #C5A059;
-  border-color: #C5A059;
-  box-shadow: 0 10px 30px rgba(197, 160, 89, 0.45);
-}
-
-.cursor-hero .cursor-label {
-  opacity: 1;
-  transform: scale(1);
-  color: #121110;
-}
-
-/* Grabbing / Dragging state */
-.cursor-grabbing .cursor-ring {
-  transform: translate(-50%, -50%) scale(0.85);
-  background: #D4AF37;
-}
-
-/* ==========================================================================
    3. ANNOUNCEMENT TICKER & FLOATING FROSTED PILL HEADER
    ========================================================================== */
 .top-announcement-bar {
@@ -643,7 +522,7 @@ body.loaded .preloader-overlay {
   transition: transform 0.15s ease-out;
 }
 
-/* Layer 2: Honeycomb Diamond Grillz (Top-Right Angle) */
+/* Layer 2: Honeycomb Diamond Grillz (Top-Right Angle default) */
 .hero-layer-grillz {
   position: absolute;
   top: 26%;
@@ -655,7 +534,8 @@ body.loaded .preloader-overlay {
   z-index: 4;
   pointer-events: none;
   filter: drop-shadow(0 20px 35px rgba(0, 0, 0, 0.9)) brightness(1.02);
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease-out;
+  will-change: transform, left, top;
+  transition: opacity 0.8s ease-out;
 }
 
 .hero-grillz-img {
@@ -665,7 +545,7 @@ body.loaded .preloader-overlay {
   display: block;
 }
 
-/* Layer 1: Baguette Diamond Bezel Skeleton Watch (Bottom-Left Showcase) */
+/* Layer 1: Baguette Diamond Bezel Skeleton Watch (Bottom-Left Showcase default) */
 .hero-layer-watch {
   position: absolute;
   top: 68%;
@@ -676,7 +556,8 @@ body.loaded .preloader-overlay {
   transform-style: preserve-3d;
   z-index: 5;
   filter: drop-shadow(0 32px 64px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 35px rgba(197, 160, 89, 0.25));
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease-out;
+  will-change: transform, left, top;
+  transition: opacity 0.8s ease-out;
 }
 
 .hero-watch-img {
@@ -837,19 +718,34 @@ body.loaded .anim-reveal {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   cursor: pointer;
-  transition: transform 0.2s;
+  transition: transform 0.2s ease;
 }
 
 .menu-receipt-mini:hover {
   transform: translateY(-3px);
 }
 
-.receipt-thumb {
-  width: 48px;
-  height: auto;
-  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.15));
+.certificate-seal {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid var(--gold-accent);
+  background: rgba(197, 160, 89, 0.12);
+  color: var(--gold-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(197, 160, 89, 0.25);
+  transition: all 0.25s ease;
+}
+
+.menu-receipt-mini:hover .certificate-seal {
+  background: var(--gold-accent);
+  color: #121110;
+  transform: scale(1.08) rotate(15deg);
+  box-shadow: 0 6px 20px rgba(197, 160, 89, 0.45);
 }
 
 .receipt-hint {
@@ -1255,6 +1151,8 @@ body.loaded .anim-reveal {
   height: auto;
   cursor: grab;
   transform-style: preserve-3d;
+  filter: none !important;
+  box-shadow: none !important;
   transition: transform 0.15s ease-out;
 }
 
@@ -1266,7 +1164,8 @@ body.loaded .anim-reveal {
   width: 100%;
   height: auto;
   object-fit: contain;
-  filter: drop-shadow(0 25px 40px rgba(0, 0, 0, 0.45)) drop-shadow(0 0 20px rgba(197, 160, 89, 0.25));
+  filter: none !important;
+  box-shadow: none !important;
   pointer-events: none;
   transition: transform 0.2s ease-out;
 }
