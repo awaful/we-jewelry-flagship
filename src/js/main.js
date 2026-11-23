@@ -242,13 +242,13 @@ document.addEventListener('DOMContentLoaded', () => {
       if (heroGrillz) {
         const grillzOffX = -currentRotY * 0.9;
         const grillzOffY = currentRotX * 0.7;
-        heroGrillz.style.transform = `translate3d(calc(-50% + ${grillzOffX.toFixed(1)}px), calc(-50% + ${grillzOffY.toFixed(1)}px), -30px) scale(0.95)`;
+        heroGrillz.style.transform = `translate3d(calc(-50% + ${grillzOffX.toFixed(1)}px), calc(-50% + ${grillzOffY.toFixed(1)}px), -15px) rotate(-8deg)`;
       }
 
       if (heroWatch) {
-        const watchOffX = currentRotY * 1.4;
-        const watchOffY = -currentRotX * 1.1;
-        heroWatch.style.transform = `translate3d(calc(-50% + ${watchOffX.toFixed(1)}px), calc(-50% + ${watchOffY.toFixed(1)}px), 50px) scale(1)`;
+        const watchOffX = currentRotY * 1.3;
+        const watchOffY = -currentRotX * 1.0;
+        heroWatch.style.transform = `translate3d(calc(-50% + ${watchOffX.toFixed(1)}px), calc(-50% + ${watchOffY.toFixed(1)}px), 45px) rotate(6deg)`;
       }
 
       // Dynamic glint sweep across watch face
@@ -373,31 +373,67 @@ document.addEventListener('DOMContentLoaded', () => {
   /* =========================================================================
      6. VAULT & BESPOKE COMMISSION RECEIPT
      ========================================================================= */
-  let vaultCount = 0;
+  const vaultItems = [];
   const bagCountEl = document.getElementById('bag-count');
   const receiptItemsList = document.getElementById('receipt-items-list');
+  const vaultStatusText = document.getElementById('vault-status-text');
 
-  function addToVault(productName, category) {
-    vaultCount++;
+  function renderVault() {
+    if (!receiptItemsList) return;
+    if (vaultItems.length === 0) {
+      receiptItemsList.innerHTML = `
+        <div class="vault-empty-state">
+          <p>YOUR VAULT IS CURRENTLY EMPTY</p>
+          <span>Click "+ COMMISSION" on pieces in our collection to add them to your inquiry.</span>
+        </div>
+      `;
+      if (vaultStatusText) vaultStatusText.textContent = 'NO PIECES';
+    } else {
+      receiptItemsList.innerHTML = vaultItems.map((item, idx) => `
+        <div class="r-item">
+          <span>1x ${item.name.toUpperCase()}</span>
+          <div style="display:flex;align-items:center;">
+            <span>${item.price}</span>
+            <button type="button" class="r-item-del" data-idx="${idx}" title="Remove piece">✕</button>
+          </div>
+        </div>
+      `).join('');
+
+      receiptItemsList.querySelectorAll('.r-item-del').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const idx = parseInt(btn.getAttribute('data-idx'), 10);
+          vaultItems.splice(idx, 1);
+          updateVaultUI();
+        });
+      });
+
+      if (vaultStatusText) vaultStatusText.textContent = `${vaultItems.length} BESPOKE ${vaultItems.length === 1 ? 'PIECE' : 'PIECES'}`;
+    }
+  }
+
+  function updateVaultUI() {
     if (bagCountEl) {
-      bagCountEl.textContent = vaultCount;
+      bagCountEl.textContent = vaultItems.length;
       bagCountEl.style.transform = 'scale(1.4)';
       setTimeout(() => { bagCountEl.style.transform = 'scale(1)'; }, 200);
     }
-
-    if (receiptItemsList) {
-      const itemRow = document.createElement('div');
-      itemRow.className = 'r-item';
-      itemRow.innerHTML = `<span>1x ${productName.toUpperCase()}</span><span>CONSULTAR</span>`;
-      receiptItemsList.prepend(itemRow);
-    }
+    renderVault();
   }
+
+  function addToVault(productName, price = 'CONSULTAR') {
+    vaultItems.push({ name: productName, price });
+    updateVaultUI();
+  }
+
+  // Initialize vault display
+  renderVault();
 
   document.querySelectorAll('.add-to-bag-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
       const name = btn.getAttribute('data-product') || 'Bespoke Piece';
-      addToVault(name, 'VAULT COMMISSION');
+      addToVault(name, 'CONSULTAR');
       btn.textContent = 'ADDED TO VAULT ✓';
       setTimeout(() => { btn.textContent = '+ COMMISSION'; }, 1400);
     });
@@ -452,85 +488,23 @@ document.addEventListener('DOMContentLoaded', () => {
       tabBtns.forEach(t => t.classList.remove('active'));
       tab.classList.add('active');
 
-      // Subtle feedback animation on cards
+      const targetCat = tab.getAttribute('data-cat');
       productCards.forEach((c, idx) => {
-        c.style.opacity = '0.4';
-        c.style.transform = 'scale(0.97)';
-        setTimeout(() => {
-          c.style.opacity = '1';
-          c.style.transform = 'scale(1)';
-        }, 100 + idx * 35);
+        const cardCat = c.getAttribute('data-category');
+        const show = targetCat === 'all' || cardCat === targetCat;
+        if (show) {
+          c.style.display = '';
+          c.style.opacity = '0.4';
+          c.style.transform = 'scale(0.97)';
+          setTimeout(() => {
+            c.style.opacity = '1';
+            c.style.transform = 'scale(1)';
+          }, 60 + idx * 25);
+        } else {
+          c.style.display = 'none';
+        }
       });
     });
   });
-
-  /* =========================================================================
-     9. AMBIENT ATELIER SOUND SYNTHESIZER (WEB AUDIO API)
-     ========================================================================= */
-  const soundBtn = document.getElementById('sound-btn');
-  let isPlayingSound = false;
-  let audioCtx = null;
-  let osc1 = null, osc2 = null, gainNode = null;
-
-  function initLuxuryAudio() {
-    try {
-      const AudioContext = window.AudioContext || window.webkitAudioContext;
-      if (!AudioContext) return;
-      audioCtx = new AudioContext();
-
-      // Dual warm ambient oscillators (F2 = ~87.3Hz and C3 = ~130.8Hz for an ethereal fifth)
-      osc1 = audioCtx.createOscillator();
-      osc2 = audioCtx.createOscillator();
-      const filter = audioCtx.createBiquadFilter();
-      gainNode = audioCtx.createGain();
-
-      osc1.type = 'sine';
-      osc1.frequency.setValueAtTime(87.3, audioCtx.currentTime);
-
-      osc2.type = 'sine';
-      osc2.frequency.setValueAtTime(130.8, audioCtx.currentTime);
-
-      filter.type = 'lowpass';
-      filter.frequency.setValueAtTime(320, audioCtx.currentTime);
-
-      gainNode.gain.setValueAtTime(0.0001, audioCtx.currentTime);
-
-      osc1.connect(filter);
-      osc2.connect(filter);
-      filter.connect(gainNode);
-      gainNode.connect(audioCtx.destination);
-
-      osc1.start();
-      osc2.start();
-    } catch (e) { }
-  }
-
-  if (soundBtn) {
-    soundBtn.addEventListener('click', () => {
-      isPlayingSound = !isPlayingSound;
-      soundBtn.classList.toggle('playing', isPlayingSound);
-      const bars = soundBtn.querySelectorAll('.sound-bars span');
-
-      if (isPlayingSound) {
-        if (!audioCtx) initLuxuryAudio();
-        if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
-        if (gainNode && audioCtx) {
-          gainNode.gain.cancelScheduledValues(audioCtx.currentTime);
-          gainNode.gain.linearRampToValueAtTime(0.08, audioCtx.currentTime + 1.2);
-        }
-        bars.forEach((b, i) => {
-          b.style.animation = `pulseDot ${0.4 + i * 0.2}s infinite alternate`;
-        });
-      } else {
-        if (gainNode && audioCtx) {
-          gainNode.gain.cancelScheduledValues(audioCtx.currentTime);
-          gainNode.gain.linearRampToValueAtTime(0.0001, audioCtx.currentTime + 0.8);
-        }
-        bars.forEach(b => {
-          b.style.animation = 'none';
-        });
-      }
-    });
-  }
 
 });
