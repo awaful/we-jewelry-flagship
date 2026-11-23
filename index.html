@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,400;1,600&family=Inter+Tight:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="src/css/style.css?v=luminous_master_v5">
+  <link rel="stylesheet" href="src/css/style.css?v=luminous_master_v7">
 </head>
 <body class="loading-state">
 
@@ -56,7 +56,7 @@
       <span class="announcement-sep">·</span>
       <span>SOLID 14K &amp; 18K GOLD · VVS DIAMONDS</span>
       <span class="announcement-sep">·</span>
-      <a href="#locations" class="announcement-link">ATELIER CONCIERGE →</a>
+      <a href="#locations" class="announcement-link">CONCIERGE DESK →</a>
       <span class="announcement-sep">·</span>
       <a href="tel:8326886688" class="announcement-link">(832) 688-6688</a>
       <span class="announcement-sep">·</span>
@@ -64,7 +64,7 @@
       <span class="announcement-sep">·</span>
       <span>SOLID 14K &amp; 18K GOLD · VVS DIAMONDS</span>
       <span class="announcement-sep">·</span>
-      <a href="#locations" class="announcement-link">ATELIER CONCIERGE →</a>
+      <a href="#locations" class="announcement-link">CONCIERGE DESK →</a>
       <span class="announcement-sep">·</span>
       <a href="tel:8326886688" class="announcement-link">(832) 688-6688</a>
     </div>
@@ -76,26 +76,16 @@
       <div class="hdr-nav-links">
         <a href="#menu" class="hdr-link">COLLECTION</a>
         <a href="#story" class="hdr-link">STANDARDS</a>
-        <a href="#story" class="hdr-link">ATELIER</a>
         <a href="#locations" class="hdr-link">LOCATIONS</a>
       </div>
 
       <!-- Center Logo -->
       <a href="#" class="hdr-brand-logo" aria-label="The Luminous Home">
         <span class="brand-text">THE LUMINOUS</span>
-        <span class="brand-sub-text">Atelier</span>
       </a>
 
       <!-- Right Actions -->
       <div class="hdr-nav-actions">
-        <!-- Ambient Sound Toggle -->
-        <button type="button" class="hdr-sound-btn" id="sound-btn" aria-label="Toggle atelier atmosphere">
-          <span class="sound-bars" aria-hidden="true">
-            <span></span><span></span><span></span>
-          </span>
-          <span class="sound-label">ATMOSPHERE</span>
-        </button>
-
         <a href="https://instagram.com/the.luminous.official" target="_blank" rel="noopener" class="hdr-account-link">
           <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8">
             <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
@@ -110,7 +100,12 @@
           <span class="pulse-dot"></span>
         </a>
 
-        <button type="button" class="hdr-bag-btn" id="bag-btn" aria-label="Vault items">
+        <button type="button" class="hdr-bag-btn" id="bag-btn" aria-label="Open Atelier Vault">
+          <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:3px">
+            <rect x="3" y="6" width="18" height="15" rx="3"/>
+            <path d="M16 6V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
+            <circle cx="12" cy="13.5" r="2"/>
+          </svg>
           <span>VAULT</span>
           <span class="bag-count" id="bag-count">0</span>
         </button>
@@ -476,31 +471,40 @@
     </section>
 
     <!-- =======================================================================
-         SECTION 5: BESPOKE COMMISSION CERTIFICATE MODAL
+         SECTION 5: BESPOKE COMMISSION CERTIFICATE MODAL (VAULT)
          ======================================================================= -->
-    <div id="receipt-modal" class="receipt-modal-backdrop" aria-hidden="true">
+    <div id="receipt-modal" class="receipt-modal-backdrop" aria-hidden="true" role="dialog" aria-label="Atelier Vault">
       <div class="receipt-slip-container">
-        <button type="button" class="receipt-close-btn" id="receipt-close-btn">✕</button>
+        <button type="button" class="receipt-close-btn" id="receipt-close-btn" aria-label="Close Vault">✕</button>
         <div class="receipt-paper">
           <div class="receipt-header">
             <span class="receipt-brand">THE LUMINOUS</span>
             <span class="receipt-sub">100 SHARPSTOWN #1168 · HOUSTON, TX</span>
             <span class="receipt-divider">--------------------------------</span>
+            <span class="receipt-vault-tag">// ATELIER COMMISSION VAULT</span>
           </div>
+
           <div class="receipt-items" id="receipt-items-list">
-            <div class="r-item"><span>1x 18MM MIAMI CUBAN CHAIN</span><span>CONSULTAR</span></div>
-            <div class="r-item"><span>1x CUSTOM 3D BUST PENDANT</span><span>CONSULTAR</span></div>
-            <div class="r-item"><span>1x BAGUETTE TOURBILLON WATCH</span><span>CONSULTAR</span></div>
+            <!-- Dynamically populated or empty state -->
           </div>
+
           <div class="receipt-divider">--------------------------------</div>
-          <div class="receipt-totals">
-            <div class="r-item"><span>PURITY</span><span>SOLID 14K / 18K</span></div>
-            <div class="r-item"><span>STONES</span><span>VVS BRILLIANT / BAGUETTES</span></div>
-            <div class="r-item r-total"><span>ESTIMATE</span><span>BESPOKE QUOTE</span></div>
+          
+          <div class="receipt-totals" id="receipt-totals-block">
+            <div class="r-item"><span>ATELIER SPEC</span><span>SOLID 14K / 18K / PLATINUM</span></div>
+            <div class="r-item"><span>CLARITY</span><span>VVS BRILLIANT / BAGUETTES</span></div>
+            <div class="r-item r-total"><span>ESTIMATE</span><span id="vault-status-text">BESPOKE QUOTE</span></div>
           </div>
+
+          <div class="receipt-actions">
+            <a href="tel:8326886688" class="vault-direct-call">
+              <span>CALL CONCIERGE · (832) 688-6688</span>
+            </a>
+          </div>
+
           <div class="receipt-footer">
-            <p>THE LUMINOUS INC. · HOUSTON ATELIER</p>
-            <p>CALL DIRECT: (832) 688-6688</p>
+            <p>THE LUMINOUS INC. · HOUSTON FLAGSHIP ATELIER</p>
+            <p>100 SHARPSTOWN CENTER #1168, HOUSTON, TX 77036</p>
           </div>
         </div>
       </div>
@@ -541,6 +545,6 @@
 
   </main>
 
-  <script src="src/js/main.js?v=luminous_master_v5"></script>
+  <script src="src/js/main.js?v=luminous_master_v7"></script>
 </body>
 </html>
