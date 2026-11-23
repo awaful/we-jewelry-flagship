@@ -3,30 +3,62 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>brewns — Specialty Coffee House</title>
-  <meta name="description" content="Specialty coffee house. Carefully sourced beans, thoughtfully brewed. Roasted every week. Open daily 07:00–02:00.">
+  <title>WE Jewelry &amp; Co. — Houston Bespoke Flagship</title>
+  <meta name="description" content="Official flagship digital experience for WE Jewelry & Co. (The Luminous Inc., Houston, TX). Solid 14K/18K Gold, VVS Diamonds, Miami Cuban Chains, Custom Pendants, Grillz and Horology.">
 
-  <!-- Google Fonts: Inter Tight & Cormorant Garamond for script italic -->
+  <!-- Preload fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,400;1,600&family=Inter+Tight:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="src/css/style.css?v=brewns_master_1">
+  <link rel="stylesheet" href="src/css/style.css?v=we_master_v3_flagship">
 </head>
-<body>
+<body class="loading-state">
 
   <!-- =========================================================================
-       ANNOUNCEMENT BAR & FLOATING FROSTED PILL HEADER
+       PRELOADER: CINEMATIC OBJECT LOADING & FILL ANIMATION
+       ========================================================================= -->
+  <div id="preloader" class="preloader-overlay">
+    <div class="preloader-content">
+      <div class="pre-emblem">
+        <svg viewBox="0 0 44 38" fill="none" class="pre-svg">
+          <path d="M12 2L2 14L22 36L42 14L32 2H12Z" stroke="#C5A059" stroke-width="1.8" stroke-linejoin="round"/>
+          <path d="M2 14H42" stroke="#C5A059" stroke-width="1.2"/>
+          <path d="M12 2L17 14L22 36L27 14L32 2" stroke="#C5A059" stroke-width="1.2"/>
+        </svg>
+      </div>
+      <div class="pre-bar-container">
+        <div class="pre-bar-fill" id="pre-bar-fill"></div>
+      </div>
+      <div class="pre-info-row">
+        <span class="pre-brand">WE JEWELRY &amp; CO.</span>
+        <span class="pre-counter" id="pre-counter">0%</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       CUSTOM INTERACTIVE MOUSE CURSOR
+       ========================================================================= -->
+  <div id="custom-cursor" class="custom-cursor">
+    <div class="cursor-dot"></div>
+    <div class="cursor-ring" id="cursor-ring">
+      <span class="cursor-label" id="cursor-label">EXPLORE</span>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       ANNOUNCEMENT TICKER & FLOATING FROSTED PILL HEADER
        ========================================================================= -->
   <div class="top-announcement-bar">
     <div class="announcement-track">
-      <span>FREE DELIVERY OVER $50</span>
+      <span>SHARPSTOWN CENTER #1168 · HOUSTON, TX</span>
       <span class="announcement-sep">·</span>
-      <span>BEANS ROASTED EVERY WEEK</span>
+      <span>SOLID 14K &amp; 18K GOLD · VVS DIAMONDS</span>
       <span class="announcement-sep">·</span>
-      <a href="#locations" class="announcement-link">DELIVERY AREAS →</a>
+      <a href="#locations" class="announcement-link">ATELIER CONCIERGE →</a>
       <span class="announcement-sep">·</span>
-      <a href="#story" class="announcement-link">WATCH THE 1-MIN TOUR ▶</a>
+      <a href="tel:8326886688" class="announcement-link">(832) 688-6688</a>
     </div>
   </div>
 
@@ -34,42 +66,44 @@
     <nav class="hdr-pill" aria-label="Primary Navigation">
       <!-- Left Navigation Links -->
       <div class="hdr-nav-links">
-        <a href="#menu" class="hdr-link">MENU</a>
-        <a href="#menu" class="hdr-link">SHOP</a>
-        <a href="#story" class="hdr-link">OUR STORY</a>
+        <a href="#menu" class="hdr-link">VAULT</a>
+        <a href="#menu" class="hdr-link">COLLECTION</a>
+        <a href="#story" class="hdr-link">ATELIER</a>
         <a href="#locations" class="hdr-link">LOCATIONS</a>
       </div>
 
       <!-- Center Logo -->
-      <a href="#" class="hdr-brand-logo" aria-label="brewns home">
-        <span class="brand-text">brewns</span>
+      <a href="#" class="hdr-brand-logo" aria-label="WE Jewelry Home">
+        <span class="brand-text">WE JEWELRY</span>
+        <span class="brand-sub-text">&amp; Co.</span>
       </a>
 
       <!-- Right Actions -->
       <div class="hdr-nav-actions">
         <!-- Ambient Sound Toggle -->
-        <button type="button" class="hdr-sound-btn" id="sound-btn" aria-label="Toggle ambient audio">
+        <button type="button" class="hdr-sound-btn" id="sound-btn" aria-label="Toggle atelier atmosphere">
           <span class="sound-bars" aria-hidden="true">
             <span></span><span></span><span></span>
           </span>
-          <span class="sound-label">SOUND</span>
+          <span class="sound-label">ATMOSPHERE</span>
         </button>
 
-        <a href="#account" class="hdr-account-link">
-          <svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true">
-            <circle cx="8" cy="5.2" r="2.6"/>
-            <path d="M2.8 14c.5-2.7 2.6-4.2 5.2-4.2s4.7 1.5 5.2 4.2"/>
+        <a href="https://instagram.com/the.luminous.official" target="_blank" rel="noopener" class="hdr-account-link">
+          <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
           </svg>
-          <span>SIGN IN</span>
+          <span>@THE.LUMINOUS</span>
         </a>
 
         <a href="#menu" class="hdr-order-btn">
-          <span>ORDER ONLINE</span>
+          <span>COMMISSION</span>
           <span class="pulse-dot"></span>
         </a>
 
-        <button type="button" class="hdr-bag-btn" id="bag-btn" aria-label="Open bag">
-          <span>BAG</span>
+        <button type="button" class="hdr-bag-btn" id="bag-btn" aria-label="Vault items">
+          <span>VAULT</span>
           <span class="bag-count" id="bag-count">0</span>
         </button>
       </div>
@@ -77,80 +111,90 @@
   </header>
 
   <!-- =========================================================================
-       SECTION 1: HERO (PINNED STICKY STAGE WITH 3D INTERACTIVE PARALLAX)
+       SECTION 1: HERO (PINNED STICKY STAGE WITH 3D JEWELRY PARALLAX)
        ========================================================================= -->
   <section id="hero" class="hero-stage">
     
-    <!-- Warm Espresso Studio Glow -->
+    <!-- Warm Obsidian Studio Glow -->
     <div class="hero-studio-glow" aria-hidden="true"></div>
 
     <div class="hero-container">
       
-      <!-- Left Column: Editorial Headline & Story -->
+      <!-- Left Column: Editorial Headline & Manifesto -->
       <div class="hero-copy-col">
-        <p class="hero-eyebrow">// SPECIALTY COFFEE HOUSE</p>
+        <p class="hero-eyebrow anim-reveal" style="--d: 0.1s">// HOUSTON BESPOKE ATELIER</p>
 
-        <h1 class="hero-h1">
-          <span class="h1-line">COFFEE</span>
+        <h1 class="hero-h1 anim-reveal" style="--d: 0.25s">
+          <span class="h1-line">CRAFTED</span>
           <span class="h1-line">FOR YOUR <em class="h1-script">moment</em></span>
         </h1>
 
-        <p class="hero-lead">
-          Carefully sourced beans and thoughtfully brewed to bring out the best in every cup.
+        <p class="hero-lead anim-reveal" style="--d: 0.4s">
+          Solid 14K &amp; 18K gold hand-cast in Texas. Hand-set VVS micro-pavé diamonds, bespoke 3D bust medallions, and precision horology.
         </p>
 
-        <div class="hero-cta-wrap">
+        <div class="hero-cta-wrap anim-reveal" style="--d: 0.55s">
           <a href="#menu" class="hero-cta-btn">
-            <span>EXPLORE MENU</span>
+            <span>EXPLORE THE VAULT</span>
             <span class="cta-arrow">↗</span>
           </a>
         </div>
 
         <!-- Bottom Coordinates & Information Row -->
-        <div class="hero-bottom-info">
+        <div class="hero-bottom-info anim-reveal" style="--d: 0.7s">
           <div class="info-block">
-            <span class="info-label">OPEN DAILY</span>
-            <span class="info-val">07:00 – 21:00</span>
+            <span class="info-label">FLAGSHIP ATELIER</span>
+            <span class="info-val">100 SHARPSTOWN #1168</span>
           </div>
 
           <div class="info-block">
-            <span class="info-label">FLAGSHIP CAFE</span>
-            <span class="info-val">130 COFFEE STREET · SF</span>
+            <span class="info-label">CONCIERGE DESK</span>
+            <span class="info-val"><a href="tel:8326886688">(832) 688-6688</a></span>
           </div>
 
           <div class="info-block">
-            <span class="info-label">SOCIALS</span>
-            <span class="info-val"><a href="#">INSTAGRAM</a> · <a href="#">TIKTOK</a></span>
+            <span class="info-label">OFFICIAL ATELIER</span>
+            <span class="info-val">THE LUMINOUS INC.</span>
           </div>
         </div>
       </div>
 
-      <!-- Right Column: Interactive 3D Product Stage -->
+      <!-- Right Column: Interactive 3D Product Stage (Watch & Cuban Chain) -->
       <div class="hero-stage-col" id="hero-interactive-stage">
         <div class="hero-3d-wrapper" id="hero-3d-wrapper">
           
-          <!-- Studio Photo Composition: Branded Cup & Slow Roast Bag -->
-          <div class="hero-image-mount" id="hero-image-mount">
+          <!-- Layer 2: 18mm Miami Cuban Chain (Background Layer) -->
+          <div class="hero-layer-chain" id="hero-layer-chain">
             <img 
-              src="public/assets/hero/hero-still.webp" 
-              alt="brewns coffee takeaway cup and slow roast bean bag"
-              class="hero-still-img"
-              id="hero-still-img"
+              src="public/img/luxury/miami-cuban-chain.png" 
+              alt="18mm Miami Cuban Chain Solid 14K Gold VVS Diamond Pavé"
+              class="hero-chain-img"
               draggable="false"
             >
           </div>
 
-          <!-- Floating Badge / Product Card -->
+          <!-- Layer 1: Baguette Diamond Bezel Skeleton Watch (Foreground Layer) -->
+          <div class="hero-layer-watch" id="hero-layer-watch">
+            <img 
+              src="public/img/luxury/baguette-watch.png" 
+              alt="Bespoke Baguette Diamond Bezel Skeleton Tourbillon Watch"
+              class="hero-watch-img"
+              draggable="false"
+            >
+            <div class="jewelry-glint" id="watch-glint"></div>
+          </div>
+
+          <!-- Floating Badge / Product Certificate Card -->
           <div class="hero-floating-card" id="hero-floating-card">
             <div class="floating-card-inner">
-              <span class="card-eyebrow">// in the bag</span>
+              <span class="card-eyebrow">// in the vault</span>
               <div class="card-title-row">
-                <span class="card-title">HOUSE LATTE</span>
-                <span class="card-price">$6.20</span>
+                <span class="card-title">BAGUETTE TOURBILLON</span>
+                <span class="card-price">CONSULTAR</span>
               </div>
-              <p class="card-desc">250 ML · BREWED DAILY · 12/05/24</p>
+              <p class="card-desc">SOLID 18K GOLD · VVS BAGUETTES · 1-OF-1</p>
               <button type="button" class="card-quick-add" id="hero-quick-add-btn">
-                <span>+ QUICK ADD</span>
+                <span>+ COMMISSION PIECE</span>
               </button>
             </div>
           </div>
@@ -166,14 +210,15 @@
     </div>
 
     <!-- Scroll Down Indicator -->
-    <a href="#menu" class="hero-scroll-cue" aria-label="Scroll to menu">
+    <a href="#menu" class="hero-scroll-cue" aria-label="Scroll to collection">
       <span>SCROLL</span>
       <span class="scroll-arrow">↓</span>
     </a>
   </section>
 
   <!-- =========================================================================
-       SECTION 2: "FAVORITES MADE DAILY" (CURTAIN SCROLL OVERLAP)
+       SECTION 2: "FAVORITES MADE DAILY" -> "BESPOKE MASTERPIECES"
+       (CURTAIN SCROLL OVERLAP)
        ========================================================================= -->
   <main class="content-curtain-wrapper" id="content-curtain">
     
@@ -183,29 +228,29 @@
         <!-- Header -->
         <div class="menu-header">
           <div class="menu-title-block">
-            <p class="section-eyebrow">// OUR MENU</p>
-            <h2 class="section-h2">FAVORITES MADE DAILY</h2>
-            <p class="section-lede">Quality ingredients, carefully prepared. Simple, balanced and made to enjoy.</p>
+            <p class="section-eyebrow">// ATELIER VAULT</p>
+            <h2 class="section-h2">BESPOKE PIECES MADE DAILY</h2>
+            <p class="section-lede">Cast in heavy solid 14K &amp; 18K gold. Individually calibrated, hand-set VVS stones, built to order in Houston.</p>
           </div>
 
           <div class="menu-receipt-mini" id="mini-receipt-trigger">
-            <img src="public/assets/menu/menu-receipt.webp" alt="brewns register receipt" class="receipt-thumb">
-            <span class="receipt-hint">TAP TO VIEW RECEIPT ↗</span>
+            <img src="public/assets/menu/menu-receipt.webp" alt="WE Jewelry Certificate" class="receipt-thumb">
+            <span class="receipt-hint">CERTIFICATE SPEC ↗</span>
           </div>
         </div>
 
         <!-- Filter Tabs & Controls -->
         <div class="catalog-nav-bar">
           <div class="catalog-tabs" id="catalog-tabs">
-            <button type="button" class="tab-btn active" data-cat="all">ALL</button>
-            <button type="button" class="tab-btn" data-cat="coffee">COFFEE</button>
-            <button type="button" class="tab-btn" data-cat="specialty">SPECIALTY</button>
-            <button type="button" class="tab-btn" data-cat="bakery">BAKERY</button>
-            <button type="button" class="tab-btn" data-cat="drinks">COLD DRINKS</button>
+            <button type="button" class="tab-btn active" data-cat="all">ALL PIECES</button>
+            <button type="button" class="tab-btn" data-cat="chains">CHAINS</button>
+            <button type="button" class="tab-btn" data-cat="pendants">PENDANTS</button>
+            <button type="button" class="tab-btn" data-cat="grillz">GRILLZ</button>
+            <button type="button" class="tab-btn" data-cat="horology">HOROLOGY</button>
           </div>
 
           <div class="catalog-pagination">
-            <span class="page-readout">01 / 03</span>
+            <span class="page-readout">01 / 06</span>
             <div class="page-arrows">
               <button class="arrow-btn" aria-label="Previous">←</button>
               <button class="arrow-btn" aria-label="Next">→</button>
@@ -216,82 +261,82 @@
         <!-- 4-Product Interactive Grid with 3D Tilt Hover -->
         <div class="products-grid" id="products-grid">
           
-          <!-- Product 1: House Latte -->
-          <article class="product-card" data-tilt>
+          <!-- Product 1: Miami Cuban Chain -->
+          <article class="product-card" data-tilt data-card-idx="0">
             <div class="card-media-wrap">
-              <img src="public/assets/menu/cup-latte.webp" alt="brewns House Latte" class="product-img" loading="lazy">
-              <span class="card-tag">BESTSELLER</span>
+              <img src="public/img/luxury/miami-cuban-chain.png" alt="18mm Miami Cuban Chain" class="product-img" loading="lazy">
+              <span class="card-tag">HOUSTON SIGNATURE</span>
             </div>
             <div class="card-details">
               <div class="card-top-row">
-                <span class="item-cat">ESPRESSO BAR</span>
-                <span class="item-price">$6.20</span>
+                <span class="item-cat">SOLID 14K GOLD</span>
+                <span class="item-price">CONSULTAR</span>
               </div>
-              <h3 class="item-name">House Latte</h3>
-              <p class="item-desc">Double shot espresso pulled at 92°C with silky steamed whole or oat milk.</p>
+              <h3 class="item-name">18mm Miami Cuban Chain</h3>
+              <p class="item-desc">Heavy solid gold with hand-filed flat-top links and hand-set microscopic VVS diamond pavé.</p>
               <div class="card-bottom-row">
-                <button type="button" class="add-to-bag-btn" data-product="House Latte" data-price="6.20">+ ADD TO BAG</button>
-                <button type="button" class="heart-fav-btn" aria-label="Favorite">♡</button>
+                <button type="button" class="add-to-bag-btn" data-product="18mm Miami Cuban Chain">+ COMMISSION</button>
+                <button type="button" class="heart-fav-btn" aria-label="Save to Vault">♡</button>
               </div>
             </div>
           </article>
 
-          <!-- Product 2: Slow Roast Whole Bean -->
-          <article class="product-card" data-tilt>
+          <!-- Product 2: Custom 3D Bust Pendant -->
+          <article class="product-card" data-tilt data-card-idx="1">
             <div class="card-media-wrap">
-              <img src="public/assets/menu/bag-slow-roast.webp" alt="brewns Slow Roast Whole Bean Coffee Bag" class="product-img" loading="lazy">
-              <span class="card-tag">ROASTED WEEKLY</span>
+              <img src="public/img/luxury/custom-bust-pendant.png" alt="Custom 3D Bust Diamond Pendant" class="product-img" loading="lazy">
+              <span class="card-tag">3D SCULPTED 1:1</span>
             </div>
             <div class="card-details">
               <div class="card-top-row">
-                <span class="item-cat">WHOLE BEAN</span>
-                <span class="item-price">$18.50</span>
+                <span class="item-cat">TWO-TONE GOLD</span>
+                <span class="item-price">CONSULTAR</span>
               </div>
-              <h3 class="item-name">Slow Roast (250g)</h3>
-              <p class="item-desc">Medium roast specialty blend with rich notes of caramel, brown sugar, and toasted almond.</p>
+              <h3 class="item-name">Custom 3D Bust Pendant</h3>
+              <p class="item-desc">High-relief sculpted medallion micro-set with over 1,400 round brilliant and baguette diamonds.</p>
               <div class="card-bottom-row">
-                <button type="button" class="add-to-bag-btn" data-product="Slow Roast Beans" data-price="18.50">+ ADD TO BAG</button>
-                <button type="button" class="heart-fav-btn" aria-label="Favorite">♡</button>
+                <button type="button" class="add-to-bag-btn" data-product="Custom 3D Bust Pendant">+ COMMISSION</button>
+                <button type="button" class="heart-fav-btn" aria-label="Save to Vault">♡</button>
               </div>
             </div>
           </article>
 
-          <!-- Product 3: Iced Ceremonial Matcha -->
-          <article class="product-card" data-tilt>
+          <!-- Product 3: Honeycomb Diamond Grillz -->
+          <article class="product-card" data-tilt data-card-idx="2">
             <div class="card-media-wrap">
-              <img src="public/assets/order/matcha-cup.webp" alt="Iced Ceremonial Uji Matcha Latte" class="product-img" loading="lazy">
-              <span class="card-tag">JAPANESE IMPORT</span>
+              <img src="public/img/luxury/diamond-grillz.png" alt="Honeycomb Diamond Grillz" class="product-img" loading="lazy">
+              <span class="card-tag">CUSTOM IMPRESSION</span>
             </div>
             <div class="card-details">
               <div class="card-top-row">
-                <span class="item-cat">SPECIALTY TEA</span>
-                <span class="item-price">$6.80</span>
+                <span class="item-cat">DENTAL GOLD</span>
+                <span class="item-price">CONSULTAR</span>
               </div>
-              <h3 class="item-name">Iced Matcha Latte</h3>
-              <p class="item-desc">First-harvest Uji ceremonial matcha hand-whisked and layered over cold milk and clear ice.</p>
+              <h3 class="item-name">Honeycomb Diamond Grillz</h3>
+              <p class="item-desc">Precision dental fit with deep-cut separation, hand-polished mirror finish and VVS pavé.</p>
               <div class="card-bottom-row">
-                <button type="button" class="add-to-bag-btn" data-product="Iced Matcha Latte" data-price="6.80">+ ADD TO BAG</button>
-                <button type="button" class="heart-fav-btn" aria-label="Favorite">♡</button>
+                <button type="button" class="add-to-bag-btn" data-product="Honeycomb Diamond Grillz">+ COMMISSION</button>
+                <button type="button" class="heart-fav-btn" aria-label="Save to Vault">♡</button>
               </div>
             </div>
           </article>
 
-          <!-- Product 4: Ethiopia Yirgacheffe Single Origin -->
-          <article class="product-card" data-tilt>
+          <!-- Product 4: Channel Baguette Eternity Band -->
+          <article class="product-card" data-tilt data-card-idx="3">
             <div class="card-media-wrap">
-              <img src="public/assets/menu/bag-yirgacheffe.webp" alt="Ethiopia Yirgacheffe Single Origin Beans" class="product-img" loading="lazy">
-              <span class="card-tag">SINGLE ORIGIN</span>
+              <img src="public/img/luxury/eternity-band-ring.png" alt="Baguette Eternity Band" class="product-img" loading="lazy">
+              <span class="card-tag">PLATINUM 950</span>
             </div>
             <div class="card-details">
               <div class="card-top-row">
-                <span class="item-cat">FILTER ROAST</span>
-                <span class="item-price">$22.00</span>
+                <span class="item-cat">FINE RINGS</span>
+                <span class="item-price">CONSULTAR</span>
               </div>
-              <h3 class="item-name">Ethiopia Yirgacheffe</h3>
-              <p class="item-desc">Washed heirloom variety grown at 2,100m. Vibrant bergamot, jasmine florals, and peach sweetness.</p>
+              <h3 class="item-name">Baguette Eternity Band</h3>
+              <p class="item-desc">Continuous halo of step-cut baguette diamonds individually calibrated and channel-set.</p>
               <div class="card-bottom-row">
-                <button type="button" class="add-to-bag-btn" data-product="Ethiopia Yirgacheffe" data-price="22.00">+ ADD TO BAG</button>
-                <button type="button" class="heart-fav-btn" aria-label="Favorite">♡</button>
+                <button type="button" class="add-to-bag-btn" data-product="Baguette Eternity Band">+ COMMISSION</button>
+                <button type="button" class="heart-fav-btn" aria-label="Save to Vault">♡</button>
               </div>
             </div>
           </article>
@@ -299,8 +344,8 @@
         </div>
 
         <div class="menu-footer-cta">
-          <a href="#menu" class="view-full-menu-btn">
-            <span>VIEW FULL ROSTER (24 ITEMS)</span>
+          <a href="tel:8326886688" class="view-full-menu-btn">
+            <span>START BESPOKE COMMISSION · (832) 688-6688</span>
             <span>→</span>
           </a>
         </div>
@@ -309,58 +354,58 @@
     </section>
 
     <!-- =======================================================================
-         SECTION 3: ANALOG CLOCK WITH ICED SPANISH LATTE CENTERPIECE
+         SECTION 3: ANALOG CLOCK WITH TOURBILLON HOROLOGY CENTERPIECE
          ======================================================================= -->
     <section id="locations" class="curtain-section clock-section">
       <div class="section-container">
         
         <div class="clock-layout">
           
-          <!-- Left: Location Selectors & Hours -->
+          <!-- Left: Location Selectors & Atelier Hours -->
           <div class="clock-info-col">
-            <p class="section-eyebrow">// ON BREW TIME</p>
-            <h2 class="section-h2">ROASTED FRESH<br>EVERY HOUR.</h2>
-            <p class="section-lede">Select a counter to check current brewing status, wait times, and walk-in availability.</p>
+            <p class="section-eyebrow">// ON ATELIER TIME</p>
+            <h2 class="section-h2">HOUSTON ATELIER<br>OPEN DAILY.</h2>
+            <p class="section-lede">Visit our Sharpstown flagship suite for in-person consultations, dental impressions, and custom CAD previews.</p>
 
             <div class="location-cards-list">
-              <div class="loc-card active" data-location="downtown">
+              <div class="loc-card active">
                 <div class="loc-card-top">
-                  <span class="loc-name">130 Coffee Street</span>
+                  <span class="loc-name">100 Sharpstown Center #1168</span>
                   <span class="loc-live-pill">● OPEN NOW</span>
                 </div>
-                <p class="loc-sub">Financial District · San Francisco</p>
+                <p class="loc-sub">Houston, TX 77036 · Flagship Suite</p>
                 <div class="loc-hours-row">
-                  <span>DAILY 07:00 – 21:00</span>
-                  <a href="#" class="loc-map-link">DIRECTIONS ↗</a>
+                  <span>DAILY 10:00 – 20:00 CST</span>
+                  <a href="https://maps.google.com/?q=100+Sharpstown+Center+Houston+TX+77036" target="_blank" rel="noopener" class="loc-map-link">DIRECTIONS ↗</a>
                 </div>
               </div>
 
-              <div class="loc-card" data-location="mission">
+              <div class="loc-card">
                 <div class="loc-card-top">
-                  <span class="loc-name">Valencia &amp; 18th</span>
-                  <span class="loc-live-pill">● OPEN NOW</span>
+                  <span class="loc-name">Private VIP Consultations</span>
+                  <span class="loc-live-pill">● BY APPOINTMENT</span>
                 </div>
-                <p class="loc-sub">Mission District · San Francisco</p>
+                <p class="loc-sub">Global Courier &amp; Secure Armored Delivery</p>
                 <div class="loc-hours-row">
-                  <span>DAILY 07:00 – 22:00</span>
-                  <a href="#" class="loc-map-link">DIRECTIONS ↗</a>
+                  <span>WORLDWIDE INSURED</span>
+                  <a href="tel:8326886688" class="loc-map-link">CALL DESK ↗</a>
                 </div>
               </div>
             </div>
 
             <div class="clock-live-stat-card">
               <div class="stat-pair">
-                <span class="stat-k">IN THE CUP</span>
-                <span class="stat-v">Iced Spanish Latte</span>
+                <span class="stat-k">ATELIER MASTERPIECE</span>
+                <span class="stat-v">Baguette Skeleton Tourbillon</span>
               </div>
               <div class="stat-pair">
-                <span class="stat-k">LOCAL TIME</span>
-                <span class="stat-v" id="live-clock-text">--:--:--</span>
+                <span class="stat-k">HOUSTON CST TIME</span>
+                <span class="stat-v" id="live-clock-text">--:--:-- CST</span>
               </div>
             </div>
           </div>
 
-          <!-- Right: Giant Analog Clock with Iced Latte Centerpiece -->
+          <!-- Right: Giant Analog Clock with Luxury Horology Centerpiece -->
           <div class="clock-stage-col">
             <div class="clock-dial-wrapper" id="clock-dial-wrapper">
               
@@ -380,13 +425,13 @@
                 </svg>
               </div>
 
-              <!-- Centerpiece: Realistic Iced Spanish Latte Glass -->
+              <!-- Centerpiece: Realistic Luxury Tourbillon Watch -->
               <div class="clock-cup-mount" id="clock-cup-mount">
                 <img 
-                  src="public/assets/locations/brewns-cup-clock.webp" 
-                  alt="Iced Spanish latte glass in center of clock" 
-                  class="clock-cup-img"
-                  id="clock-cup-img"
+                  src="public/img/luxury/baguette-watch.png" 
+                  alt="Baguette skeleton tourbillon watch in center of clock" 
+                  class="clock-watch-center-img"
+                  id="clock-watch-center-img"
                   draggable="false"
                 >
                 <div class="cup-contact-shadow"></div>
@@ -394,7 +439,7 @@
 
             </div>
 
-            <p class="clock-drag-hint">DRAG TO ROTATE CUP · TAP TO SWIRL</p>
+            <p class="clock-drag-hint">DRAG TO ROTATE PIECE · TAP TO GLINT</p>
           </div>
 
         </div>
@@ -403,40 +448,40 @@
     </section>
 
     <!-- =======================================================================
-         SECTION 4: THE FOUR HOUSE PILLARS (PHILOSOPHY)
+         SECTION 4: THE FOUR ATELIER STANDARDS
          ======================================================================= -->
     <section id="story" class="curtain-section philosophy-section">
       <div class="section-container">
         
         <div class="phil-top">
-          <p class="section-eyebrow">// THE HOUSE STANDARD</p>
-          <h2 class="section-h2">THE CITY NEVER STOPS.<br>NEITHER DO WE.</h2>
-          <p class="section-lede">Every brewns cup is calibrated to four uncompromised numbers, at every counter, all day.</p>
+          <p class="section-eyebrow">// THE ATELIER STANDARD</p>
+          <h2 class="section-h2">SOLID GOLD. REAL FIRE.<br>NO SHORTCUTS.</h2>
+          <p class="section-lede">Every commission from WE Jewelry &amp; Co. is built to uncompromised specifications in our Houston workshop.</p>
         </div>
 
         <div class="phil-stats-grid">
           <div class="phil-stat-card">
-            <span class="stat-number">92°C</span>
-            <span class="stat-title">WATER TEMP</span>
-            <p class="stat-desc">Calibrated espresso boiler temperature ensuring sweet extraction without astringency.</p>
+            <span class="stat-number">100%</span>
+            <span class="stat-title">SOLID PRECIOUS METAL</span>
+            <p class="stat-desc">Cast solely in solid 10K, 14K, 18K gold and platinum 950. Never plated, never hollowed.</p>
           </div>
 
           <div class="phil-stat-card">
-            <span class="stat-number">27s</span>
-            <span class="stat-title">SHOT DURATION</span>
-            <p class="stat-desc">Precision 1:2 extraction ratio pulled on custom La Marzocco volumetric groups.</p>
+            <span class="stat-number">VVS</span>
+            <span class="stat-title">DIAMOND CLARITY</span>
+            <p class="stat-desc">Hand-selected colorless stones with microscopic precision pavé and maximum light dispersion.</p>
           </div>
 
           <div class="phil-stat-card">
-            <span class="stat-number">65°C</span>
-            <span class="stat-title">STEAMED MILK</span>
-            <p class="stat-desc">Steamed micro-foam held below 65°C to preserve lactose sweetness and gloss.</p>
+            <span class="stat-number">1:1</span>
+            <span class="stat-title">CUSTOM 3D CAD</span>
+            <p class="stat-desc">Full 3D modeling from your concept with photorealistic renders before casting begins.</p>
           </div>
 
           <div class="phil-stat-card">
-            <span class="stat-number">4min</span>
-            <span class="stat-title">DOOR TO CUP</span>
-            <p class="stat-desc">Order ahead on our digital portal and walk in directly to your freshly poured drink.</p>
+            <span class="stat-number">#1168</span>
+            <span class="stat-title">SHARPSTOWN FLAGSHIP</span>
+            <p class="stat-desc">Direct access to master craftsmen at 100 Sharpstown Center, Suite 1168, Houston, Texas.</p>
           </div>
         </div>
 
@@ -444,31 +489,31 @@
     </section>
 
     <!-- =======================================================================
-         SECTION 5: THERMAL RECEIPT MODAL
+         SECTION 5: BESPOKE COMMISSION CERTIFICATE MODAL
          ======================================================================= -->
     <div id="receipt-modal" class="receipt-modal-backdrop" aria-hidden="true">
       <div class="receipt-slip-container">
         <button type="button" class="receipt-close-btn" id="receipt-close-btn">✕</button>
         <div class="receipt-paper">
           <div class="receipt-header">
-            <span class="receipt-brand">brewns coffee house</span>
-            <span class="receipt-sub">130 COFFEE STREET · SF</span>
+            <span class="receipt-brand">WE JEWELRY &amp; CO.</span>
+            <span class="receipt-sub">100 SHARPSTOWN #1168 · HOUSTON, TX</span>
             <span class="receipt-divider">--------------------------------</span>
           </div>
           <div class="receipt-items" id="receipt-items-list">
-            <div class="r-item"><span>1x HOUSE LATTE</span><span>$6.20</span></div>
-            <div class="r-item"><span>1x SLOW ROAST BEANS 250G</span><span>$18.50</span></div>
-            <div class="r-item"><span>1x ICED CEREMONIAL MATCHA</span><span>$6.80</span></div>
+            <div class="r-item"><span>1x 18MM MIAMI CUBAN CHAIN</span><span>CONSULTAR</span></div>
+            <div class="r-item"><span>1x CUSTOM 3D BUST PENDANT</span><span>CONSULTAR</span></div>
+            <div class="r-item"><span>1x BAGUETTE TOURBILLON WATCH</span><span>CONSULTAR</span></div>
           </div>
           <div class="receipt-divider">--------------------------------</div>
           <div class="receipt-totals">
-            <div class="r-item"><span>SUBTOTAL</span><span>$31.50</span></div>
-            <div class="r-item"><span>TAX (8.625%)</span><span>$2.72</span></div>
-            <div class="r-item r-total"><span>TOTAL</span><span>$34.22</span></div>
+            <div class="r-item"><span>PURITY</span><span>SOLID 14K / 18K</span></div>
+            <div class="r-item"><span>STONES</span><span>VVS BRILLIANT / BAGUETTES</span></div>
+            <div class="r-item r-total"><span>ESTIMATE</span><span>BESPOKE QUOTE</span></div>
           </div>
           <div class="receipt-footer">
-            <p>THANK YOU FOR VISITING</p>
-            <p>ORDER #0482 · HAVE A LUMINOUS DAY</p>
+            <p>THE LUMINOUS INC. · HOUSTON ATELIER</p>
+            <p>CALL DIRECT: (832) 688-6688</p>
           </div>
         </div>
       </div>
@@ -482,26 +527,25 @@
         
         <div class="footer-top-grid">
           <div class="footer-brand-col">
-            <h3 class="footer-logo">brewns</h3>
-            <p class="footer-tagline">Coffee for your moment.<br>Roasted fresh weekly.</p>
+            <h3 class="footer-logo">WE JEWELRY &amp; CO.</h3>
+            <p class="footer-tagline">Crafted for your moment.<br>Houston bespoke fine jewelry atelier.</p>
           </div>
 
           <div class="footer-newsletter-col">
-            <span class="footer-nl-label">THE POUR — A MONTHLY CUP OF NEWS</span>
-            <form class="footer-form" onsubmit="event.preventDefault(); alert('Subscribed to The Pour!');">
-              <input type="email" placeholder="you@example.com" class="footer-input" required>
-              <button type="submit" class="footer-submit-btn">SUBSCRIBE</button>
+            <span class="footer-nl-label">THE LUMINOUS VAULT — PRIVATE RELEASES</span>
+            <form class="footer-form" onsubmit="event.preventDefault(); alert('Subscribed to Private Atelier Releases!');">
+              <input type="email" placeholder="client@example.com" class="footer-input" required>
+              <button type="submit" class="footer-submit-btn">REQUEST ACCESS</button>
             </form>
           </div>
         </div>
 
         <div class="footer-bottom-row">
-          <span>© 2026 brewns coffee house · All rights reserved</span>
+          <span>© 2026 The Luminous Inc. · 100 Sharpstown Center #1168, Houston, TX 77036</span>
           <div class="footer-links">
-            <a href="#">PRIVACY</a>
-            <a href="#">TERMS</a>
-            <a href="#">LOCATIONS</a>
-            <a href="#">INSTAGRAM</a>
+            <a href="tel:8326886688">(832) 688-6688</a>
+            <a href="mailto:service@wejewelryandco.com">EMAIL</a>
+            <a href="https://instagram.com/the.luminous.official" target="_blank" rel="noopener">INSTAGRAM</a>
           </div>
         </div>
 
@@ -510,6 +554,6 @@
 
   </main>
 
-  <script src="src/js/main.js?v=brewns_master_1"></script>
+  <script src="src/js/main.js?v=we_master_v3_flagship"></script>
 </body>
 </html>
