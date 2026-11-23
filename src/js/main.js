@@ -78,77 +78,10 @@ document.addEventListener('DOMContentLoaded', () => {
     completeLoading();
   }, 2200);
 
-  /* =========================================================================
-     2. CUSTOM INTERACTIVE MOUSE CURSOR
-     ========================================================================= */
-  const cursor = document.getElementById('custom-cursor');
-  const cursorRing = document.getElementById('cursor-ring');
-  const cursorLabel = document.getElementById('cursor-label');
-
-  let mouseX = window.innerWidth / 2;
-  let mouseY = window.innerHeight / 2;
-  let ringX = mouseX;
-  let ringY = mouseY;
-  let isCursorVisible = false;
-
   const isTouchDevice = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
 
-  if (!isTouchDevice && cursor) {
-    window.addEventListener('mousemove', (e) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-      if (!isCursorVisible) {
-        isCursorVisible = true;
-        cursor.style.opacity = '1';
-        ringX = mouseX;
-        ringY = mouseY;
-      }
-    });
-
-    document.addEventListener('mouseleave', () => {
-      if (cursor) cursor.style.opacity = '0';
-      isCursorVisible = false;
-    });
-
-    document.addEventListener('mouseenter', () => {
-      if (cursor) cursor.style.opacity = '1';
-      isCursorVisible = true;
-    });
-
-    // 60fps lerp loop for ultra-smooth trailing ring
-    function updateCursor() {
-      if (cursor && isCursorVisible) {
-        ringX += (mouseX - ringX) * 0.18;
-        ringY += (mouseY - ringY) * 0.18;
-
-        const dot = cursor.querySelector('.cursor-dot');
-        if (dot) {
-          dot.style.left = `${mouseX}px`;
-          dot.style.top = `${mouseY}px`;
-        }
-        if (cursorRing) {
-          cursorRing.style.left = `${ringX}px`;
-          cursorRing.style.top = `${ringY}px`;
-        }
-      }
-      requestAnimationFrame(updateCursor);
-    }
-    requestAnimationFrame(updateCursor);
-
-    // Hover states for links, buttons & interactive cards
-    const hoverTargets = document.querySelectorAll('a, button, input, .product-card, .loc-card, .menu-receipt-mini');
-    hoverTargets.forEach(el => {
-      el.addEventListener('mouseenter', () => {
-        if (cursor) cursor.classList.add('cursor-hover');
-      });
-      el.addEventListener('mouseleave', () => {
-        if (cursor) cursor.classList.remove('cursor-hover');
-      });
-    });
-  }
-
   /* =========================================================================
-     3. HERO 3D MOUSE PARALLAX & DUAL-LAYER DEPTH INTERACTION
+     3. HERO 3D MOUSE PARALLAX & DUAL-LAYER SCROLL-SWAP INTERACTION
      ========================================================================= */
   const heroStage = document.getElementById('hero-interactive-stage');
   const hero3DWrapper = document.getElementById('hero-3d-wrapper');
@@ -163,23 +96,21 @@ document.addEventListener('DOMContentLoaded', () => {
   let dragStartX = 0;
   let dragRotation = 0;
 
+  // Scroll tracking for swapping Grillz and Watch positions
+  let targetScrollProg = 0;
+  let currentScrollProg = 0;
+
+  function onScrollHero() {
+    const scrollY = window.scrollY || window.pageYOffset || 0;
+    const heroH = window.innerHeight || 800;
+    // Swap positions smoothly over the first 75% of the viewport scroll
+    targetScrollProg = Math.max(0, Math.min(1, scrollY / (heroH * 0.75)));
+  }
+  window.addEventListener('scroll', onScrollHero, { passive: true });
+  onScrollHero();
+
   if (heroStage) {
     if (!isTouchDevice) {
-      heroStage.addEventListener('mouseenter', () => {
-        if (cursor) {
-          cursor.classList.add('cursor-hero');
-          if (cursorLabel) cursorLabel.textContent = '360° DRAG';
-        }
-      });
-
-      heroStage.addEventListener('mouseleave', () => {
-        if (cursor) {
-          cursor.classList.remove('cursor-hero');
-          cursor.classList.remove('cursor-grabbing');
-        }
-        isDraggingHero = false;
-      });
-
       // Mouse movement parallax
       window.addEventListener('mousemove', (e) => {
         const { innerWidth, innerHeight } = window;
@@ -195,12 +126,10 @@ document.addEventListener('DOMContentLoaded', () => {
     heroStage.addEventListener('mousedown', (e) => {
       isDraggingHero = true;
       dragStartX = e.clientX;
-      if (cursor) cursor.classList.add('cursor-grabbing');
     });
 
     window.addEventListener('mouseup', () => {
       isDraggingHero = false;
-      if (cursor) cursor.classList.remove('cursor-grabbing');
     });
 
     window.addEventListener('mousemove', (e) => {
@@ -229,26 +158,48 @@ document.addEventListener('DOMContentLoaded', () => {
       dragStartX = e.touches[0].clientX;
     }, { passive: true });
 
-    // Damped 60fps render loop for Hero 3D Stage
+    // Damped 60fps render loop for Hero 3D Stage + Scroll Swap
     function updateHero3D() {
       currentRotX += (targetRotX - currentRotX) * 0.085;
       currentRotY += (targetRotY - currentRotY) * 0.085;
+
+      // Smooth interpolation for scroll swap
+      currentScrollProg += (targetScrollProg - currentScrollProg) * 0.08;
+      const t = currentScrollProg * currentScrollProg * (3 - 2 * currentScrollProg);
+      const sinArc = Math.sin(Math.PI * t);
+
+      // Trajectories:
+      // Grillz starts at top-right (70%, 26%) -> swaps to bottom-left (30%, 68%)
+      const grillzX = 70 + (30 - 70) * t + 12 * sinArc;
+      const grillzY = 26 + (68 - 26) * t + 8 * sinArc;
+      const grillzZ = -15 - 35 * sinArc;
+      const grillzRot = -8 + (6 - (-8)) * t - 8 * sinArc;
+
+      // Watch starts at bottom-left (30%, 68%) -> swaps to top-right (70%, 26%)
+      const watchX = 30 + (70 - 30) * t - 12 * sinArc;
+      const watchY = 68 + (26 - 68) * t - 8 * sinArc;
+      const watchZ = 45 + 45 * sinArc;
+      const watchRot = 6 + (-8 - 6) * t + 8 * sinArc;
 
       if (hero3DWrapper) {
         hero3DWrapper.style.transform = `rotateX(${currentRotX.toFixed(2)}deg) rotateY(${currentRotY.toFixed(2)}deg)`;
       }
 
-      // Dual-Depth Parallax offsets between background grillz & foreground watch
+      // Parallax offsets + scroll swap positioning
       if (heroGrillz) {
-        const grillzOffX = -currentRotY * 0.9;
-        const grillzOffY = currentRotX * 0.7;
-        heroGrillz.style.transform = `translate3d(calc(-50% + ${grillzOffX.toFixed(1)}px), calc(-50% + ${grillzOffY.toFixed(1)}px), -15px) rotate(-8deg)`;
+        const grillzOffX = -currentRotY * 0.7;
+        const grillzOffY = currentRotX * 0.5;
+        heroGrillz.style.left = `${grillzX.toFixed(2)}%`;
+        heroGrillz.style.top = `${grillzY.toFixed(2)}%`;
+        heroGrillz.style.transform = `translate3d(calc(-50% + ${grillzOffX.toFixed(1)}px), calc(-50% + ${grillzOffY.toFixed(1)}px), ${grillzZ.toFixed(1)}px) rotate(${grillzRot.toFixed(2)}deg)`;
       }
 
       if (heroWatch) {
-        const watchOffX = currentRotY * 1.3;
-        const watchOffY = -currentRotX * 1.0;
-        heroWatch.style.transform = `translate3d(calc(-50% + ${watchOffX.toFixed(1)}px), calc(-50% + ${watchOffY.toFixed(1)}px), 45px) rotate(6deg)`;
+        const watchOffX = currentRotY * 0.9;
+        const watchOffY = -currentRotX * 0.7;
+        heroWatch.style.left = `${watchX.toFixed(2)}%`;
+        heroWatch.style.top = `${watchY.toFixed(2)}%`;
+        heroWatch.style.transform = `translate3d(calc(-50% + ${watchOffX.toFixed(1)}px), calc(-50% + ${watchOffY.toFixed(1)}px), ${watchZ.toFixed(1)}px) rotate(${watchRot.toFixed(2)}deg)`;
       }
 
       // Dynamic glint sweep across watch face
