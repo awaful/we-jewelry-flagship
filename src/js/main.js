@@ -16,9 +16,9 @@ document.addEventListener('DOMContentLoaded', () => {
   let isLoaded = false;
   const criticalImages = [
     'public/img/luxury/baguette-watch.png',
-    'public/img/luxury/miami-cuban-chain.png',
+    'public/img/luxury/diamond-grillz.png',
     'public/img/luxury/custom-bust-pendant.png',
-    'public/img/luxury/diamond-grillz.png'
+    'public/img/luxury/miami-cuban-chain.png'
   ];
 
   let loadedImagesCount = 0;
@@ -152,9 +152,8 @@ document.addEventListener('DOMContentLoaded', () => {
      ========================================================================= */
   const heroStage = document.getElementById('hero-interactive-stage');
   const hero3DWrapper = document.getElementById('hero-3d-wrapper');
-  const heroChain = document.getElementById('hero-layer-chain');
+  const heroGrillz = document.getElementById('hero-layer-grillz');
   const heroWatch = document.getElementById('hero-layer-watch');
-  const heroCard = document.getElementById('hero-floating-card');
   const heroGlint = document.getElementById('watch-glint');
 
   let normX = 0, normY = 0;
@@ -239,24 +238,17 @@ document.addEventListener('DOMContentLoaded', () => {
         hero3DWrapper.style.transform = `rotateX(${currentRotX.toFixed(2)}deg) rotateY(${currentRotY.toFixed(2)}deg)`;
       }
 
-      // Dual-Depth Parallax offsets between background chain & foreground watch
-      if (heroChain) {
-        const chainOffX = -currentRotY * 0.8;
-        const chainOffY = currentRotX * 0.6;
-        heroChain.style.transform = `translate3d(calc(-50% + ${chainOffX.toFixed(1)}px), calc(-50% + ${chainOffY.toFixed(1)}px), -35px) scale(0.98)`;
+      // Dual-Depth Parallax offsets between background grillz & foreground watch
+      if (heroGrillz) {
+        const grillzOffX = -currentRotY * 0.9;
+        const grillzOffY = currentRotX * 0.7;
+        heroGrillz.style.transform = `translate3d(calc(-50% + ${grillzOffX.toFixed(1)}px), calc(-50% + ${grillzOffY.toFixed(1)}px), -30px) scale(0.95)`;
       }
 
       if (heroWatch) {
         const watchOffX = currentRotY * 1.4;
         const watchOffY = -currentRotX * 1.1;
         heroWatch.style.transform = `translate3d(calc(-50% + ${watchOffX.toFixed(1)}px), calc(-50% + ${watchOffY.toFixed(1)}px), 50px) scale(1)`;
-      }
-
-      // Floating Certificate Card independent parallax
-      if (heroCard) {
-        const cardOffX = currentRotY * 2.2;
-        const cardOffY = -currentRotX * 1.8;
-        heroCard.style.transform = `translate3d(${cardOffX.toFixed(1)}px, ${cardOffY.toFixed(1)}px, 65px)`;
       }
 
       // Dynamic glint sweep across watch face
@@ -410,15 +402,6 @@ document.addEventListener('DOMContentLoaded', () => {
       setTimeout(() => { btn.textContent = '+ COMMISSION'; }, 1400);
     });
   });
-
-  const heroQuickAdd = document.getElementById('hero-quick-add-btn');
-  if (heroQuickAdd) {
-    heroQuickAdd.addEventListener('click', () => {
-      addToVault('Baguette Tourbillon Watch', 'HOROLOGY');
-      heroQuickAdd.textContent = 'COMMISSIONED ✓';
-      setTimeout(() => { heroQuickAdd.textContent = '+ COMMISSION PIECE'; }, 1400);
-    });
-  }
 
   /* =========================================================================
      7. BESPOKE COMMISSION CERTIFICATE MODAL (WITH ESC & SCROLL LOCK)
