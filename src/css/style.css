@@ -1170,6 +1170,10 @@ body.loaded .anim-reveal {
   transition: transform 0.2s ease-out;
 }
 
+.cup-contact-shadow {
+  display: none !important;
+}
+
 .clock-drag-hint {
   margin-top: 16px;
   font-family: 'Space Mono', monospace;
