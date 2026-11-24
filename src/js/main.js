@@ -1,5 +1,5 @@
 /**
- * THE LUMINOUS — HOUSTON BESPOKE FINE JEWELRY ATELIER
+ * CASH JEWELLERS — BESPOKE CUSTOM MADE JEWELLERY
  * Flagship Digital Experience, Dual-Depth 3D Parallax & Cinematic Motion
  */
 
@@ -242,7 +242,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* =========================================================================
-     5. ANALOG CLOCK ANIMATION (HOUSTON CST LIVE TIME & CENTER TOURBILLON)
+     5. ANALOG CLOCK ANIMATION (ATELIER LIVE TIME & CENTER TOURBILLON)
      ========================================================================= */
   const handHour = document.getElementById('clock-hand-hour');
   const handMin  = document.getElementById('clock-hand-min');
@@ -253,7 +253,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function updateClock() {
     const now = new Date();
     
-    // Houston CST / CDT via Intl formatter
+    // Atelier time via Intl formatter
     const formatter = new Intl.DateTimeFormat('en-US', {
       timeZone: 'America/Chicago',
       hour: 'numeric',
@@ -283,7 +283,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const hStr = String(hours).padStart(2, '0');
       const mStr = String(minutes).padStart(2, '0');
       const sStr = String(seconds).padStart(2, '0');
-      liveClockText.textContent = `${hStr}:${mStr}:${sStr} CST`;
+      liveClockText.textContent = `${hStr}:${mStr}:${sStr} ATELIER`;
     }
 
     requestAnimationFrame(updateClock);
