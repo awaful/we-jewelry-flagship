@@ -1,5 +1,5 @@
 /**
- * WE JEWELRY & CO. — HOUSTON BESPOKE ATELIER
+ * CASH JEWELLERS — BESPOKE CUSTOM MADE JEWELLERY
  * 3D Marquee Kinetic Engine with Hyperbolic Spacing & Spring Physics
  */
 
@@ -17,10 +17,10 @@ document.addEventListener('DOMContentLoaded', () => {
     {
       title: "18mm Miami Cuban Chain",
       subtitle: "Solid 14K Yellow Gold • Hand-Set VVS Diamond Pavé",
-      desc: "The quintessential Houston signature. Cast in heavy solid 14-karat yellow gold with hand-filed flat-top links, handset with microscopic VVS diamond pavé across all link faces and finished with our bespoke dual-safety iced box clasp.",
+      desc: "The quintessential atelier signature. Cast in heavy solid 14-karat yellow gold with hand-filed flat-top links, handset with microscopic VVS diamond pavé across all link faces and finished with our bespoke dual-safety iced box clasp.",
       material: "SOLID 14K / 18K YELLOW GOLD",
       stones: "VVS COLORLESS DIAMONDS",
-      ctaText: "COMMISSION PIECE — (832) 688-6688 ↗"
+      ctaText: "COMMISSION PIECE — @CASH_JEWELLERS ↗"
     },
     {
       title: "Custom 3D Bust Diamond Pendant",
