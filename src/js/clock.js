@@ -30,7 +30,7 @@ export function initClock() {
           const prog = self.progress;
           const hours = 10 + Math.floor(prog * 2);
           const minutes = Math.floor((prog * 60) % 60);
-          timeTelemetry.textContent = `HOUSTON CST · ${hours}:${minutes < 10 ? '0' : ''}${minutes} · REF #LUM-${Math.floor(1000 + prog * 999)}`;
+          timeTelemetry.textContent = `ATELIER LIVE · ${hours}:${minutes < 10 ? '0' : ''}${minutes} · REF #CASH-${Math.floor(1000 + prog * 999)}`;
         }
       }
     }
